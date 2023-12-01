@@ -1,16 +1,24 @@
 ﻿using DriveByBooking.Model.CarFolder;
 using DriveByBooking.Model.ProfilFolder;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace DriveByBooking.Model.Booking
 {
     public class Booking
     {
 
+        private Date _dateTime;
         private CarClass _car;
         private CustomerClass _customer;
+        
 
+        public Date DateTime
+        {
+            get { return _dateTime; }
+            set { _dateTime = value; }
+        }
 
-        public CarClass Car
+        public CarClass CarClass
         {
             get { return _car; }
             set { _car = value; }
@@ -37,7 +45,7 @@ namespace DriveByBooking.Model.Booking
 
         public override string ToString()
         {
-            return $"{{{nameof(Car)}={Car}, {nameof(CustomerClass)}={CustomerClass}}}";
+            return $"{{{nameof(CarClass)}={CarClass}, {nameof(CustomerClass)}={CustomerClass}}}";
         }
     }
 }
