@@ -1,4 +1,4 @@
-﻿namespace DriveByBooking.Cars
+﻿namespace DriveByBooking.Model.CarFolder
 {
     public class CarClass
     {
@@ -19,14 +19,14 @@
         //propertieas...
         //
         public string LicensePlate
-        { 
+        {
             get { return _licensePlate; }
             set { _licensePlate = value; }
         }
         public string Name
-        { 
+        {
             get { return _name; }
-            set {  _name = value; } 
+            set { _name = value; }
         }
         public string Brand
         {
@@ -90,7 +90,7 @@
             _carType = carType;
             _shiftType = shiftType;
             _engineType = engineType;
-            _location= location;
+            _location = location;
         }
 
         //
