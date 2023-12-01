@@ -28,3 +28,8 @@ body {
     height: 1px;
     background: #eee;
 }
+
+#photo
+{
+    border-radius: 10px;
+}
