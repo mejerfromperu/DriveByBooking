@@ -35,6 +35,9 @@ namespace DriveByBooking.Model.Booking
             
         }
 
-
+        public override string ToString()
+        {
+            return $"{{{nameof(Car)}={Car}, {nameof(CustomerClass)}={CustomerClass}}}";
+        }
     }
 }
