@@ -3,7 +3,7 @@ using System.Xml.Linq;
 
 namespace DriveByBooking.Service
 {
-    public class CustomerRepository
+    public class CustomerRepository : ICustomerRepository
     {
         // instans felt (customer list)
         private List<CustomerClass> _repo;
@@ -60,15 +60,15 @@ namespace DriveByBooking.Service
         public CustomerClass Delete(int id)
         {
             int index = _repo.FindIndex(CustomerClass => CustomerClass.CustomerId == id);
-            if(index >= 0)
+            if (index >= 0)
             {
-                CustomerClass DeleteCustomer  = _repo[index];
+                CustomerClass DeleteCustomer = _repo[index];
                 _repo.RemoveAt(index);
                 return DeleteCustomer;
             }
             else
             {
-                return null;    
+                return null;
             }
         }
 
