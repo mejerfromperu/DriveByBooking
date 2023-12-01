@@ -12,5 +12,9 @@ namespace DriveByBooking.Service
         List<CustomerClass> GetEverything();
         string ToString();
         CustomerClass Update(CustomerClass customer);
+        public bool CheckCustomer(string username, string password);
+        public void LogoutCustomer();
+
+
     }
 }

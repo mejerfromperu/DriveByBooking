@@ -8,6 +8,8 @@ namespace DriveByBooking.Service
         // instans felt (customer list)
         private List<CustomerClass> _repo;
 
+        public CustomerClass? CustomerLoggedIn { get; private set; }
+
         // en prop
         public List<CustomerClass> customerRepo
         { get { return _repo; } set { _repo = value; } }
@@ -78,6 +80,28 @@ namespace DriveByBooking.Service
             _repo[customer.CustomerId] = customer;
             return UpdatePerson;
         }
+
+        public bool CheckCustomer(string username, string password)
+        {
+            CustomerClass? foundCustomer = _repo.Find(u => u.Name == username && u.Password == password);
+
+            if (foundCustomer != null)
+            {
+                CustomerLoggedIn = foundCustomer;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public void LogoutCustomer()
+        {
+            CustomerLoggedIn = null;
+        }
+
+
 
         public override string ToString()
         {
