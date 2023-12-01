@@ -5,7 +5,6 @@ namespace DriveByBooking.Service
     public interface ICustomerRepository
     {
         List<CustomerClass> customerRepo { get; set; }
-
         void AddCustomer(CustomerClass customer);
         CustomerClass Delete(int id);
         CustomerClass GetCustomer(int id);
@@ -14,7 +13,5 @@ namespace DriveByBooking.Service
         CustomerClass Update(CustomerClass customer);
         public bool CheckCustomer(string username, string password);
         public void LogoutCustomer();
-
-
     }
 }
