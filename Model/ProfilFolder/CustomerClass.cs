@@ -1,4 +1,4 @@
-﻿namespace DriveByBooking.ProfilFolder
+﻿namespace DriveByBooking.Model.ProfilFolder
 {
     public class CustomerClass : Profile
     {
@@ -22,8 +22,8 @@
             get { return _phonenumber; }
             set { _phonenumber = value; }
         }
-        public int CustomerId 
-        { 
+        public int CustomerId
+        {
             get { return _customerId; }
             set { _customerId = value; }
         }

@@ -1,4 +1,4 @@
-﻿namespace DriveByBooking.ProfilFolder
+﻿namespace DriveByBooking.Model.ProfilFolder
 {
     public class Profile
     {

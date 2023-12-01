@@ -1,4 +1,4 @@
-﻿namespace DriveByBooking.ProfilFolder
+﻿namespace DriveByBooking.Model.ProfilFolder
 {
     public class OwnerClass : Profile
     {
@@ -11,9 +11,9 @@
         // Properties...
         //
         public bool Owner
-        { 
-            get { return _owner; } 
-            set {  _owner = value; } 
+        {
+            get { return _owner; }
+            set { _owner = value; }
         }
 
         //
@@ -22,7 +22,7 @@
         public OwnerClass()
         {
             _owner = false;
-            _username = string.Empty; 
+            _username = string.Empty;
             _password = string.Empty;
             _name = string.Empty;
         }
