@@ -1,4 +1,4 @@
-﻿using DriveByBooking.ProfilFolder;
+﻿using DriveByBooking.Model.ProfilFolder;
 using System.Xml.Linq;
 
 namespace DriveByBooking.Service
