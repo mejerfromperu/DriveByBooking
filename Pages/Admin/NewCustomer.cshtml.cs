@@ -40,6 +40,12 @@ namespace DriveByBooking.Pages.Admin
         [BindProperty]
         public string NewCustomerEmail { get; set; }
 
+        [BindProperty]
+        public bool IsAdmin { get; set; }
+
+        [BindProperty]
+        public bool IsOwner { get; set; }
+
 
         public string ErrorMessage { get; private set; }
 
@@ -57,7 +63,7 @@ namespace DriveByBooking.Pages.Admin
             {
                 return Page();
             }
-            CustomerClass newCustomer = new CustomerClass(NewCustomerEmail, NewCustomerPhoneNumber, NewCustomerId, NewCustomerUsername, NewCustomerPassword, NewCustomerName);
+            CustomerClass newCustomer = new CustomerClass(NewCustomerEmail, NewCustomerPhoneNumber, NewCustomerId, NewCustomerUsername, NewCustomerPassword, NewCustomerName, IsAdmin, IsOwner);
 
             try
             {
