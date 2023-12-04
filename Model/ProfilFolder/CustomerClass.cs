@@ -28,6 +28,8 @@
             set { _customerId = value; }
         }
 
+        
+
         //
         // Constructor...
         // Default
@@ -39,9 +41,11 @@
             _username = string.Empty;
             _password = string.Empty;
             _name = string.Empty;
+            _isAdmin = false;
+            _isOwner = false;
         }
         // Constructor
-        public CustomerClass(string email, string phonenumber, int customerId, string username, string password, string name)
+        public CustomerClass(string email, string phonenumber, int customerId, string username, string password, string name, bool isadmin, bool isowner)
         {
             Email = email;
             PhoneNumber = phonenumber;
@@ -49,6 +53,8 @@
             Username = username;
             Password = password;
             Name = name;
+            IsAdmin = isadmin;
+            IsOwner = isowner;
         }
     }
 }

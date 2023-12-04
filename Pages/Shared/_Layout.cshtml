@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@inject DriveByBooking.Service.ICustomerRepository Customers
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -25,16 +26,21 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Pr78ivacy">Privacy</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Admin/index">Admin</a>
-                        </li>
+                        @if (Customers.CustomerLoggedIn is not null && Customers.CustomerLoggedIn.IsAdmin)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Admin/index">Admin</a>
+                            </li>
+                        }
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/ProfilSide/index">ProfilSide</a>
                         </li>
+                        @if (Customers.CustomerLoggedIn is not null)
+                        {
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Login/index">Login</a>
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Logout">Logout</a>
                         </li>
-                        
+                        }
                     </ul>
                 </div>
             </div>
@@ -54,7 +60,7 @@
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>  
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>
