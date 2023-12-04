@@ -6,7 +6,7 @@ namespace DriveByBooking.Service
     public class CustomerRepository : ICustomerRepository
     {
         // instans felt (customer list)
-        private List<CustomerClass> _repo;
+        private List<CustomerClass> _repo = new List<CustomerClass>();
 
         public CustomerClass? CustomerLoggedIn { get; private set; }
 
@@ -21,19 +21,23 @@ namespace DriveByBooking.Service
 
             if (mocdata)
             {
-                ShowMocDataRepository();
+                _repo.Add(new CustomerClass("Christianmejer7@gmail.com", "11223344", 1, "MidgetSlayer", "hundogcat", "chris", false, false));
+                _repo.Add(new CustomerClass("Christiane23@gmail.com", "83728390", 2, "MidgetHunter", "missecat", "chrissi", true, true));
+                _repo.Add(new CustomerClass("starshipcaptain@emailgalaxy.org", "98982626", 3, "MidgetFucker", "katapult", "mejer", false, false));
+                _repo.Add(new CustomerClass("pixieprogrammer@emailmagic.com", "44667728", 4, "MidgetFinder", "YESSIR", "mejerfromperu", false, false));
+                _repo.Add(new CustomerClass("codingwizard42@techfantasy.net", "87653542", 5, "MidgetTaker", "taxi", "christian", false, false));
             }
 
         }
-        private void ShowMocDataRepository()
-        {
-            _repo.Clear();
-            _repo.Add(new CustomerClass("Christianmejer7@gmail.com", "11223344", 1, "MidgetSlayer", "hundogcat", "chris"));
-            _repo.Add(new CustomerClass("Christiane23@gmail.com", "83728390", 2, "MidgetHunter", "missecat", "chrissi"));
-            _repo.Add(new CustomerClass("starshipcaptain@emailgalaxy.org", "98982626", 3, "MidgetFucker", "katapult", "mejer"));
-            _repo.Add(new CustomerClass("pixieprogrammer@emailmagic.com", "44667728", 4, "MidgetFinder", "YESSIR", "mejerfromperu"));
-            _repo.Add(new CustomerClass("codingwizard42@techfantasy.net", "87653542", 5, "MidgetTaker", "taxi", "christian"));
-        }
+        //private void ShowMocDataRepository()
+        //{
+        //    _repo.Clear();
+        //    _repo.Add(new CustomerClass("Christianmejer7@gmail.com", "11223344", 1, "MidgetSlayer", "hundogcat", "chris"));
+        //    _repo.Add(new CustomerClass("Christiane23@gmail.com", "83728390", 2, "MidgetHunter", "missecat", "chrissi"));
+        //    _repo.Add(new CustomerClass("starshipcaptain@emailgalaxy.org", "98982626", 3, "MidgetFucker", "katapult", "mejer"));
+        //    _repo.Add(new CustomerClass("pixieprogrammer@emailmagic.com", "44667728", 4, "MidgetFinder", "YESSIR", "mejerfromperu"));
+        //    _repo.Add(new CustomerClass("codingwizard42@techfantasy.net", "87653542", 5, "MidgetTaker", "taxi", "christian"));
+        //}
 
         // Metoder
 
@@ -83,7 +87,7 @@ namespace DriveByBooking.Service
 
         public bool CheckCustomer(string username, string password)
         {
-            CustomerClass? foundCustomer = _repo.Find(u => u.Name == username && u.Password == password);
+            CustomerClass? foundCustomer = _repo.Find(u => u.Username == username && u.Password == password);
 
             if (foundCustomer != null)
             {
@@ -101,11 +105,9 @@ namespace DriveByBooking.Service
             CustomerLoggedIn = null;
         }
 
-
-
         public override string ToString()
         {
-            return $"{{{nameof(customerRepo)}={customerRepo}}}";
+            return $"{{{nameof(CustomerLoggedIn)}={CustomerLoggedIn}, {nameof(customerRepo)}={customerRepo}}}";
         }
     }
 }
