@@ -1,4 +1,5 @@
 ﻿using DriveByBooking.Model.ProfilFolder;
+using System.Text;
 using System.Xml.Linq;
 
 namespace DriveByBooking.Service
@@ -106,6 +107,26 @@ namespace DriveByBooking.Service
         public override string ToString()
         {
             return $"{{{nameof(customerRepo)}={customerRepo}}}";
+        }
+
+        public List<CustomerClass> Search(int? id, string? name, string? phoneNumber, string? email)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<CustomerClass> Search(int id, string name, string phoneNumber, string email)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<CustomerClass> SortId()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<CustomerClass> SortName()
+        {
+            throw new NotImplementedException();
         }
     }
 }
