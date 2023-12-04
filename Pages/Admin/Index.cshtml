@@ -31,6 +31,8 @@
             <th><input type="submit" asp-page-handler="SortName" value="Navn" class="btn btn-outline-success" /></th>
             <th>Telefon</th>
             <th>Email</th>
+            <th>Username</th>
+            <th>Password</th>
             <th></th>
             <th></th>
             </form>
@@ -44,6 +46,8 @@
                 <td>@c.Name</td>
                 <td>@c.PhoneNumber</td>
                 <td>@c.Email</td>
+                <td>@c.Username</td>
+                <td>@c.Password</td>
                 <td><a asp-page="EditKunde" asp-route-nummer="@c.CustomerId">Ændre</a></td>
                 <td><a asp-page="DeleteKunde" asp-route-nummer="@c.CustomerId">Slet</a></td>
             </tr>
