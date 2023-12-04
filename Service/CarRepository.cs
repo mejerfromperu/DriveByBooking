@@ -5,7 +5,7 @@ using System.Text.Json;
 
 namespace DriveByBooking.Service
 {
-    public class CarListe
+    public class CarListe : ICarRepository
     {
         //
         // Instance Field...
@@ -16,8 +16,8 @@ namespace DriveByBooking.Service
         // Properties...
         //
         public List<CarClass> List
-        { 
-            get { return _list; } 
+        {
+            get { return _list; }
             set { _list = value; }
         }
 
@@ -63,7 +63,7 @@ namespace DriveByBooking.Service
         public List<CarClass> CollectFromType(string type)
         {
             List<CarClass> resultList = new List<CarClass>();
-            for (int i =0; i < _list.Count; i++)
+            for (int i = 0; i < _list.Count; i++)
             {
                 if (type == _list[i].Type)
                 {
@@ -89,7 +89,7 @@ namespace DriveByBooking.Service
         public List<CarClass> CollectFromPrice(double price)
         {
             List<CarClass> resultList = new List<CarClass>();
-            for (int i =0; i < _list.Count;i++)
+            for (int i = 0; i < _list.Count; i++)
             {
                 if (price == _list[i].Price)
                 {
@@ -102,7 +102,7 @@ namespace DriveByBooking.Service
         public List<CarClass> CollectFromBrand(string brand)
         {
             List<CarClass> resultlist = new List<CarClass>();
-            for (int i =0; i < _list.Count; i++)
+            for (int i = 0; i < _list.Count; i++)
             {
                 if (_list[i].Brand == brand)
                 {
@@ -114,7 +114,7 @@ namespace DriveByBooking.Service
         // Collecting from Cars gear shift
         public List<CarClass> CollectFromShiftType(string shiftType)
         {
-            List<CarClass> resultlist = new List<CarClass> ();
+            List<CarClass> resultlist = new List<CarClass>();
             for (int i = 0; i < _list.Count; i++)
             {
                 if (_list[i].ShiftType == shiftType)
