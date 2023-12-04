@@ -9,8 +9,7 @@ namespace DriveByBooking.Pages.Login
 
         private ICustomerRepository _customerRepository;
 
-        public LoginModel 
-
+        
 
         public void OnGet()
         {
