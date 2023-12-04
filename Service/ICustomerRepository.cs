@@ -1,4 +1,5 @@
 ﻿using DriveByBooking.Model.ProfilFolder;
+using System.Text;
 
 namespace DriveByBooking.Service
 {
@@ -14,5 +15,9 @@ namespace DriveByBooking.Service
         CustomerClass Update(CustomerClass customer);
         public bool CheckCustomer(string username, string password);
         public void LogoutCustomer();
+
+        List<CustomerClass> Search(int? id, string? name, string? phoneNumber, string? email);
+        List<CustomerClass> SortId();
+        List<CustomerClass> SortName();
     }
 }
