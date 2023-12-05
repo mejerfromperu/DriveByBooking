@@ -5,7 +5,7 @@ using System.Text.Json;
 
 namespace DriveByBooking.Service
 {
-    public class CarListe : ICarRepository
+    public class CarRepository : ICarRepository
     {
         //
         // Instance Field...
@@ -24,22 +24,32 @@ namespace DriveByBooking.Service
         //
         // Constructor...
         //
-        public CarListe()
+        public CarRepository(bool mockdata = false)
         {
             _list = new List<CarClass>();
+            if (mockdata)
+            {
+                _list.Add(new CarClass());
+                _list.Add(new CarClass("YH40393", "AMG", "Mercedes", 4999.99, "Privat", "Cabriolet", "Automat gear", "Benzin", "søborg"));
+                _list.Add(new CarClass("AH40393", "Aygo", "Toyota", 4999.99, "Privat", "Cabriolet", "Automat gear", "Benzin", "søborg"));
+                _list.Add(new CarClass("YB40393", "206", "Peugeot", 4999.99, "Privat", "Cabriolet", "Automat gear", "Benzin", "søborg"));
+                _list.Add(new CarClass("CH40393", "206cc", "Peugeot", 4999.99, "Privat", "Cabriolet", "Automat gear", "Benzin", "søborg"));
+                _list.Add(new CarClass("YG40393", "500", "Fiat", 4999.99, "Privat", "Cabriolet", "Automat gear", "Benzin", "søborg"));
+                _list.Add(new CarClass("AB40393", "AMG", "Mercedes", 4999.99, "Privat", "Cabriolet", "Automat gear", "Benzin", "søborg"));
+            }
         }
 
         //
         // Methods...
         // Add new Car
-        public void Add(CarClass licensePlate)
+        public void Add(CarClass car)
         {
-            _list.Add(licensePlate);
+            _list.Add(car);
         }
         // Remove old Car
-        public void Remove(CarClass licensePlate)
+        public void Remove(CarClass car)
         {
-            _list.Remove(licensePlate);
+            _list.Remove(car);
         }
         // Clear the CarList
         public void Clear()
@@ -136,6 +146,10 @@ namespace DriveByBooking.Service
                 }
             }
             return resultlist;
+        }
+        public List<CarClass> Search(string? location, double? price, string? name)
+        {
+            throw new NotImplementedException();
         }
 
     }
