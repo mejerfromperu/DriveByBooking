@@ -1,5 +1,8 @@
 ﻿using DriveByBooking.Model.ProfilFolder;
+using System.Numerics;
+using System.Text;
 using System.Text.Json;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace DriveByBooking.Service
 {
@@ -64,10 +67,10 @@ namespace DriveByBooking.Service
 
         public CustomerClass Update(CustomerClass customer)
         {
-            CustomerClass UpdatePerson = GetCustomer(customer.CustomerId);
+            CustomerClass UpdateCustomer = GetCustomer(customer.CustomerId);
             _repo[customer.CustomerId] = customer;
             WriteToJson();
-            return UpdatePerson;
+            return UpdateCustomer;
         }
 
         public bool CheckCustomer(string username, string password)
@@ -97,7 +100,25 @@ namespace DriveByBooking.Service
 
         public List<CustomerClass> Search(int? id, string? name, string? phoneNumber, string? email)
         {
-            throw new NotImplementedException();
+            List<CustomerClass> retCustomers = new List<CustomerClass>(GetEverything());
+
+            if (id is not null)
+            {
+                retCustomers = retCustomers.FindAll(k => k.CustomerId == id);
+            }
+
+            if (name is not null)
+            {
+                retCustomers = retCustomers.FindAll(k => k.Name.Contains(name));
+            }
+
+
+            if (phoneNumber is not null)
+            {
+                retCustomers = retCustomers.FindAll(k => k.PhoneNumber.Contains(phoneNumber));
+            }
+
+            return retCustomers;
         }
 
         public List<CustomerClass> Search(int id, string name, string phoneNumber, string email)
@@ -105,19 +126,81 @@ namespace DriveByBooking.Service
             throw new NotImplementedException();
         }
 
+
+        private bool NumberASC = true;
         public List<CustomerClass> SortId()
         {
-            throw new NotImplementedException();
+            List<CustomerClass> retCustomers = GetEverything();
+
+            retCustomers.Sort(new SortById());
+
+            if (!NumberASC)
+            {
+                retCustomers.Reverse();
+            }
+            NumberASC = !NumberASC;
+
+            return retCustomers;
         }
 
+        private class SortById : IComparer<CustomerClass>
+        {
+            public int Compare(CustomerClass? x, CustomerClass? y)
+            {
+                if (x == null || y == null)
+                {
+                    return 0;
+                }
+
+                //if (x.KundeNummer > y.KundeNummer)
+                //{
+                //    return 1;
+                //}
+                //else
+                //{
+                //    return -1;
+                //}
+
+                return x.CustomerId - y.CustomerId;
+            }
+        }
+
+
+        private bool NameASC = true;
         public List<CustomerClass> SortName()
         {
-            throw new NotImplementedException();
+            List<CustomerClass> retCustomers = GetEverything();
+
+            //retKunder.Sort(new SortByName());
+
+            retCustomers.Sort((x, y) => x.Name.CompareTo(y.Name));
+
+            if (!NameASC)
+            {
+                retCustomers.Reverse();
+            }
+            NameASC = !NameASC;
+
+            return retCustomers;
+        }
+
+        private class SortByName : IComparer<CustomerClass>
+        {
+            public int Compare(CustomerClass? x, CustomerClass? y)
+            {
+                if (x == null || y == null)
+                {
+                    return 0;
+                }
+
+                return x.Name.CompareTo(y.Name);
+            }
         }
 
 
 
-    // Json
+
+        // Json
 
         private const string FILENAME = "CustomerRepository.json";
 
