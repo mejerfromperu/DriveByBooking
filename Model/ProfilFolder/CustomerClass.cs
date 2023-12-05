@@ -27,6 +27,16 @@
             get { return _customerId; }
             set { _customerId = value; }
         }
+        public bool IsAdmin
+        {
+            get { return _isAdmin; }
+            set { _isAdmin = value; }
+        }
+        public bool IsOwner
+        {
+            get { return _isOwner; }
+            set { _isOwner = value; }
+        }
 
         
 
@@ -45,7 +55,7 @@
             _isOwner = false;
         }
         // Constructor
-        public CustomerClass(string email, string phonenumber, int customerId, string username, string password, string name, bool isadmin, bool isowner)
+        public CustomerClass(string email, string phonenumber, int customerId, string username, string password, string name, bool isAdmin, bool isOwner)
         {
             Email = email;
             PhoneNumber = phonenumber;
@@ -53,8 +63,8 @@
             Username = username;
             Password = password;
             Name = name;
-            IsAdmin = isadmin;
-            IsOwner = isowner;
+            IsAdmin = isAdmin;
+            IsOwner = isOwner;
         }
 
         public override string ToString()

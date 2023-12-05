@@ -41,7 +41,7 @@ namespace DriveByBooking.Pages.Admin
 
         public IActionResult OnPostSearch()
         {
-            Customers = _repo.Search(SearchId, SearchName, SearchPhoneNumber, SearchEmail);
+            Customers = _repo.Search(SearchId, SearchName, SearchPhoneNumber, SearchEmail) ;
             return Page();
         }
 
