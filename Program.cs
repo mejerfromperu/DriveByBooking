@@ -7,7 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 
 builder.Services.AddSingleton<ICarRepository>(new CarRepository(true));
-builder.Services.AddSingleton<ICustomerRepository>(new CustomerRepository(true));
+builder.Services.AddSingleton<ICustomerRepository>(new CustomerRepositoryJson());
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
