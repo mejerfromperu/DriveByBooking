@@ -2,3 +2,28 @@
 @model DriveByBooking.Pages.Admin.DeleteCustomerModel
 @{
 }
+
+<h1> Slet en kunde </h1>
+
+<form method="post">
+    <div class="form-group>">
+        <label>Kunde nummer</label> : @Model.CustomerClass.CustomerId<br />
+        <br />
+        <label>Kunde navn</label> : @Model.CustomerClass.Name<br />
+        <br />
+        <label>Kunde telefon</label>  : @Model.CustomerClass.PhoneNumber<br />
+        <br />
+        <label>Kunde email</label>  : @Model.CustomerClass.Email<br />
+        <br />
+        <label>Kunde username</label>  : @Model.CustomerClass.Username<br />
+        <br />
+        <label>Kunde password</label>  : @Model.CustomerClass.Password<br />
+        <br />
+
+
+
+        <input type="submit" value="Slet Kunde" class="btn btn-danger" asp-page-handler="Delete" asp-route-nummer="@Model.CustomerClass.CustomerId" />
+
+        <input type="submit" value="Fortryd" class="btn btn-warning" asp-page-handler="Cancel" />
+    </div>
+</form>
