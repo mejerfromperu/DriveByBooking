@@ -1,0 +1,69 @@
+﻿@page
+@model DriveByBooking.Pages.Garage.IndexModel
+@using DriveByBooking.Model.CarFolder;
+@using DriveByBooking.Model;
+@using DriveByBooking.Service;
+@{
+}
+
+
+<div class="row">
+    <div class="col-md-2 pt-3 my-3 align-content-center">
+        <form method="post" class="border">
+        <div class="dropdown">
+            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">
+            Lokationer
+            </button>
+            <ul class="dropdown-menu">
+                    <li><a class="dropdown-item">Aarhus<input type="checkbox" asp-page-handler="" value="Location"/></a></li>
+                    <li><a class="dropdown-item">Aalborg<input type="checkbox" asp-page-handler="" value="Location" /></a></li>
+                    <li><a class="dropdown-item">Fredericia<input type="checkbox" asp-page-handler="" value="Location" /></a></li>
+                    <li><a class="dropdown-item">Søborg<input type="checkbox" asp-page-handler="" value="Location" /></a></li>
+             </ul>
+        </div>
+            <div class="dropdown">
+                <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">
+                Type bil
+                </button>
+                <ul class="dropdown-menu">
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">Privat Bil</button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item">SUV<input type="checkbox" value="CarType" /></a></li>
+                            <li><a class="dropdown-item">Hatchback<input type="checkbox" value="Cartype" /></a></li>
+                            <li><a class="dropdown-item">Stationcar<input type="checkbox" value="Cartype" /></a></li>
+                            <li><a class="dropdown-item">MPV<input type="checkbox" value="Cartype" /></a></li>
+                            <li><a class="dropdown-item">Cabriolet<input type="checkbox" value="CarType" /></a></li>
+                        </ul>
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">Luksus Bil</button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item">Supercar<input type="checkbox" value="CarType" /></a></li>
+                            <li><a class="dropdown-item">Cabriolet<input type="checkbox" value="Cartype" /></a></li>
+                            <li><a class="dropdown-item">SUV<input type="checkbox" value="Cartype" /></a></li>
+                        </ul>
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">Erhvers Bil</button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item">Kassevogn<input type="checkbox" value="CarType" /></a></li>
+                            <li><a class="dropdown-item">Lasbil<input type="checkbox" value="Cartype" /></a></li>
+                        </ul>
+                </ul>
+            </div>
+        <div class=" dropdown-item"><input type="button" asp-page-handler="Bil typer" value="CarType" class="btn btn-primary" /></div>
+        Navn  <input type="text" class="m-xl-auto" asp-page-handler="@Model.SearchName"/>
+        Mærke <input type="text" asp-page-handler="@Model.SearchBrand"/>
+        Pris  <input type="number" asp-page-handler="@Model.SearchPrice/">
+        <div class="dropdown-item"><input type="button" asp-page-handler="Gearkasse" value="ShiftType" class="btn btn-primary" /></div>
+        <div class=" dropdown-item"><input type="button" asp-page-handler="Motor type" value="EngineType" class="btn btn-primary" /></div>
+        </form>
+    </div>
+
+    @foreach (CarClass c in Model.Cars)
+    {
+        @c.Location
+        @c.Type
+        @c.CarType
+        @c.Name
+        @c.Price
+        @c.ShiftType
+        @c.EngineType
+    }
+</div>
