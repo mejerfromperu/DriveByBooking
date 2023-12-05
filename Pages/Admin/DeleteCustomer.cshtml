@@ -2,3 +2,35 @@
 @model DriveByBooking.Pages.Admin.DeleteCustomerModel
 @{
 }
+@* 
+<h1>Slet en Customer</h1>
+
+<form method="post">
+    <div class="form-group">
+        <label>Pizza nummer</label> : @Model.Pizza.Nummer <br />
+        <br />
+
+        <label>Pizza Navn</label> : @Model.Pizza.Navn <br />
+        <br />
+
+        <label>Pizza Beskrivelse</label> : @Model.Pizza.Beskrivelse <br />
+        <br />
+
+        <label>Pizza Pris</label> : @Model.Pizza.Pris <br />
+        <br />
+
+        <label>Vegan</label> : @Model.Pizza.Vegan <br />
+        <br />
+
+        <label>DeepPan</label> : @Model.Pizza.DeepPan <br />
+        <br />
+
+        <label>Familie</label> : @Model.Pizza.FamilieSize <br />
+        <br />
+
+        <input type="submit" value="Slet" class="btn  btn-danger" asp-page-handler="Delete" asp-route-nummer="@Model.Pizza.Nummer" />
+        <input type="submit" value="Fortryd" class="btn  btn-warning" asp-page-handler="Fortryd" asp-route-nummer="@Model.Pizza.Nummer" />
+
+    </div>
+</form>
+ *@
