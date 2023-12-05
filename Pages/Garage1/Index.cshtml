@@ -4,8 +4,8 @@
 @{
 }
 
-<div class="row">
-    <div class="col-md-2 pt-3 my-3 align-content-center">
+<div class="row-cols-auto">
+    <div class="col-md-2">
         <form method="post" class="border">
             <div class="dropdown">
                 <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">
@@ -44,23 +44,31 @@
                     </ul>
                 </ul>
             </div>
-            <div class=" dropdown-item"><input type="button" asp-page-handler="Bil typer" value="CarType" class="btn btn-primary" /></div>
             Navn  <input type="text" class="m-xl-auto" asp-page-handler="@Model.SearchName" />
             Mærke <input type="text" asp-page-handler="@Model.SearchBrand" />
             Pris  <input type="number" asp-page-handler="@Model.SearchPrice/">
             <div class="dropdown-item"><input type="button" asp-page-handler="Gearkasse" value="ShiftType" class="btn btn-primary" /></div>
             <div class=" dropdown-item"><input type="button" asp-page-handler="Motor type" value="EngineType" class="btn btn-primary" /></div>
         </form>
+    <div class="col-md-10">
+        <table class=" table table-hover">
+            <tbody>
+            @foreach (CarClass c in Model.Cars)
+            {
+                <tr>
+                    <td>@c.Brand</td>
+                    <td>@c.Name</td>
+                    <td>@c.Location</td>
+                    <td>@c.CarType</td>
+                    <td>@c.ShiftType</td>
+                    <td>@c.EngineType</td>
+                    <td>@c.Price</td>
+                    <td><a asp-page="UpdateCustomer" asp-route-nummer="@c.LicensePlate">Ændre</a></td>
+                    <td><a asp-page="DeleteCustomer" asp-route-nummer="@c.LicensePlate">Slet</a></td>
+                </tr>
+            }
+            </tbody>
+        </table>
     </div>
-
-    @foreach (CarClass c in Model.Cars)
-    {
-        @c.Location
-        @c.Type
-        @c.CarType
-        @c.Name
-        @c.Price
-        @c.ShiftType
-        @c.EngineType
-    }
+    </div>
 </div>
