@@ -1,4 +1,5 @@
 ﻿using DriveByBooking.Model.CarFolder;
+using DriveByBooking.Model.ProfilFolder;
 using Microsoft.AspNetCore.Components.Routing;
 using System.Reflection.Metadata.Ecma335;
 using System.Text.Json;
@@ -55,6 +56,12 @@ namespace DriveByBooking.Service
         public void Clear()
         {
             _list.Clear();
+        }
+
+
+        public List<CarClass> GetAllCars()
+        {
+            return _list;
         }
         // Collecting from Garage Location
         public List<CarClass> CollectFromLocation(string location)
