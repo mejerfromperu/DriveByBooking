@@ -1,10 +1,9 @@
 ﻿using DriveByBooking.Model.ProfilFolder;
-using System.Text;
-using System.Xml.Linq;
+using System.Text.Json;
 
 namespace DriveByBooking.Service
 {
-    public class CustomerRepository : ICustomerRepository
+    public class CustomerRepositoryJson : ICustomerRepository
     {
         // instans felt (customer list)
         private List<CustomerClass> _repo = new List<CustomerClass>();
@@ -16,21 +15,11 @@ namespace DriveByBooking.Service
         { get { return _repo; } set { _repo = value; } }
 
         // Konstrukter
-        public CustomerRepository(bool mocdata = false)
+        public CustomerRepositoryJson(bool mocdata = false)
         {
-            _repo = new List<CustomerClass>();
-
-            if (mocdata)
-            {
-                _repo.Add(new CustomerClass("Christianmejer7@gmail.com", "11223344", 1, "MidgetSlayer", "hundogcat", "chris", false, false));
-                _repo.Add(new CustomerClass("Christiane23@gmail.com", "83728390", 2, "MidgetHunter", "missecat", "chrissi", true, true));
-                _repo.Add(new CustomerClass("starshipcaptain@emailgalaxy.org", "98982626", 3, "MidgetFucker", "katapult", "mejer", false, false));
-                _repo.Add(new CustomerClass("pixieprogrammer@emailmagic.com", "44667728", 4, "MidgetFinder", "YESSIR", "mejerfromperu", false, false));
-                _repo.Add(new CustomerClass("codingwizard42@techfantasy.net", "87653542", 5, "MidgetTaker", "taxi", "christian", false, false));
-            }
+            _repo = ReadFromJson();
 
         }
-        
 
         // Metoder
 
@@ -49,6 +38,7 @@ namespace DriveByBooking.Service
         public void AddCustomer(CustomerClass customer)
         {
             _repo.Add(customer);
+            WriteToJson();
         }
 
         public List<CustomerClass> GetEverything()
@@ -63,6 +53,7 @@ namespace DriveByBooking.Service
             {
                 CustomerClass DeleteCustomer = _repo[index];
                 _repo.RemoveAt(index);
+                WriteToJson();
                 return DeleteCustomer;
             }
             else
@@ -75,6 +66,7 @@ namespace DriveByBooking.Service
         {
             CustomerClass UpdatePerson = GetCustomer(customer.CustomerId);
             _repo[customer.CustomerId] = customer;
+            WriteToJson();
             return UpdatePerson;
         }
 
@@ -122,9 +114,38 @@ namespace DriveByBooking.Service
         {
             throw new NotImplementedException();
         }
+
+
+
+    // Json
+
+        private const string FILENAME = "CustomerRepository.json";
+
+        private List<CustomerClass>? ReadFromJson()
+        {
+            if (File.Exists(FILENAME))
+            {
+                StreamReader sr = File.OpenText(FILENAME);
+                List<CustomerClass>? CustomerClass = JsonSerializer.Deserialize<List<CustomerClass>>(sr.ReadToEnd());
+                sr.Close();
+                return CustomerClass;
+            }
+            else
+            {
+                return new List<CustomerClass>();
+            }
+        }
+
+
+        // HAck quick fix - burde lave en metode Edit
         public void WriteToJson()
         {
-            throw new NotImplementedException();
+            FileStream fs = new FileStream(FILENAME, FileMode.Create);
+            Utf8JsonWriter writer = new Utf8JsonWriter(fs);
+            JsonSerializer.Serialize(writer, _repo);
+            fs.Close();
         }
+
+
     }
 }
