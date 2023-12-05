@@ -50,8 +50,8 @@
                 <td>@c.Email</td>
                 <td>@c.Username</td>
                 <td>@c.Password</td>
-                <td><a asp-page="UpdateCustomer" asp-route-nummer="@c.CustomerId">Ændre</a></td>
-                <td><a asp-page="DeleteCustomer" asp-route-nummer="@c.CustomerId">Slet</a></td>
+                <td><a asp-page="UpdateCustomer" asp-route-id="@c.CustomerId">Ændre</a></td>
+                <td><a asp-page="DeleteCustomer" asp-route-id="@c.CustomerId">Slet</a></td>
             </tr>
         }
     </tbody>
