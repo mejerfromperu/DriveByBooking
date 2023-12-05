@@ -75,7 +75,7 @@ namespace DriveByBooking.Service
         {
             CustomerClass UpdatePerson = GetCustomer(customer.CustomerId);
             _repo[customer.CustomerId] = customer;
-            return UpdatePerson;
+            return customer;
         }
 
         public bool CheckCustomer(string username, string password)

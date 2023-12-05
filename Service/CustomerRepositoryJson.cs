@@ -67,10 +67,21 @@ namespace DriveByBooking.Service
 
         public CustomerClass Update(CustomerClass customer)
         {
-            CustomerClass UpdateCustomer = GetCustomer(customer.CustomerId);
-            _repo[customer.CustomerId] = customer;
-            WriteToJson();
-            return UpdateCustomer;
+            CustomerClass existingCustomer = GetCustomer(customer.CustomerId);
+
+            if (existingCustomer == null)
+            {
+                throw new InvalidOperationException("Customer not found for update.");
+            }
+
+            if (existingCustomer != null)
+            {
+                _repo[customer.CustomerId] = customer;
+                WriteToJson();
+            }
+
+
+            return existingCustomer;
         }
 
         public bool CheckCustomer(string username, string password)

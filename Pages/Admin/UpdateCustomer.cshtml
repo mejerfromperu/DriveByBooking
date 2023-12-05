@@ -23,7 +23,7 @@
         <input class="form-control" asp-for="@Model.NewCustomerPhoneNumber" /><br />
 
         <label>Kunde email</label><br />
-        <input Type="checkbox" asp-for="@Model.NewCustomerEmail" />Er Firma<br />
+        <input class="form-control" asp-for="@Model.NewCustomerEmail" /><br />
 
 
         <label>Kunde username</label><br />
@@ -43,6 +43,6 @@
         {
             <input type="submit" value="Ændre Ny Kunde" class="btn btn-success" asp-page-handler="Change" />
         }
-        <input type="submit" value="Fortryd" class="btn btn-danger" asp-page-handler="Cancel" />
+        <input type="submit" value="Fortryd" class="btn btn-warning" asp-page-handler="Cancel" />
     </div>
 </form>
