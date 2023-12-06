@@ -32,10 +32,10 @@ namespace DriveByBooking.Service
             {
                 if (customer.CustomerId == id)
                 {
-                    return customer;
+                    return _repo[id];
                 }
             }
-            return null;
+            throw new KeyNotFoundException($"kundenummer {id} findes ikke"); ;
         }
 
         public void AddCustomer(CustomerClass customer)
