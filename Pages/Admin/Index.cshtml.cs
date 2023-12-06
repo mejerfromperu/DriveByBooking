@@ -30,7 +30,7 @@ namespace DriveByBooking.Pages.Admin
         public string? SearchEmail { get; set; }
 
         public void OnGet()
-        {
+        {   
             Customers = _repo.GetEverything();
         }
 
@@ -56,5 +56,7 @@ namespace DriveByBooking.Pages.Admin
             Customers = _repo.SortName();
             return Page();
         }
+
+     
     }
 }

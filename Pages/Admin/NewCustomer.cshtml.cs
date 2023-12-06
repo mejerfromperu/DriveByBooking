@@ -53,7 +53,7 @@ namespace DriveByBooking.Pages.Admin
         {
         }
 
-        //string email, string phonenumber, int customerId, string username, string password, string name
+        
 
         public IActionResult OnPost()
         {

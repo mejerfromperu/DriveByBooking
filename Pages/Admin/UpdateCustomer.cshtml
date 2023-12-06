@@ -2,3 +2,47 @@
 @model DriveByBooking.Pages.Admin.UpdateCustomerModel
 @{
 }
+
+<h1>Ændre en kunde</h1>
+
+
+<form method="post">
+    <div class="form-group>">
+        <label>Kunde nummer</label> : @Model.NewCustomerId<br />
+        <input type="hidden" asp-for="@Model.NewCustomerId" /><br />
+        <label class="text text-danger">@Model.ErrorMessage</label><br />
+        <br />
+
+
+        <label>Kunde navn</label><br />
+        <input class="form-control" asp-for="@Model.NewCustomerName" /><br />
+        <span asp-validation-for="@Model.NewCustomerName" class="text-danger"></span><br />
+
+
+        <label>Kunde telefon</label><br />
+        <input class="form-control" asp-for="@Model.NewCustomerPhoneNumber" /><br />
+
+        <label>Kunde email</label><br />
+        <input class="form-control" asp-for="@Model.NewCustomerEmail" /><br />
+
+
+        <label>Kunde username</label><br />
+        <input class="form-control" asp-for="@Model.NewCustomerUsername" /><br />
+
+        <label>Kunde password</label><br />
+        <input class="form-control" asp-for="@Model.NewCustomerPassword" /><br />
+
+
+
+
+        @if (Model.Error)
+        {
+            <input type="submit" value="Ændre Ny Kunde" class="btn btn-secondary" asp-page-handler="Change" disabled />
+        }
+        else
+        {
+            <input type="submit" value="Ændre Ny Kunde" class="btn btn-success" asp-page-handler="Change" />
+        }
+        <input type="submit" value="Fortryd" class="btn btn-warning" asp-page-handler="Cancel" />
+    </div>
+</form>

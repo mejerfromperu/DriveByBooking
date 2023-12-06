@@ -4,11 +4,11 @@
 @{
 }
 
-<div class="row-cols-auto">
-    <div class="col-md-2">
+<div class="row justify-content-evenly">
+    <div class="card" style="width: 20em">
         <form method="post" class="border">
-            <div class="dropdown">
-                <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">
+            <div class="d-grid dropdown pt-3">
+                <button type="button" class="btn btn-primary dropdown-toggle btn-block" data-bs-toggle="dropdown">
                     Lokationer
                 </button>
                 <ul class="dropdown-menu">
@@ -18,11 +18,12 @@
                     <li><a class="dropdown-item">Søborg<input type="checkbox" asp-page-handler="" value="Location" /></a></li>
                 </ul>
             </div>
-            <div class="dropdown">
-                <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">
+            <div class="d-grid dropdown pt-3">
+                <button type="button" class="btn btn-primary dropdown-toggle btn-block" data-bs-toggle="dropdown">
                     Type bil
                 </button>
                 <ul class="dropdown-menu">
+                    <div class="d-grid dropdown pt-1">
                     <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">Privat Bil</button>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item">SUV<input type="checkbox" value="CarType" /></a></li>
@@ -31,44 +32,91 @@
                         <li><a class="dropdown-item">MPV<input type="checkbox" value="Cartype" /></a></li>
                         <li><a class="dropdown-item">Cabriolet<input type="checkbox" value="CarType" /></a></li>
                     </ul>
+                    </div>
+                    <div class="d-grid dropdown pt-1">
                     <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">Luksus Bil</button>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item">Supercar<input type="checkbox" value="CarType" /></a></li>
                         <li><a class="dropdown-item">Cabriolet<input type="checkbox" value="Cartype" /></a></li>
                         <li><a class="dropdown-item">SUV<input type="checkbox" value="Cartype" /></a></li>
                     </ul>
+                    </div>
+                    <div class="d-grid dropdown pt-1">
                     <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">Erhvers Bil</button>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item">Kassevogn<input type="checkbox" value="CarType" /></a></li>
                         <li><a class="dropdown-item">Lasbil<input type="checkbox" value="Cartype" /></a></li>
                     </ul>
+                    </div>
                 </ul>
             </div>
-            Navn  <input type="text" class="m-xl-auto" asp-page-handler="@Model.SearchName" />
-            Mærke <input type="text" asp-page-handler="@Model.SearchBrand" />
-            Pris  <input type="number" asp-page-handler="@Model.SearchPrice/">
+            <div class=" d-grid dropdown-item pt-3"><input type="button" asp-page-handler="Bil typer" value="CarType" class="btn btn-primary btn-block" /></div>
+            <div class=" d-grid dropdown-item pt-3">Navn  <input type="text" class="m-xl-auto" asp-page-handler="@Model.SearchName" /></div>
+            <div class=" d-grid dropdown-item pt-3">Mærke <input type="text" asp-page-handler="@Model.SearchBrand" /></div>
+            <div class=" d-grid dropdown-item pt-3">Pris <input type="number" asp-page-handler="@Model.SearchPrice/"></div>
             <div class="dropdown-item"><input type="button" asp-page-handler="Gearkasse" value="ShiftType" class="btn btn-primary" /></div>
             <div class=" dropdown-item"><input type="button" asp-page-handler="Motor type" value="EngineType" class="btn btn-primary" /></div>
         </form>
-    <div class="col-md-10">
-        <table class=" table table-hover">
-            <tbody>
+    </div>
+    @foreach (var cars in Model.Cars)
+        {
+    <div class="card" style="width: 20em">
+                <div>
+        @* @foreach (var image in Model.images)
+        {
+        <div class="card-img-top">
+
+        </div>
+        } *@
+            <div class="container p-5 my-5 ">
+                <div class="card-subtitle">
+                    <h2>@cars.Brand</h2>
+                    <h3>@cars.Name</h3>
+                </div>
+                <div class="card-body">
+                    <ul>
+                        <li><p>Motor type: @cars.EngineType </li>
+                        <li><p>Gear Kasse: @cars.ShiftType</p></li>
+                        <li><p>Lokation: @cars.Location</p></li>
+                        <li><p>Pris: @cars.Price</p></li>
+                    </ul>
+                <div class="d-grid">
+                    <button type="button" class="btn btn-primary btn-block">
+                        Bestil
+                    </button>
+                </div>
+                </div>
+            </div>
+        
+    </div>
+    </div>
+    }
+    <table class="table table-dark">
+        <thead>
+            <tr>
+                <th>Brand</th>
+                <th>Bilens navn</th>
+                <th>Type</th>
+                <th>Bilens Type</th>
+                <th>Motorens Type</th>
+                <th>Gear Kasse</th>
+                <th>Pris</th>
+            </tr>
+        </thead>
+
+        <tbody>
             @foreach (CarClass c in Model.Cars)
             {
                 <tr>
                     <td>@c.Brand</td>
                     <td>@c.Name</td>
-                    <td>@c.Location</td>
+                    <td>@c.Type</td>
                     <td>@c.CarType</td>
-                    <td>@c.ShiftType</td>
                     <td>@c.EngineType</td>
+                    <td>@c.ShiftType</td>
                     <td>@c.Price</td>
-                    <td><a asp-page="UpdateCustomer" asp-route-nummer="@c.LicensePlate">Ændre</a></td>
-                    <td><a asp-page="DeleteCustomer" asp-route-nummer="@c.LicensePlate">Slet</a></td>
                 </tr>
             }
-            </tbody>
-        </table>
-    </div>
-    </div>
+    </tbody>
+    </table>
 </div>
