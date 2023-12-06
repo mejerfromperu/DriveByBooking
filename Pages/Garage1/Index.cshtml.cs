@@ -28,7 +28,7 @@ namespace DriveByBooking.Pages.Garage1
 
         public void OnGet()
         {
-            Cars = new List<CarClass>();
+            Cars = _list.GetAllCars();
         }
 
         public RedirectToPageResult OnPost()
