@@ -78,13 +78,36 @@ namespace DriveByBooking.Pages.Admin
         }
 
         
+        //public IActionResult OnPostChange()
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return Page();
+        //    }
+        //    CustomerClass customer = _repo.Update(new CustomerClass(NewCustomerEmail, NewCustomerPhoneNumber, NewCustomerId, NewCustomerUsername, NewCustomerPassword, NewCustomerName, IsAdmin, IsOwner));
+
+        //    return RedirectToPage("Index");
+        //}
+
         public IActionResult OnPostChange()
         {
             if (!ModelState.IsValid)
             {
                 return Page();
             }
-            CustomerClass customer = _repo.Update(new CustomerClass(NewCustomerEmail, NewCustomerPhoneNumber, NewCustomerId, NewCustomerUsername, NewCustomerPassword, NewCustomerName, IsAdmin, IsOwner));
+
+            CustomerClass customer = _repo.GetCustomer(NewCustomerId);
+
+            customer.CustomerId = NewCustomerId;
+            customer.Name = NewCustomerName;
+            customer.PhoneNumber = NewCustomerPhoneNumber;
+            customer.Email = NewCustomerEmail;
+            customer.Username = NewCustomerUsername;
+            customer.Password = NewCustomerPassword;
+            customer.IsAdmin = IsAdmin;
+            customer.IsOwner = IsOwner;
+
+            _repo.WriteToJson();
 
             return RedirectToPage("Index");
         }
