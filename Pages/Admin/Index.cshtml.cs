@@ -19,16 +19,9 @@ namespace DriveByBooking.Pages.Admin
         {
             _customerRepo = repository;
         }
-
-        public IndexModel(ICarRepository carRepository)
-        {
-            _carRepo = carRepository;
-        }
        
         // property til View'et
         public List<CustomerClass> Customers { get; set; }
-
-        public List<CarClass> Cars { get; set; }
 
         //Kunder
 
@@ -66,17 +59,11 @@ namespace DriveByBooking.Pages.Admin
         public void OnGet()
         {   
             Customers = _customerRepo.GetEverything();
-            Cars = _carRepo.GetAllCars();
         }
 
         public IActionResult OnPostCustomer()
         {
             return RedirectToPage("NewCustomer");
-        }
-
-        public IActionResult OnPostCar()
-        {
-            return RedirectToPage("NewCars");
         }
        
     
@@ -84,12 +71,6 @@ namespace DriveByBooking.Pages.Admin
     public IActionResult OnPostSearchCustomer()
         {
             Customers = _customerRepo.Search(SearchId, SearchName, SearchPhoneNumber, SearchEmail) ;
-            return Page();
-        }
-
-        public IActionResult OnPostSearchCar()
-        {
-            Cars = _carRepo.Search(SearchLicensePlate, SearchCarName, SearchBrand, SearchPrice, SearchType, SearchCarType, SearchShiftType, SearchEngineType, SearchLocation);
             return Page();
         }
 
