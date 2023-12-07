@@ -1,0 +1,69 @@
+[
+  {
+    "LicensePlate": "YH40393",
+    "Name": "AMG",
+    "Brand": "Mercedes",
+    "Price": 4999.99,
+    "Type": "Privat",
+    "CarType": "Cabriolet",
+    "ShiftType": "Automat gear",
+    "EngineType": "Benzin",
+    "Location": "aalborg"
+  },
+  {
+    "LicensePlate": "AH40393",
+    "Name": "Aygo",
+    "Brand": "Toyota",
+    "Price": 4999.99,
+    "Type": "Privat",
+    "CarType": "Cabriolet",
+    "ShiftType": "Automat gear",
+    "EngineType": "Benzin",
+    "Location": "søborg"
+  },
+  {
+    "LicensePlate": "YB40393",
+    "Name": "206",
+    "Brand": "Peugeot",
+    "Price": 4999.99,
+    "Type": "Privat",
+    "CarType": "Cabriolet",
+    "ShiftType": "Automat gear",
+    "EngineType": "Benzin",
+    "Location": "søborg"
+  },
+  {
+    "LicensePlate": "CH40393",
+    "Name": "206cc",
+    "Brand": "Peugeot",
+    "Price": 4999.99,
+    "Type": "Privat",
+    "CarType": "Cabriolet",
+    "ShiftType": "Automat gear",
+    "EngineType": "Benzin",
+    "Location": "søborg"
+  },
+  {
+    "LicensePlate": "YG40393",
+    "Name": "500",
+    "Brand": "Fiat",
+    "Price": 4999.99,
+    "Type": "Privat",
+    "CarType": "Cabriolet",
+    "ShiftType": "Automat gear",
+    "EngineType": "Benzin",
+    "Location": "søborg"
+  },
+  {
+    "LicensePlate": "AB40393",
+    "Name": "AMG",
+    "Brand": "Mercedes",
+    "Price": 4999.99,
+    "Type": "Privat",
+    "CarType": "Cabriolet",
+    "ShiftType": "Automat gear",
+    "EngineType": "Benzin",
+    "Location": "søborg"
+  }
+  
+]
