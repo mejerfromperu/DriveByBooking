@@ -38,11 +38,21 @@ namespace DriveByBooking.Service
             WriteToJson();
         }
         // Remove old Car
-        public void Remove(CarClass car)
+        public CarClass Remove(string licensePlate)
         {
-            _list.Remove(car);
-            WriteToJson();
-        }
+            int index = _list.FindIndex(CarClass => CarClass.LicensePlate == licensePlate);
+            if (index >= 0)
+            {
+                CarClass DeleteCar = _list[index];
+                _list.RemoveAt(index);
+                WriteToJson();
+                return DeleteCar;
+            }
+            else
+            {
+                return null;
+            }
+        }    
         // Clear the CarList
         public void Clear()
         {
