@@ -3,7 +3,7 @@ using DriveByBooking.Model.ProfilFolder;
 
 namespace DriveByBooking.Service
 {
-    public class BookingRepository
+    public class BookingRepository : IBookingRepository
     {
         //
         // Instance Field...
@@ -13,36 +13,29 @@ namespace DriveByBooking.Service
         //
         // Properties...
         //
-        public List<Booking> Repository   
-        { 
-            get { return _repo; } 
+        public List<Booking> Repository
+        {
+            get { return _repo; }
             set { _repo = value; }
         }
 
         //
         // Constructor...
         //
-        public BookingRepository(bool mocdata = false) 
+        public BookingRepository()
         {
             _repo = new List<Booking>();
 
-            if (mocdata) 
-            {
-                ShowMocDataRepository();
-            }
+
         }
 
-        public void ShowMocDataRepository() 
-        {
-            _repo.Clear(); 
-        }
 
         //
         // Methods...
         // 
-        public Booking GetBooking(int id) 
-        { 
-            foreach (var booking in _repo) 
+        public Booking GetBooking(int id)
+        {
+            foreach (var booking in _repo)
             {
                 if (booking.BookingId == id)
                 {
@@ -52,7 +45,7 @@ namespace DriveByBooking.Service
             return null;
         }
 
-        
+
         public void AddBooking(Booking booking)
         {
             _repo.Add(booking);
