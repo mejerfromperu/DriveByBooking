@@ -26,6 +26,8 @@ namespace DriveByBooking.Pages.Garage1
         [BindProperty]
         public string? SearchBrand { get; set; }
 
+        [BindProperty]
+        public string? CollectLocation { get; set; }
         public void OnGet()
         {
             Cars = _list.GetAllCars();
@@ -42,7 +44,11 @@ namespace DriveByBooking.Pages.Garage1
             return Page();
         }
 
-
+        public IActionResult OnPostSortLocation()
+        {
+            Cars = _list.GetLocation(CollectLocation);
+            return Page();
+        }
 
 
     }

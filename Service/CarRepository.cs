@@ -1,5 +1,8 @@
 ﻿using DriveByBooking.Model.CarFolder;
 using Microsoft.AspNetCore.Components.Routing;
+using System.Collections;
+using System.Diagnostics.CodeAnalysis;
+using System.Diagnostics.Eventing.Reader;
 using System.Reflection.Metadata.Ecma335;
 using System.Text.Json;
 
@@ -29,13 +32,12 @@ namespace DriveByBooking.Service
             _list = new List<CarClass>();
             if (mockdata)
             {
-                _list.Add(new CarClass());
-                _list.Add(new CarClass("YH40393", "AMG", "Mercedes", 4999.99, "Privat", "Cabriolet", "Automat gear", "Benzin", "søborg"));
-                _list.Add(new CarClass("AH40393", "Aygo", "Toyota", 4999.99, "Privat", "Cabriolet", "Automat gear", "Benzin", "søborg"));
-                _list.Add(new CarClass("YB40393", "206", "Peugeot", 4999.99, "Privat", "Cabriolet", "Automat gear", "Benzin", "søborg"));
-                _list.Add(new CarClass("CH40393", "206cc", "Peugeot", 4999.99, "Privat", "Cabriolet", "Automat gear", "Benzin", "søborg"));
-                _list.Add(new CarClass("YG40393", "500", "Fiat", 4999.99, "Privat", "Cabriolet", "Automat gear", "Benzin", "søborg"));
-                _list.Add(new CarClass("AB40393", "AMG", "Mercedes", 4999.99, "Privat", "Cabriolet", "Automat gear", "Benzin", "søborg"));
+                _list.Add(new CarClass("YH40393", "AMG", "Mercedes", 4999.99, "Privat", "Cabriolet", "Automat gear", "Benzin", "Søborg"));
+                _list.Add(new CarClass("AH40393", "Aygo", "Toyota", 4999.99, "Privat", "Cabriolet", "Automat gear", "Benzin", "Søborg"));
+                _list.Add(new CarClass("YB40393", "206", "Peugeot", 4999.99, "Privat", "Cabriolet", "Automat gear", "Benzin", "Søborg"));
+                _list.Add(new CarClass("CH40393", "206cc", "Peugeot", 4999.99, "Privat", "Cabriolet", "Automat gear", "Benzin", "Søborg"));
+                _list.Add(new CarClass("YG40393", "500", "Fiat", 4999.99, "Privat", "Cabriolet", "Automat gear", "Benzin", "Aarhus"));
+                _list.Add(new CarClass("AB40393", "AMG", "Mercedes", 4999.99, "Privat", "Cabriolet", "Automat gear", "Benzin", "Aalborg"));
             }
         }
 
@@ -56,19 +58,27 @@ namespace DriveByBooking.Service
         {
             _list.Clear();
         }
-        // Collecting from Garage Location
-        public List<CarClass> CollectFromLocation(string location)
+        
+        public List<CarClass> GetAllCars()
         {
-            List<CarClass> resultList = new List<CarClass>();
-            for (int i = 0; i < _list.Count; i++)
+            return _list;
+        }
+
+
+
+        // Collecting from Garage Location
+        public CarClass GetLocation(string location)
+        {
+            foreach (var cars in _list)
             {
-                if (_list[i].Location == location)
+                if ( cars.Location == location)
                 {
-                    resultList.Add(_list[i]);
+                    return cars;
                 }
             }
-            return resultList;
+            return null;
         }
+
         // Collecting from Cars Type
         public List<CarClass> CollectFromType(string type)
         {
@@ -152,5 +162,28 @@ namespace DriveByBooking.Service
             throw new NotImplementedException();
         }
 
+        List<CarClass> ICarRepository.GetLocation(string? location)
+        {
+            List<CarClass> resultlist = new List<CarClass>();
+            for (int i =0; i<_list.Count; i++)
+            {
+                if (_list[i].Location == location)
+                {
+                    resultlist.Add(_list[i]);
+                }
+                continue;
+            }
+            return null;
+        }
+
+        public List<CarClass> GetLocation()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<CarClass> CollectFromLocation(string? location)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
