@@ -7,7 +7,6 @@
 <p></p>
 <form method="post" class="border border-success rounded">
     <input type="submit" asp-page-handler="Search" value="Søg" class="btn btn-outline-success" />
-    Nummerplade <input type="text" asp-for="@Model.SearchLicensePlate" />
     Navn <input type="text" asp-for="@Model.SearchCarName" />
     Brand <input type="text" asp-for="@Model.SearchBrand" />
     Pris <input type="number" asp-for="@Model.SearchPrice" />
@@ -23,12 +22,13 @@
         <option><a >Fredericia<input   value="Fredericia" asp-for="@Model.SearchLocation" /></a></option>
         <option><a >Søborg<input  value="Søborg" asp-for="@Model.SearchLocation" /></a></option>
     </select>
+
     @* Lokation <input type="text" asp-for="@Model.SearchLocation" /> *@
 </form>
 <p></p>
 
-@* <div class="row justify-content-evenly">
-    <div class="card" style="width: 20em">
+ <div class="row justify-content-evenly gap-5">
+  @*  <div class="card" style="width: 20em">
         <form method="post" class="border">
             <div class="d-grid dropdown pt-3">
                 <button type="button" class="btn btn-primary dropdown-toggle btn-block" data-bs-toggle="dropdown">
@@ -105,4 +105,5 @@
             </div>
         </div>
     }
+
 </div>
