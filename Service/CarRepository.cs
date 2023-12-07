@@ -223,5 +223,68 @@ namespace DriveByBooking.Service
             return retCars;
         }
 
+        private bool LicensePlateASC = true;
+        public List<CarClass> SortLicensePlate()
+        {
+            List<CarClass> retCars = GetAllCars();
+
+            //retKunder.Sort(new SortByName());
+
+            retCars.Sort((x, y) => x.LicensePlate.CompareTo(y.LicensePlate));
+
+            if (!LicensePlateASC)
+            {
+                retCars.Reverse();
+            }
+            LicensePlateASC = !LicensePlateASC;
+
+            return retCars;
+        }
+
+        private class SortByLicensePlate : IComparer<CarClass>
+        {
+            public int Compare(CarClass? x, CarClass? y)
+            {
+                if (x == null || y == null)
+                {
+                    return 0;
+                }
+
+                return x.LicensePlate.CompareTo(y.LicensePlate);
+            }
+        }
+
+
+        private bool NameASC = true;
+        public List<CarClass> SortName()
+        {
+            List<CarClass> retCars = GetAllCars();
+
+            //retKunder.Sort(new SortByName());
+
+            retCars.Sort((x, y) => x.Name.CompareTo(y.Name));
+
+            if (!NameASC)
+            {
+                retCars.Reverse();
+            }
+            NameASC = !NameASC;
+
+            return retCars;
+        }
+
+        private class SortByName : IComparer<CarClass>
+        {
+            public int Compare(CarClass? x, CarClass? y)
+            {
+                if (x == null || y == null)
+                {
+                    return 0;
+                }
+
+                return x.Name.CompareTo(y.Name);
+            }
+        }
+
     }
 }
