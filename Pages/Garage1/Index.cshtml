@@ -4,7 +4,30 @@
 @{
 }
 
-<div class="row justify-content-evenly">
+<p></p>
+<form method="post" class="border border-success rounded">
+    <input type="submit" asp-page-handler="Search" value="Søg" class="btn btn-outline-success" />
+    Nummerplade <input type="text" asp-for="@Model.SearchLicensePlate" />
+    Navn <input type="text" asp-for="@Model.SearchCarName" />
+    Brand <input type="text" asp-for="@Model.SearchBrand" />
+    Pris <input type="number" asp-for="@Model.SearchPrice" />
+    Type <input type="text" asp-for="@Model.SearchType" />
+    Bil type <input type="text" asp-for="@Model.SearchCarType" />
+    Gear type <input type="text" asp-for="@Model.SearchShiftType" />
+    Motortype <input type="text" asp-for="@Model.SearchEngineType" />
+    
+    <select class="form-select">
+        <option><a >Lokationer</a></option>
+        <option><a >Aarhus<input   value="Aarhus" asp-for="@Model.SearchLocation" /></a></option>
+        <option><a >Aalborg<input  value="Aalborg" asp-for="@Model.SearchLocation" /></a></option>
+        <option><a >Fredericia<input   value="Fredericia" asp-for="@Model.SearchLocation" /></a></option>
+        <option><a >Søborg<input  value="Søborg" asp-for="@Model.SearchLocation" /></a></option>
+    </select>
+    @* Lokation <input type="text" asp-for="@Model.SearchLocation" /> *@
+</form>
+<p></p>
+
+@* <div class="row justify-content-evenly">
     <div class="card" style="width: 20em">
         <form method="post" class="border">
             <div class="d-grid dropdown pt-3">
@@ -51,13 +74,13 @@
                 </ul>
             </div>
             <div class=" d-grid dropdown-item pt-3"><input type="button" asp-page-handler="Bil typer" value="CarType" class="btn btn-primary btn-block" /></div>
-            <div class=" d-grid dropdown-item pt-3">Navn  <input type="text" class="m-xl-auto" asp-page-handler="@Model.SearchName" /></div>
+            <div class=" d-grid dropdown-item pt-3">Navn  <input type="text" class="m-xl-auto" asp-page-handler="@Model.SearchCarName" /></div>
             <div class=" d-grid dropdown-item pt-3">Mærke <input type="text" asp-page-handler="@Model.SearchBrand" /></div>
             <div class=" d-grid dropdown-item pt-3">Pris <input type="number" asp-page-handler="@Model.SearchPrice/"></div>
             <div class="dropdown-item"><input type="button" asp-page-handler="Gearkasse" value="ShiftType" class="btn btn-primary" /></div>
             <div class=" dropdown-item"><input type="button" asp-page-handler="Motor type" value="EngineType" class="btn btn-primary" /></div>
         </form>
-    </div>
+    </div> *@
     @foreach (var cars in Model.Cars)
     {
         <div class="card" style="width: 20em">

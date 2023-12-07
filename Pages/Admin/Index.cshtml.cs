@@ -1,3 +1,4 @@
+using DriveByBooking.Model.CarFolder;
 using DriveByBooking.Model.ProfilFolder;
 using DriveByBooking.Service;
 using Microsoft.AspNetCore.Mvc;
@@ -8,17 +9,21 @@ namespace DriveByBooking.Pages.Admin
 {
     public class IndexModel : PageModel
     {
+        //Bare lige en comment for at fiks merge
         // instans af kunde customer repository
-        private ICustomerRepository _repo;
+        private ICustomerRepository _customerRepo;
+        private ICarRepository _carRepo;
 
         //Dependency Injection
         public IndexModel(ICustomerRepository repository)
         {
-            _repo = repository;
+            _customerRepo = repository;
         }
-
+       
         // property til View'et
         public List<CustomerClass> Customers { get; set; }
+
+        //Kunder
 
         [BindProperty]
         public int? SearchId { get; set; }
@@ -29,31 +34,55 @@ namespace DriveByBooking.Pages.Admin
         [BindProperty]
         public string? SearchEmail { get; set; }
 
+        //Biler
+
+        [BindProperty]
+        public string? SearchLicensePlate { get; set; }
+        [BindProperty]
+        public string? SearchCarName { get; set; }
+        [BindProperty]
+        public string? SearchBrand { get; set; }
+        [BindProperty]
+        public double? SearchPrice { get; set; }
+        [BindProperty]
+        public string? SearchType { get; set; }
+        [BindProperty]
+        public string? SearchCarType { get; set; }
+        [BindProperty]
+        public string? SearchShiftType { get; set; }
+        [BindProperty]
+        public string? SearchEngineType { get; set; }
+        [BindProperty]
+        public string? SearchLocation { get; set; }
+
+
         public void OnGet()
         {   
-            Customers = _repo.GetEverything();
+            Customers = _customerRepo.GetEverything();
         }
 
-        public IActionResult OnPost()
+        public IActionResult OnPostCustomer()
         {
             return RedirectToPage("NewCustomer");
         }
+       
+    
 
-        public IActionResult OnPostSearch()
+    public IActionResult OnPostSearchCustomer()
         {
-            Customers = _repo.Search(SearchId, SearchName, SearchPhoneNumber, SearchEmail) ;
+            Customers = _customerRepo.Search(SearchId, SearchName, SearchPhoneNumber, SearchEmail) ;
             return Page();
         }
 
         public IActionResult OnPostSortId()
         {
-            Customers = _repo.SortId();
+            Customers = _customerRepo.SortId();
             return Page();
         }
 
         public IActionResult OnPostSortName()
         {
-            Customers = _repo.SortName();
+            Customers = _customerRepo.SortName();
             return Page();
         }
 

@@ -20,6 +20,6 @@ namespace DriveByBooking.Service
         void Remove(CarClass licensePlate);
         public List<CarClass> GetAllCars();
 
-        List<CarClass> Search(string? location, double? price, string? name);
+        List<CarClass> Search(string? licensePlate, string? name, string? brand, double? price, string? type, string? carType, string? shiftType, string? engineType, string? location);
     }
 }
