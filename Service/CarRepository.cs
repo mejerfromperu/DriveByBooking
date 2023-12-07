@@ -57,6 +57,21 @@ namespace DriveByBooking.Service
             _list.Clear();
         }
 
+        public CarClass GetCar(string LicensePlate)
+        {
+            var foundCar = _list.FirstOrDefault(k => k.LicensePlate == LicensePlate);
+
+            if (foundCar != null)
+            {
+                return foundCar;
+            }
+            else
+            {
+                // Opdaget en fejl
+                throw new KeyNotFoundException($"Nummerplade {LicensePlate} findes ikke");
+            }
+        }
+
 
         public List<CarClass> GetAllCars()
         {

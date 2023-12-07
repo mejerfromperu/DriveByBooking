@@ -42,6 +42,11 @@ namespace DriveByBooking.Pages.Garage1
             return Page();
         }
 
+        public RedirectToPageResult OnPostOrder()
+        {
+            return RedirectToPage("Index");
+        }
+
 
 
 

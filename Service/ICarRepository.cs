@@ -6,6 +6,8 @@ namespace DriveByBooking.Service
     {
         List<CarClass> List { get; set; }
 
+        public CarClass GetCar(string LicensePlate);
+
         void Add(CarClass licensePlate);
         void Clear();
         List<CarClass> CollectFromBrand(string brand);
