@@ -10,7 +10,7 @@
 <h2>Her ses alle biler</h2>
 
 <form method="post">
-    Vil du oprette en ny Bil tryk på <input type="submit" value="Opret" class="btn btn-outline-primary" />
+    Vil du oprette en ny Bil tryk på <input type="submit" value="Opret" class="btn btn-outline-primary" asp-page-handler="Car" />
 </form>
 
 <p></p>
@@ -58,8 +58,8 @@
                 <td>@c.ShiftType</td>
                 <td>@c.EngineType</td>
                 <td>@c.Location</td>
-                <td><a asp-page="UpdateCar" asp-route-id="@c.LicensePlate">Ændre</a></td>
-                <td><a asp-page="DeleteCar" asp-route-id="@c.LicensePlate">Slet</a></td>
+                <td><a asp-page="UpdateCar" asp-route-licensePlate="@c.LicensePlate">Ændre</a></td>
+                <td><a asp-page="DeleteCar" asp-route-licensePlate="@c.LicensePlate">Slet</a></td>
             </tr>
         }
     </tbody>

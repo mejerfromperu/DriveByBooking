@@ -61,6 +61,9 @@ namespace DriveByBooking.Pages.Admin
             Customers = _customerRepo.GetEverything();
         }
 
+
+       
+
         public IActionResult OnPostCustomer()
         {
             return RedirectToPage("NewCustomer");
