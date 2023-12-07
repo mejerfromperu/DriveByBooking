@@ -19,6 +19,7 @@ namespace DriveByBooking.Service
         List<CarClass> CollectFromType(string type);
         public CarClass Remove(string licensePlate);
         public List<CarClass> GetAllCars();
+        public void WriteToJson();
         public List<CarClass> SortLicensePlate();
         public List<CarClass> SortName();
         List<CarClass> Search(string? licensePlate, string? name, string? brand, double? price, string? type, string? carType, string? shiftType, string? engineType, string? location);
