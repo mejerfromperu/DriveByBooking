@@ -9,7 +9,7 @@ namespace DriveByBooking.Model.Booking
         //
         // Instance fields...
         //
-        private Date _dateTime;
+        private DateTime _dateTime;
         private CarClass _car;
         private CustomerClass _customer;
         private int _bookingId;
@@ -17,13 +17,14 @@ namespace DriveByBooking.Model.Booking
         //
         //propertieas...
         //
+
         public int BookingId
         {
             get { return _bookingId; }
             set { _bookingId = value; }
         }
 
-        public Date DateTime
+        public DateTime DateTime
         {
             get { return _dateTime; }
             set { _dateTime = value; }
@@ -35,10 +36,10 @@ namespace DriveByBooking.Model.Booking
             set { _car = value; }
         }
 
-        public CustomerClass CustomerClass 
-        { 
+        public CustomerClass CustomerClass
+        {
             get { return _customer; }
-            set {  _customer = value; } 
+            set { _customer = value; }
         }
 
 
@@ -50,11 +51,11 @@ namespace DriveByBooking.Model.Booking
             _car = null;
             _customer = null;
             _bookingId = 0;
-            _dateTime = null;
+            _dateTime = DateTime.MinValue;
         }
 
         // Constructor...
-        public Booking (CarClass car, CustomerClass customer, int bookingid, Date dateTime)
+        public Booking(CarClass car, CustomerClass customer, int bookingid, DateTime dateTime)
         {
             _car = car;
             _customer = customer;

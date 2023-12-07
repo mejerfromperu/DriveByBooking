@@ -3,15 +3,15 @@ using DriveByBooking.Service;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace DriveByBooking.Pages.Garage1
+namespace DriveByBooking.Pages.Admin
 {
-    public class IndexModel : PageModel
+    public class CarIndexModel : PageModel
     {
-        private ICarRepository _list;
+        private ICarRepository _carRepo;
 
-        public IndexModel(ICarRepository list)
+        public CarIndexModel(ICarRepository repository)
         {
-            _list = list;
+            _carRepo = repository;
         }
 
         public List<CarClass> Cars { get; set; }
@@ -38,31 +38,33 @@ namespace DriveByBooking.Pages.Garage1
 
 
 
-        [BindProperty]
-        public string? CollectLocation { get; set; }
         public void OnGet()
         {
-            Cars = _list.GetAllCars();
+            Cars = _carRepo.GetAllCars();
         }
 
-        public RedirectToPageResult OnPost()
+        public IActionResult OnPostCar()
         {
-            return RedirectToPage("Index");
+            return RedirectToPage("NewCar");
         }
 
         public IActionResult OnPostSearch()
         {
-            Cars = _list.Search(SearchLicensePlate, SearchCarName, SearchBrand, SearchPrice, SearchType, SearchCarType, SearchShiftType, SearchEngineType, SearchLocation);
+            Cars = _carRepo.Search(SearchLicensePlate, SearchCarName, SearchBrand, SearchPrice, SearchType, SearchCarType, SearchShiftType, SearchEngineType, SearchLocation);
             return Page();
         }
 
-        public RedirectToPageResult OnPostOrder()
+        public IActionResult OnPostSortLicensePlate()
         {
-            return RedirectToPage("Index");
+            Cars = _carRepo.SortLicensePlate();
+            return Page();
         }
 
-
-
+        public IActionResult OnPostSortName()
+        {
+            Cars = _carRepo.SortName();
+            return Page();
+        }
 
     }
 }

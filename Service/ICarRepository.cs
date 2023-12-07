@@ -6,6 +6,8 @@ namespace DriveByBooking.Service
     {
         List<CarClass> List { get; set; }
 
+        public CarClass GetCar(string LicensePlate);
+
         void Add(CarClass licensePlate);
         void Clear();
         List<CarClass> CollectFromBrand(string brand);
@@ -16,9 +18,9 @@ namespace DriveByBooking.Service
         List<CarClass> CollectFromShiftType(string shiftType);
         List<CarClass> CollectFromType(string type);
         void Remove(CarClass licensePlate);
-        List<CarClass> GetAllCars();
-        List<CarClass> Search(string? location, double? price, string? name);
-        List<CarClass> GetLocation(string location);
-        List<CarClass> GetLocation();
+        public List<CarClass> GetAllCars();
+        public List<CarClass> SortLicensePlate();
+        public List<CarClass> SortName();
+        List<CarClass> Search(string? licensePlate, string? name, string? brand, double? price, string? type, string? carType, string? shiftType, string? engineType, string? location);
     }
 }

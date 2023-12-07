@@ -21,13 +21,10 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">HomePage</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Garage1/index">Garage</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Pr78ivacy">Privacy</a>
                         </li>
                         @if (Customers.CustomerLoggedIn is not null && Customers.CustomerLoggedIn.IsAdmin)
                         {
@@ -35,9 +32,18 @@
                                 <a class="nav-link text-dark" asp-area="" asp-page="/Admin/index">Admin</a>
                             </li>
                         }
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/ProfilSide/index">ProfilSide</a>
-                        </li>
+                        @if (Customers.CustomerLoggedIn is not null)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/ProfilSide/index">ProfilSide</a>
+                            </li>
+                        }
+                        @if (Customers.CustomerLoggedIn is not null)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Booking/index">Book nu</a>
+                            </li>
+                        }
                         @if (Customers.CustomerLoggedIn is not null)
                         {
                         <li class="nav-item">

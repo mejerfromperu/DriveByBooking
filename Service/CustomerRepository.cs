@@ -30,28 +30,23 @@ namespace DriveByBooking.Service
             }
 
         }
-        //private void ShowMocDataRepository()
-        //{
-        //    _repo.Clear();
-        //    _repo.Add(new CustomerClass("Christianmejer7@gmail.com", "11223344", 1, "MidgetSlayer", "hundogcat", "chris"));
-        //    _repo.Add(new CustomerClass("Christiane23@gmail.com", "83728390", 2, "MidgetHunter", "missecat", "chrissi"));
-        //    _repo.Add(new CustomerClass("starshipcaptain@emailgalaxy.org", "98982626", 3, "MidgetFucker", "katapult", "mejer"));
-        //    _repo.Add(new CustomerClass("pixieprogrammer@emailmagic.com", "44667728", 4, "MidgetFinder", "YESSIR", "mejerfromperu"));
-        //    _repo.Add(new CustomerClass("codingwizard42@techfantasy.net", "87653542", 5, "MidgetTaker", "taxi", "christian"));
-        //}
+        
 
         // Metoder
 
-        public CustomerClass GetCustomer(int id)
+        public CustomerClass GetCustomer(int customerid)
         {
-            foreach (var customer in _repo)
+            var foundCustomer = _repo.FirstOrDefault(k => k.CustomerId == customerid);
+
+            if (foundCustomer != null)
             {
-                if (customer.CustomerId == id)
-                {
-                    return customer;
-                }
+                return foundCustomer;
             }
-            return null;
+            else
+            {
+                // Opdaget en fejl
+                throw new KeyNotFoundException($"Kundenummer {customerid} findes ikke");
+            }
         }
 
         public void AddCustomer(CustomerClass customer)
@@ -81,9 +76,21 @@ namespace DriveByBooking.Service
 
         public CustomerClass Update(CustomerClass customer)
         {
-            CustomerClass UpdatePerson = GetCustomer(customer.CustomerId);
-            _repo[customer.CustomerId] = customer;
-            return UpdatePerson;
+            CustomerClass existingCustomer = GetCustomer(customer.CustomerId);
+
+            if (existingCustomer == null)
+            {
+                throw new InvalidOperationException("Customer not found for update.");
+            }
+
+            if (existingCustomer != null)
+            {
+                _repo[customer.CustomerId] = customer;
+                WriteToJson();
+            }
+
+
+            return existingCustomer;
         }
 
         public bool CheckCustomer(string username, string password)

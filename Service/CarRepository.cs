@@ -27,17 +27,18 @@ namespace DriveByBooking.Service
         //
         // Constructor...
         //
+
         public CarRepository(bool mockdata = false)
         {
             _list = new List<CarClass>();
             if (mockdata)
             {
-                _list.Add(new CarClass("YH40393", "AMG", "Mercedes", 4999.99, "Privat", "Cabriolet", "Automat gear", "Benzin", "Søborg"));
-                _list.Add(new CarClass("AH40393", "Aygo", "Toyota", 4999.99, "Privat", "Cabriolet", "Automat gear", "Benzin", "Søborg"));
-                _list.Add(new CarClass("YB40393", "206", "Peugeot", 4999.99, "Privat", "Cabriolet", "Automat gear", "Benzin", "Søborg"));
-                _list.Add(new CarClass("CH40393", "206cc", "Peugeot", 4999.99, "Privat", "Cabriolet", "Automat gear", "Benzin", "Søborg"));
-                _list.Add(new CarClass("YG40393", "500", "Fiat", 4999.99, "Privat", "Cabriolet", "Automat gear", "Benzin", "Aarhus"));
-                _list.Add(new CarClass("AB40393", "AMG", "Mercedes", 4999.99, "Privat", "Cabriolet", "Automat gear", "Benzin", "Aalborg"));
+                _list.Add(new CarClass("YH40393", "AMG", "Mercedes", 4999.99, "Privat", "Cabriolet", "Automat gear", "Benzin", "aalborg"));
+                _list.Add(new CarClass("AH40393", "Aygo", "Toyota", 4999.99, "Privat", "Cabriolet", "Automat gear", "Benzin", "søborg"));
+                _list.Add(new CarClass("YB40393", "206", "Peugeot", 4999.99, "Privat", "Cabriolet", "Automat gear", "Benzin", "søborg"));
+                _list.Add(new CarClass("CH40393", "206cc", "Peugeot", 4999.99, "Privat", "Cabriolet", "Automat gear", "Benzin", "søborg"));
+                _list.Add(new CarClass("YG40393", "500", "Fiat", 4999.99, "Privat", "Cabriolet", "Automat gear", "Benzin", "søborg"));
+                _list.Add(new CarClass("AB40393", "AMG", "Mercedes", 4999.99, "Privat", "Cabriolet", "Automat gear", "Benzin", "søborg"));
             }
         }
 
@@ -58,7 +59,23 @@ namespace DriveByBooking.Service
         {
             _list.Clear();
         }
-        
+
+        public CarClass GetCar(string LicensePlate)
+        {
+            var foundCar = _list.FirstOrDefault(k => k.LicensePlate == LicensePlate);
+
+            if (foundCar != null)
+            {
+                return foundCar;
+            }
+            else
+            {
+                // Opdaget en fejl
+                throw new KeyNotFoundException($"Nummerplade {LicensePlate} findes ikke");
+            }
+        }
+
+
         public List<CarClass> GetAllCars()
         {
             return _list;
@@ -157,33 +174,122 @@ namespace DriveByBooking.Service
             }
             return resultlist;
         }
-        public List<CarClass> Search(string? location, double? price, string? name)
-        {
-            throw new NotImplementedException();
-        }
 
-        List<CarClass> ICarRepository.GetLocation(string? location)
+
+        public List<CarClass> Search(string? licensePlate, string? name, string? brand, double? price, string? type, string? carType, string? shiftType, string? engineType, string? location)
         {
-            List<CarClass> resultlist = new List<CarClass>();
-            for (int i =0; i<_list.Count; i++)
+            List<CarClass> retCars = new List<CarClass>(GetAllCars());
+
+            if (licensePlate != null)
             {
-                if (_list[i].Location == location)
-                {
-                    resultlist.Add(_list[i]);
-                }
-                continue;
+                retCars = retCars.FindAll(c => c.LicensePlate == licensePlate);
             }
-            return null;
+
+            if (name != null)
+            {
+                retCars = retCars.FindAll(c => c.Name.Contains(name));
+            }
+
+            if (brand != null)
+            {
+                retCars = retCars.FindAll(c => c.Brand.Contains(brand));
+            }
+
+            if (price != null)
+            {
+                retCars = retCars.FindAll(c => c.Price == price);
+            }
+
+            if (type != null)
+            {
+                retCars = retCars.FindAll(c => c.Type.Contains(type));
+            }
+
+            if (carType != null)
+            {
+                retCars = retCars.FindAll(c => c.CarType.Contains(carType));
+            }
+
+            if (shiftType != null)
+            {
+                retCars = retCars.FindAll(c => c.ShiftType.Contains(shiftType));
+            }
+
+            if (engineType != null)
+            {
+                retCars = retCars.FindAll(c => c.EngineType.Contains(engineType));
+            }
+
+            if (location != null)
+            {
+                retCars = retCars.FindAll(c => c.Location.Contains(location));
+            }
+
+            return retCars;
         }
 
-        public List<CarClass> GetLocation()
+        private bool LicensePlateASC = true;
+        public List<CarClass> SortLicensePlate()
         {
-            throw new NotImplementedException();
+            List<CarClass> retCars = GetAllCars();
+
+            //retKunder.Sort(new SortByName());
+
+            retCars.Sort((x, y) => x.LicensePlate.CompareTo(y.LicensePlate));
+
+            if (!LicensePlateASC)
+            {
+                retCars.Reverse();
+            }
+            LicensePlateASC = !LicensePlateASC;
+
+            return retCars;
         }
 
-        public List<CarClass> CollectFromLocation(string? location)
+        private class SortByLicensePlate : IComparer<CarClass>
         {
-            throw new NotImplementedException();
+            public int Compare(CarClass? x, CarClass? y)
+            {
+                if (x == null || y == null)
+                {
+                    return 0;
+                }
+
+                return x.LicensePlate.CompareTo(y.LicensePlate);
+            }
         }
+
+
+        private bool NameASC = true;
+        public List<CarClass> SortName()
+        {
+            List<CarClass> retCars = GetAllCars();
+
+            //retKunder.Sort(new SortByName());
+
+            retCars.Sort((x, y) => x.Name.CompareTo(y.Name));
+
+            if (!NameASC)
+            {
+                retCars.Reverse();
+            }
+            NameASC = !NameASC;
+
+            return retCars;
+        }
+
+        private class SortByName : IComparer<CarClass>
+        {
+            public int Compare(CarClass? x, CarClass? y)
+            {
+                if (x == null || y == null)
+                {
+                    return 0;
+                }
+
+                return x.Name.CompareTo(y.Name);
+            }
+        }
+
     }
 }
