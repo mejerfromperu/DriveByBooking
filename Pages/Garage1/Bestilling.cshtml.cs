@@ -41,8 +41,6 @@ namespace DriveByBooking.Pages.Garage1
 
             Booking newBooking = new Booking(Cars, Customer, 1, DateTime.Now);
 
-
-           
             try
             {
                 //KundeRepository repo = new KundeRepository(true);
