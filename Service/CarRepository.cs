@@ -153,7 +153,7 @@ namespace DriveByBooking.Service
             }
             return resultlist;
         }
-        public List<CarClass> Search(string? location, double? price, string? name)
+        public List<CarClass> Search(string? licensePlate, string? name, string? brand, double? price, string? type, string? carType, string? shiftType, string? engineType, string? location)
         {
             throw new NotImplementedException();
         }

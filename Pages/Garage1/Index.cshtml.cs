@@ -18,13 +18,25 @@ namespace DriveByBooking.Pages.Garage1
 
 
         [BindProperty]
-        public string? SearchName { get; set; }
-
+        public string? SearchLicensePlate { get; set; }
         [BindProperty]
-        public double? SearchPrice { get; set; }
-
+        public string? SearchCarName { get; set; }
         [BindProperty]
         public string? SearchBrand { get; set; }
+        [BindProperty]
+        public double? SearchPrice { get; set; }
+        [BindProperty]
+        public string? SearchType { get; set; }
+        [BindProperty]
+        public string? SearchCarType { get; set; }
+        [BindProperty]
+        public string? SearchShiftType { get; set; }
+        [BindProperty]
+        public string? SearchEngineType { get; set; }
+        [BindProperty]
+        public string? SearchLocation { get; set; }
+
+
 
         public void OnGet()
         {
@@ -38,7 +50,7 @@ namespace DriveByBooking.Pages.Garage1
 
         public IActionResult OnPostSearch()
         {
-            Cars = _list.Search(SearchName, SearchPrice, SearchBrand);
+            Cars = _list.Search(SearchLicensePlate, SearchCarName, SearchBrand, SearchPrice, SearchType, SearchCarType, SearchShiftType, SearchEngineType, SearchLocation);
             return Page();
         }
 

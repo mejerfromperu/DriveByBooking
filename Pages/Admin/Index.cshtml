@@ -1,5 +1,6 @@
 ﻿@page
 @using DriveByBooking.Model;
+@using DriveByBooking.Model.CarFolder;
 @using DriveByBooking.Model.ProfilFolder;
 @model DriveByBooking.Pages.Admin.IndexModel
 @{
@@ -67,13 +68,15 @@
 <p></p>
 <form method="post" class="border border-success rounded">
     <input type="submit" asp-page-handler="Search" value="Søg" class="btn btn-outline-success" />
-    Nummerplade <input type="number" asp-for="@Model.SearchId" />
-    Navn <input type="text" asp-for="@Model.SearchName" />
-    Brand <input type="text" asp-for="@Model.SearchPhoneNumber" />
-    Type <input type="text" asp-for="@Model.SearchEmail" />
-    Bil type <input type="text" asp-for="@Model.SearchEmail" />
-    Type <input type="text" asp-for="@Model.SearchEmail" />
-    Type <input type="text" asp-for="@Model.SearchEmail" />
+    Nummerplade <input type="number" asp-for="@Model.SearchLicensePlate" />
+    Car Navn <input type="text" asp-for="@Model.SearchCarName" />
+    Brand <input type="text" asp-for="@Model.SearchBrand" />
+    Price <input type="text" asp-for="@Model.SearchPrice" />
+    Type <input type="text" asp-for="@Model.SearchType" />
+    Bil type <input type="text" asp-for="@Model.SearchCarType" />
+    Gearkasse <input type="text" asp-for="@Model.SearchShiftType" />
+    Motor type <input type="text" asp-for="@Model.SearchEngineType" />
+    Lokation <input type="text" asp-for="@Model.SearchLocation" />
 </form>
 <p></p>
 
@@ -81,29 +84,35 @@
     <thead>
         <tr>
             <form method="post">
-            <th><input type="submit" asp-page-handler="SortId" value="Kunde Nummer" class="btn btn-outline-success" /></th>
-            <th><input type="submit" asp-page-handler="SortName" value="Navn" class="btn btn-outline-success" /></th>
-            <th>Telefon</th>
-            <th>Email</th>
-            <th>Username</th>
-            <th>Password</th>
+            <th><input type="submit" asp-page-handler="SortLicensePlate" value="Nummerplade" class="btn btn-outline-success" /></th>
+            <th><input type="submit" asp-page-handler="SortCarName" value="Bil Navn" class="btn btn-outline-success" /></th>
+            <th>Brand</th>
+            <th>Price</th>
+            <th>Type</th>
+            <th>CarType</th>
+            <th>ShiftType</th>
+            <th>EngineType</th>
+            <th>Location</th>
             <th></th>
             <th></th>
             </form>
         </tr>
     </thead>
     <tbody>
-        @foreach (CustomerClass c in Model.Customers)
+        @foreach (CarClass cars in Model.Cars)
         {
             <tr>
-                <td>@c.CustomerId</td>
-                <td>@c.Name</td>
-                <td>@c.PhoneNumber</td>
-                <td>@c.Email</td>
-                <td>@c.Username</td>
-                <td>@c.Password</td>
-                <td><a asp-page="UpdateCustomer" asp-route-id="@c.CustomerId">Ændre</a></td>
-                <td><a asp-page="DeleteCustomer" asp-route-id="@c.CustomerId">Slet</a></td>
+                <td>@cars.LicensePlate</td>
+                <td>@cars.Name</td>
+                <td>@cars.Brand</td>
+                <td>@cars.Price</td>
+                <td>@cars.Type</td>
+                <td>@cars.CarType</td>
+                <td>@cars.ShiftType</td>
+                <td>@cars.EngineType</td>
+                <td>@cars.Location</td>
+                <td><a asp-page="UpdateCustomer" asp-route-id="@cars.LicensePlate">Ændre</a></td>
+                <td><a asp-page="DeleteCustomer" asp-route-id="@cars.LicensePlate">Slet</a></td>
             </tr>
         }
     </tbody>
