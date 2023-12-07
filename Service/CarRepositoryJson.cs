@@ -1,12 +1,10 @@
 ﻿using DriveByBooking.Model.CarFolder;
 using DriveByBooking.Model.ProfilFolder;
-using Microsoft.AspNetCore.Components.Routing;
-using System.Reflection.Metadata.Ecma335;
 using System.Text.Json;
 
 namespace DriveByBooking.Service
 {
-    public class CarRepository : ICarRepository
+    public class CarRepositoryJson : ICarRepository
     {
         //
         // Instance Field...
@@ -26,18 +24,9 @@ namespace DriveByBooking.Service
         // Constructor...
         //
 
-        public CarRepository(bool mockdata = false)
+        public CarRepositoryJson(bool mockdata = false)
         {
-            _list = new List<CarClass>();
-            if (mockdata)
-            {
-                _list.Add(new CarClass("YH40393", "AMG", "Mercedes", 4999.99, "Privat", "Cabriolet", "Automat gear", "Benzin", "aalborg"));
-                _list.Add(new CarClass("AH40393", "Aygo", "Toyota", 4999.99, "Privat", "Cabriolet", "Automat gear", "Benzin", "søborg"));
-                _list.Add(new CarClass("YB40393", "206", "Peugeot", 4999.99, "Privat", "Cabriolet", "Automat gear", "Benzin", "søborg"));
-                _list.Add(new CarClass("CH40393", "206cc", "Peugeot", 4999.99, "Privat", "Cabriolet", "Automat gear", "Benzin", "søborg"));
-                _list.Add(new CarClass("YG40393", "500", "Fiat", 4999.99, "Privat", "Cabriolet", "Automat gear", "Benzin", "søborg"));
-                _list.Add(new CarClass("AB40393", "AMG", "Mercedes", 4999.99, "Privat", "Cabriolet", "Automat gear", "Benzin", "søborg"));
-            }
+            _list = ReadFromJson();
         }
 
         //
@@ -46,11 +35,13 @@ namespace DriveByBooking.Service
         public void Add(CarClass car)
         {
             _list.Add(car);
+            WriteToJson();
         }
         // Remove old Car
         public void Remove(CarClass car)
         {
             _list.Remove(car);
+            WriteToJson();
         }
         // Clear the CarList
         public void Clear()
@@ -286,9 +277,40 @@ namespace DriveByBooking.Service
             }
         }
 
+
+
+        private const string FILENAME = "CarRepository.json";
+
+        private List<CarClass>? ReadFromJson()
+        {
+            if (File.Exists(FILENAME))
+            {
+                StreamReader sr = File.OpenText(FILENAME);
+                List<CarClass>? CarClass = JsonSerializer.Deserialize<List<CarClass>>(sr.ReadToEnd());
+                sr.Close();
+                return CarClass;
+            }
+            else
+            {
+                return new List<CarClass>();
+            }
+        }
+
+
+        // HAck quick fix - burde lave en metode Edit
         public void WriteToJson()
         {
-            throw new NotImplementedException();
+            FileStream fs = new FileStream(FILENAME, FileMode.Create);
+            Utf8JsonWriter writer = new Utf8JsonWriter(fs);
+            JsonSerializer.Serialize(writer, _list);
+            fs.Close();
         }
+
+
     }
+
+
+
+
 }
+
