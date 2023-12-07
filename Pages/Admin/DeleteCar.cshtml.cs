@@ -33,12 +33,12 @@ namespace DriveByBooking.Pages.Admin
         {
             _repo.Remove(licensePlate);
 
-            return RedirectToPage("Index");
+            return RedirectToPage("CarIndex");
         }
 
         public IActionResult OnPostCancel()
         {
-            return RedirectToPage("Index");
+            return RedirectToPage("CarIndex");
         }
     }
 }
