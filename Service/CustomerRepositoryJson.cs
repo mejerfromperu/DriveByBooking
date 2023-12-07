@@ -26,16 +26,19 @@ namespace DriveByBooking.Service
 
         // Metoder
 
-        public CustomerClass GetCustomer(int id)
+        public CustomerClass GetCustomer(int customerid)
         {
-            foreach (var customer in _repo)
+            var foundCustomer = _repo.FirstOrDefault(k => k.CustomerId == customerid);
+
+            if (foundCustomer != null)
             {
-                if (customer.CustomerId == id)
-                {
-                    return _repo[id];
-                }
+                return foundCustomer;
             }
-            throw new KeyNotFoundException($"kundenummer {id} findes ikke"); ;
+            else
+            {
+                // Opdaget en fejl
+                throw new KeyNotFoundException($"Kundenummer {customerid} findes ikke");
+            }
         }
 
         public void AddCustomer(CustomerClass customer)

@@ -30,20 +30,23 @@ namespace DriveByBooking.Service
             }
 
         }
-        
+
 
         // Metoder
 
-        public CustomerClass GetCustomer(int id)
+        public CustomerClass GetCustomer(int customerid)
         {
-            foreach (var customer in _repo)
+            var foundCustomer = _repo.FirstOrDefault(k => k.CustomerId == customerid);
+
+            if (foundCustomer != null)
             {
-                if (customer.CustomerId == id)
-                {
-                    return customer;
-                }
+                return foundCustomer;
             }
-            return null;
+            else
+            {
+                // Opdaget en fejl
+                throw new KeyNotFoundException($"Kundenummer {customerid} findes ikke");
+            }
         }
 
         public void AddCustomer(CustomerClass customer)
@@ -73,9 +76,21 @@ namespace DriveByBooking.Service
 
         public CustomerClass Update(CustomerClass customer)
         {
-            CustomerClass UpdatePerson = GetCustomer(customer.CustomerId);
-            _repo[customer.CustomerId] = customer;
-            return customer;
+            CustomerClass existingCustomer = GetCustomer(customer.CustomerId);
+
+            if (existingCustomer == null)
+            {
+                throw new InvalidOperationException("Customer not found for update.");
+            }
+
+            if (existingCustomer != null)
+            {
+                _repo[customer.CustomerId] = customer;
+                WriteToJson();
+            }
+
+
+            return existingCustomer;
         }
 
         public bool CheckCustomer(string username, string password)
