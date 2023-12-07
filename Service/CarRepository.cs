@@ -50,9 +50,19 @@ namespace DriveByBooking.Service
             _list.Add(car);
         }
         // Remove old Car
-        public void Remove(CarClass car)
+        public CarClass Remove(string licensePlate)
         {
-            _list.Remove(car);
+            int index = _list.FindIndex(CarClass => CarClass.LicensePlate == licensePlate);
+            if (index >= 0)
+            {
+                CarClass DeleteCar = _list[index];
+                _list.RemoveAt(index);
+                return DeleteCar;
+            }
+            else
+            {
+                return null;
+            }
         }
         // Clear the CarList
         public void Clear()
