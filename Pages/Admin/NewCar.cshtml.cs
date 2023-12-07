@@ -66,12 +66,12 @@ namespace DriveByBooking.Pages.Admin
                 return Page();
             }
 
-            return RedirectToPage("Index");
+            return RedirectToPage("CarIndex");
         }
 
         public IActionResult OnPostCancel()
         {
-            return RedirectToPage("Index");
+            return RedirectToPage("CarIndex");
         }
     }
 }
