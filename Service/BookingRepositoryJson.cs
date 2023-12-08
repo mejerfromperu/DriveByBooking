@@ -50,11 +50,13 @@ namespace DriveByBooking.Service
         public void AddBooking(Booking booking)
         {
             _repo.Add(booking);
+            WriteToJson();
         }
 
         public void RemoveBooking(Booking booking)
         {
             _repo.Remove(booking);
+            WriteToJson();
         }
 
         public Booking Delete(int bookingid)
@@ -64,6 +66,7 @@ namespace DriveByBooking.Service
             {
                 Booking DeleteBooking = _repo[index];
                 _repo.RemoveAt(index);
+                WriteToJson();
                 return DeleteBooking;
             }
             else
