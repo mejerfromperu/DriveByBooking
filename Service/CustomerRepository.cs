@@ -30,7 +30,7 @@ namespace DriveByBooking.Service
             }
 
         }
-
+        
 
         // Metoder
 
@@ -51,7 +51,22 @@ namespace DriveByBooking.Service
 
         public void AddCustomer(CustomerClass customer)
         {
+            // Check if the customer ID already exists
+            if (CustomerExists(customer.CustomerId))
+            {
+                throw new ArgumentException($"Kundenummer {customer.CustomerId} findes i forvejen");
+                
+            }
+            
+
+            // If the customer ID is unique, add the customer to the list
             _repo.Add(customer);
+        }
+
+        public bool CustomerExists(int customerId)
+        {
+            // Check if the customer ID already exists in the list
+            return customerRepo.Any(c => c.CustomerId == customerId);
         }
 
         public List<CustomerClass> GetEverything()
@@ -137,6 +152,7 @@ namespace DriveByBooking.Service
         {
             throw new NotImplementedException();
         }
+
         public void WriteToJson()
         {
             throw new NotImplementedException();

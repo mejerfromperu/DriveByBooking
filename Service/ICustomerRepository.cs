@@ -15,9 +15,10 @@ namespace DriveByBooking.Service
         CustomerClass Update(CustomerClass customer);
         public bool CheckCustomer(string username, string password);
         public void LogoutCustomer();
-        void WriteToJson();
+        public void WriteToJson();
         List<CustomerClass> Search(int? id, string? name, string? phoneNumber, string? email);
         List<CustomerClass> SortId();
         List<CustomerClass> SortName();
+        bool CustomerExists(int customerId);
     }
 }

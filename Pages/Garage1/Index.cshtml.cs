@@ -38,6 +38,8 @@ namespace DriveByBooking.Pages.Garage1
 
 
 
+        [BindProperty]
+        public string? CollectLocation { get; set; }
         public void OnGet()
         {
             Cars = _list.GetAllCars();

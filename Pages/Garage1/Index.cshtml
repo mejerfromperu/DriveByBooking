@@ -31,15 +31,18 @@
   @*  <div class="card" style="width: 20em">
         <form method="post" class="border">
             <div class="d-grid dropdown pt-3">
+                
                 <button type="button" class="btn btn-primary dropdown-toggle btn-block" data-bs-toggle="dropdown">
                     Lokationer
                 </button>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item">Aarhus<input type="checkbox" asp-page-handler="" value="Location" /></a></li>
-                    <li><a class="dropdown-item">Aalborg<input type="checkbox" asp-page-handler="" value="Location" /></a></li>
-                    <li><a class="dropdown-item">Fredericia<input type="checkbox" asp-page-handler="" value="Location" /></a></li>
-                    <li><a class="dropdown-item">Søborg<input type="checkbox" asp-page-handler="" value="Location" /></a></li>
+                        <li><a class="dropdown-item"><input type="submit" asp-for="@Model.CollectLocation" value="Aarhus" /></a></li>
+                        <li><a class="dropdown-item"><input type="submit" asp-for="@Model.CollectLocation" value="Aalborg" /></a></li>
+                        <li><a class="dropdown-item"><input type="submit" asp-for="@Model.CollectLocation" value="Fredericia" /></a></li>
+                        <li><a class="dropdown-item"><input type="submit" asp-for="@Model.CollectLocation" value="Søborg" /></a></li>
+                    
                 </ul>
+                
             </div>
             <div class="d-grid dropdown pt-3">
                 <button type="button" class="btn btn-primary dropdown-toggle btn-block" data-bs-toggle="dropdown">

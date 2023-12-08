@@ -1,6 +1,8 @@
 ﻿using DriveByBooking.Model.CarFolder;
-using DriveByBooking.Model.ProfilFolder;
 using Microsoft.AspNetCore.Components.Routing;
+using System.Collections;
+using System.Diagnostics.CodeAnalysis;
+using System.Diagnostics.Eventing.Reader;
 using System.Reflection.Metadata.Ecma335;
 using System.Text.Json;
 
@@ -88,7 +90,22 @@ namespace DriveByBooking.Service
         {
             return _list;
         }
+
+
+
         // Collecting from Garage Location
+        public CarClass GetLocation(string location)
+        {
+            foreach (var cars in _list)
+            {
+                if ( cars.Location == location)
+                {
+                    return cars;
+                }
+            }
+            return null;
+        }
+
         public List<CarClass> CollectFromLocation(string location)
         {
             List<CarClass> resultList = new List<CarClass>();
@@ -101,6 +118,7 @@ namespace DriveByBooking.Service
             }
             return resultList;
         }
+
         // Collecting from Cars Type
         public List<CarClass> CollectFromType(string type)
         {
