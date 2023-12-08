@@ -11,7 +11,7 @@ namespace DriveByBooking.Model.Booking
         //
         private DateTime _dateTime;
         private CarClass _car;
-        private CustomerClass _customer;
+        private string _customer;
         private int _bookingId;
 
         //
@@ -36,7 +36,7 @@ namespace DriveByBooking.Model.Booking
             set { _car = value; }
         }
 
-        public CustomerClass CustomerClass
+        public string Username
         {
             get { return _customer; }
             set { _customer = value; }
@@ -46,7 +46,7 @@ namespace DriveByBooking.Model.Booking
         //
         // Constructor...
         // Default
-        public Booking()
+        public Booking(CarClass cars)
         {
             _car = null;
             _customer = null;
@@ -55,20 +55,24 @@ namespace DriveByBooking.Model.Booking
         }
 
         // Constructor...
-        public Booking(CarClass car, CustomerClass customer, int bookingid, DateTime dateTime)
+        public Booking(CarClass car, string username, int bookingid, DateTime dateTime)
         {
             _car = car;
-            _customer = customer;
+            _customer = username;
             _bookingId = bookingid;
             _dateTime = dateTime;
+        }
+
+        public override string ToString()
+        {
+            return $"{{{nameof(BookingId)}={BookingId.ToString()}, {nameof(DateTime)}={DateTime.ToString()}, {nameof(CarClass)}={CarClass}, {nameof(Username)}={Username}}}";
         }
 
         //
         //ToString...
         //
-        public override string ToString()
-        {
-            return $"{{{nameof(BookingId)}={BookingId.ToString()}, {nameof(DateTime)}={DateTime}, {nameof(CarClass)}={CarClass}, {nameof(CustomerClass)}={CustomerClass}}}";
-        }
+
+
+
     }
 }

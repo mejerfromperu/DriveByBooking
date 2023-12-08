@@ -1,0 +1,31 @@
+﻿@page
+@model DriveByBooking.Pages.Garage1.ConfirmModel
+@{
+}
+<h1>Booking side</h1>
+
+
+
+<form method="post">
+    <div class="form-group">
+
+        <label>Bilens Nummerplade</label> : @Model.Cars.LicensePlate<br />
+        <br />
+        <label>Bilens Navn</label> : @Model.Cars.Name<br />
+        <br />
+        <label>Brand</label>  : @Model.Cars.Brand<br />
+        <br />
+        <label>Pris</label>  : @Model.Cars.Price<br />
+        <br />
+        <label>Type</label>  : @Model.Cars.Type<br />
+        <br />
+        <label>EngineType</label>  : @Model.Cars.EngineType<br />
+        <br />
+
+
+
+        <input type="submit" value="Order" class="btn btn-danger" asp-page-handler="Order" asp-route-id="@Model.Cars.LicensePlate" />
+
+        <input type="submit" value="Cancel" class="btn btn-warning" asp-page-handler="Cancel" />
+    </div>
+</form>
