@@ -1,5 +1,6 @@
 ﻿using DriveByBooking.Model.CarFolder;
 using DriveByBooking.Model.ProfilFolder;
+using System.Text;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace DriveByBooking.Model.Booking
@@ -11,7 +12,7 @@ namespace DriveByBooking.Model.Booking
         //
         private DateTime _dateTime;
         private CarClass _car;
-        private string _customer;
+        private CustomerClass _customer;
         private int _bookingId;
 
         //
@@ -36,7 +37,7 @@ namespace DriveByBooking.Model.Booking
             set { _car = value; }
         }
 
-        public string Username
+        public CustomerClass CustomerClass
         {
             get { return _customer; }
             set { _customer = value; }
@@ -46,7 +47,7 @@ namespace DriveByBooking.Model.Booking
         //
         // Constructor...
         // Default
-        public Booking(CarClass cars)
+        public Booking()
         {
             _car = null;
             _customer = null;
@@ -55,24 +56,27 @@ namespace DriveByBooking.Model.Booking
         }
 
         // Constructor...
-        public Booking(CarClass car, string username, int bookingid, DateTime dateTime)
+        public Booking(CarClass car, CustomerClass customer, int bookingid, DateTime dateTime)
         {
             _car = car;
-            _customer = username;
+            _customer = customer;
             _bookingId = bookingid;
             _dateTime = dateTime;
         }
 
-        public override string ToString()
+        
+        public Booking(CarClass car, CustomerClass customer, DateTime datetime)
         {
-            return $"{{{nameof(BookingId)}={BookingId.ToString()}, {nameof(DateTime)}={DateTime.ToString()}, {nameof(CarClass)}={CarClass}, {nameof(Username)}={Username}}}";
+            _car = car;
+            _customer = customer;
+            _dateTime = datetime;
         }
-
         //
         //ToString...
         //
-
-
-
+        public override string ToString()
+        {
+            return $"{{{nameof(BookingId)}={BookingId.ToString()}, {nameof(DateTime)}={DateTime}, {nameof(CarClass)}={CarClass}, {nameof(CustomerClass)}={CustomerClass}}}";
+        }
     }
 }

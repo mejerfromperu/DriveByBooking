@@ -1,4 +1,36 @@
 ﻿@page
+@using DriveByBooking.Model.Booking;
 @model DriveByBooking.Pages.Admin.BookingIndexModel
 @{
 }
+
+
+
+
+
+<h1><strong>Oplev Alle Vores Fantastiske Bookinger</strong></h1>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <form method="post">
+            <th>Kunde Infomation</th>
+            <th>Bil Infomation</th>
+            <th>TID</th>
+
+            </form>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Booking c in Model.Books)
+        {
+            <tr>
+                <td>@c.CustomerClass</td>
+                <td>@c.CarClass</td>
+                <td>@c.DateTime</td>
+@*                 <td><a asp-page="UpdateCustomer" asp-route-id="@c.CustomerId">Ændre</a></td>
+                <td><a asp-page="DeleteCustomer" asp-route-id="@c.CustomerId">Slet</a></td> *@
+            </tr>
+        }
+    </tbody>
+</table>

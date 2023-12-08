@@ -9,27 +9,27 @@ namespace DriveByBooking.Pages.Garage1
 {
     public class ConfirmModel : PageModel
     {
-        private loginModel loginModel;
         private ICarRepository _carrepo;
         private ICustomerRepository _customerrepo;
         private IBookingRepository _bookrepo;
 
-
-        
         public CustomerClass CustomerClass { get; set; }
         public CarClass Cars { get; set; }
-        public Booking book { get; set; }
         public loginModel login { get; set; }
+        public List<Booking> Books { get; set; }
 
 
-
-
-
-        public IActionResult OnGet(string licensplate)
+        public ConfirmModel(IBookingRepository bookrepo)
         {
-            Cars = _carrepo.GetCar(licensplate); // Adjust this based on your repository method to get a list of cars
+            _bookrepo = bookrepo;
 
-            return Page();
         }
+
+        public void OnGet()
+        {
+            Books = _bookrepo.GetAllbookings(); 
+
+        }
+
     }
 }
