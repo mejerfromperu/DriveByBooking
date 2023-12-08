@@ -11,6 +11,7 @@ namespace DriveByBooking.Pages.Garage1
 {
     public class BestillingModel : PageModel
     {
+        private loginModel loginModel;
         private ICarRepository _carrepo;
         private ICustomerRepository _customerrepo;
         private IBookingRepository _bookrepo;
@@ -24,7 +25,7 @@ namespace DriveByBooking.Pages.Garage1
         {
             _carrepo = carRepository;
         }
-
+        
         public IActionResult OnGet(string licensplate)
         {
             Cars = _carrepo.GetCar(licensplate); // Adjust this based on your repository method to get a list of cars
@@ -38,8 +39,8 @@ namespace DriveByBooking.Pages.Garage1
             {
                 
             }
-
-            Booking newBooking = new Booking(Cars, Customer, 1, DateTime.Now);
+            
+            Booking newBooking = new Booking(Cars, loginModel.Username, 1, DateTime.Now);
 
             try
             {
