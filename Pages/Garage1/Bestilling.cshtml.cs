@@ -31,18 +31,16 @@ namespace DriveByBooking.Pages.Garage1
 
             return Page();
         }
-        public IActionResult OnPostOrder()
+        public void OnPostOrder()
         {
 
             if (!ModelState.IsValid)
             {
-                return Page();
+                
             }
 
             Booking newBooking = new Booking(Cars, Customer, 1, DateTime.Now);
 
-
-           
             try
             {
                 //KundeRepository repo = new KundeRepository(true);
@@ -50,10 +48,9 @@ namespace DriveByBooking.Pages.Garage1
             }
             catch (ArgumentException ae)
             {
-                return Page();
+                
             }
 
-            return RedirectToPage("Index");
         }
 
         public IActionResult OnPostCancel()

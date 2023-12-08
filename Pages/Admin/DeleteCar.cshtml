@@ -1,0 +1,35 @@
+﻿@page
+@model DriveByBooking.Pages.Admin.DeleteCarModel
+@{
+}
+
+<h1> Slet en bil </h1>
+
+<form method="post">
+    <div class="form-group>">
+        <label>Kunde nummer</label> : @Model.CarClass.LicensePlate<br />
+        <br />
+        <label>Kunde navn</label> : @Model.CarClass.Name<br />
+        <br />
+        <label>Kunde telefon</label>  : @Model.CarClass.Brand<br />
+        <br />
+        <label>Kunde email</label>  : @Model.CarClass.Price<br />
+        <br />
+        <label>Kunde username</label>  : @Model.CarClass.Type<br />
+        <br />
+        <label>Kunde password</label>  : @Model.CarClass.CarType<br />
+        <br />
+        <label>Kunde password</label>  : @Model.CarClass.ShiftType<br />
+        <br />
+        <label>Kunde password</label>  : @Model.CarClass.EngineType<br />
+        <br />
+        <label>Kunde password</label>  : @Model.CarClass.Location<br />
+        <br />
+
+
+
+        <input type="submit" value="Slet Bil" class="btn btn-danger" asp-page-handler="Delete" asp-route-licensePlate="@Model.CarClass.LicensePlate" />
+
+        <input type="submit" value="Fortryd" class="btn btn-warning" asp-page-handler="Cancel" />
+    </div>
+</form>
