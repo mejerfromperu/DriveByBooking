@@ -152,5 +152,10 @@ namespace DriveByBooking.Service
         {
             throw new NotImplementedException();
         }
+
+        public void WriteToJson()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
