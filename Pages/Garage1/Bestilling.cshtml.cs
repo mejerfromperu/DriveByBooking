@@ -25,7 +25,7 @@ namespace DriveByBooking.Pages.Garage1
         {
             _carrepo = carRepository;
         }
-        
+
         public IActionResult OnGet(string licensplate)
         {
             Cars = _carrepo.GetCar(licensplate); // Adjust this based on your repository method to get a list of cars
@@ -37,9 +37,9 @@ namespace DriveByBooking.Pages.Garage1
 
             if (!ModelState.IsValid)
             {
-                
+
             }
-            
+
             Booking newBooking = new Booking(Cars, Customer, DateTime.Now);
 
             try
@@ -49,7 +49,7 @@ namespace DriveByBooking.Pages.Garage1
             }
             catch (ArgumentException ae)
             {
-                
+
             }
 
         }
