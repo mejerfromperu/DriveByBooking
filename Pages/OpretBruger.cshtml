@@ -1,0 +1,32 @@
+﻿@page
+@model DriveByBooking.Pages.OpretBrugerModel
+@{
+}
+
+<h1>Opret dig som kunde</h1>
+
+<form method="post">
+    <div class="form-group>">
+        <label>Kunde Navn</label><br />
+        <input class="form-control" asp-for="@Model.NewCustomerName" /><br />
+        <span asp-validation-for="@Model.NewCustomerName" class="text-danger"></span><br />
+        <br />
+
+        <label>Kunde Telefon</label><br />
+        <input class="form-control" asp-for="@Model.NewCustomerPhoneNumber" /><br />
+
+
+        <label>Kunde Email</label><br />
+        <input class="form-control" asp-for="@Model.NewCustomerEmail" /><br />
+
+        <label>Kunde Username</label><br />
+        <input class="form-control" asp-for="@Model.NewCustomerUsername" /><br />
+
+        <label>Kunde Password</label><br />
+        <input class="form-control" asp-for="@Model.NewCustomerPassword" /><br />
+
+
+        <input type="submit" value="Opret Ny Kunde" class="btn btn-success" />
+        <input type="submit" value="Fortryd" class="btn btn-danger" asp-page-handler="Cancel" />
+    </div>
+</form>
