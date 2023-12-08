@@ -128,10 +128,9 @@ namespace DriveByBooking.Service
             CustomerLoggedIn = null;
         }
 
-        public override string ToString()
-        {
-            return $"{{{nameof(CustomerLoggedIn)}={CustomerLoggedIn}, {nameof(customerRepo)}={customerRepo}}}";
-        }
+
+
+        
 
         public List<CustomerClass> Search(int? id, string? name, string? phoneNumber, string? email)
         {
@@ -156,6 +155,11 @@ namespace DriveByBooking.Service
         public void WriteToJson()
         {
             throw new NotImplementedException();
+        }
+
+        public override string ToString()
+        {
+            return $"{{{nameof(CustomerLoggedIn)}={CustomerLoggedIn}, {nameof(customerRepo)}={customerRepo}}}";
         }
     }
 }
