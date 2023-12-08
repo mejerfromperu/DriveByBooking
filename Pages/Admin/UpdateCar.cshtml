@@ -1,0 +1,57 @@
+﻿@page
+@model DriveByBooking.Pages.Admin.UpdateCarModel
+@{
+}
+
+<h1>Ændre en bil</h1>
+
+
+<form method="post">
+    <div class="form-group>">
+        <label>Nummerplade</label> : @Model.NewLicensePlate<br />
+        <input type="hidden" asp-for="@Model.NewLicensePlate" /><br />
+        <label class="text text-danger">@Model.ErrorMessage</label><br />
+        <br />
+
+
+        <label>Bil navn</label><br />
+        <input class="form-control" asp-for="@Model.NewCarName" /><br />
+        <span asp-validation-for="@Model.NewCarName" class="text-danger"></span><br />
+
+
+        <label>Brand</label><br />
+        <input class="form-control" asp-for="@Model.NewBrand" /><br />
+
+        <label>Pris</label><br />
+        <input class="form-control" asp-for="@Model.NewPrice" /><br />
+
+
+        <label>Type</label><br />
+        <input class="form-control" asp-for="@Model.NewType" /><br />
+
+        <label>Bil type</label><br />
+        <input class="form-control" asp-for="@Model.NewCarType" /><br />
+
+        <label>Gear type</label><br />
+        <input class="form-control" asp-for="@Model.NewShiftType" /><br />
+
+        <label>Motor type</label><br />
+        <input class="form-control" asp-for="@Model.NewEngineType" /><br />
+
+        <label>Lokation</label><br />
+        <input class="form-control" asp-for="@Model.NewLocation" /><br />
+
+
+
+
+        @if (Model.Error)
+        {
+            <input type="submit" value="Ændre Ny Bil" class="btn btn-secondary" asp-page-handler="Change" disabled />
+        }
+        else
+        {
+            <input type="submit" value="Ændre Ny Bil" class="btn btn-success" asp-page-handler="Change" />
+        }
+        <input type="submit" value="Fortryd" class="btn btn-warning" asp-page-handler="Cancel" />
+    </div>
+</form>
