@@ -30,7 +30,7 @@ namespace DriveByBooking.Service
             }
 
         }
-
+        
 
         // Metoder
 
@@ -149,10 +149,6 @@ namespace DriveByBooking.Service
         }
 
         public List<CustomerClass> SortName()
-        {
-            throw new NotImplementedException();
-        }
-        public void WriteToJson()
         {
             throw new NotImplementedException();
         }
