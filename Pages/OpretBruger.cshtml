@@ -7,6 +7,11 @@
 
 <form method="post">
     <div class="form-group>">
+        <label>Kunde Id</label><br />
+        <input class="form-control" asp-for="@Model.NewCustomerId" /><br />
+        <label class="text text-danger">@Model.ErrorMessage</label><br />
+        <br />
+
         <label>Kunde Navn</label><br />
         <input class="form-control" asp-for="@Model.NewCustomerName" /><br />
         <span asp-validation-for="@Model.NewCustomerName" class="text-danger"></span><br />
