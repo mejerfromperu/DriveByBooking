@@ -19,5 +19,6 @@ namespace DriveByBooking.Service
         List<CustomerClass> Search(int? id, string? name, string? phoneNumber, string? email);
         List<CustomerClass> SortId();
         List<CustomerClass> SortName();
+        bool CustomerExists(int customerId);
     }
 }
