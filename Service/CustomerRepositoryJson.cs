@@ -43,8 +43,22 @@ namespace DriveByBooking.Service
 
         public void AddCustomer(CustomerClass customer)
         {
+            // Check if the customer ID already exists
+            if (CustomerExists(customer.CustomerId))
+            {
+                Console.WriteLine($"Error: Customer with ID {customer.CustomerId} already exists.");
+                return;
+            }
+
+            // If the customer ID is unique, add the customer to the list
             _repo.Add(customer);
             WriteToJson();
+        }
+
+        private bool CustomerExists(int customerId)
+        {
+            // Check if the customer ID already exists in the list
+            return _repo.Exists(c => c.CustomerId == customerId);
         }
 
         public List<CustomerClass> GetEverything()
