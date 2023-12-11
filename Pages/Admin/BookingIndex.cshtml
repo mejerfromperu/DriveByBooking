@@ -1,7 +1,7 @@
 ﻿@page
-@using DriveByBooking.Model.Booking;
-@using DriveByBooking.Model.ProfilFolder;
-@using DriveByBooking.Model.CarFolder;
+@using DriveByBooking.Model.CarFolder
+@using DriveByBooking.Model.ProfilFolder
+@using DriveByBooking.Model.Booking
 @model DriveByBooking.Pages.Admin.BookingIndexModel
 @{
 }
@@ -12,7 +12,9 @@
 
 <h1><strong>Oplev Alle Vores Fantastiske Bookinger</strong></h1>
 
+<a asp-page="Index" class="btn btn-outline-primary">Kunder</a>
 
+<a asp-page="CarIndex" class="btn btn-outline-primary">Biler</a>
 
 <table class="table table-hover">
     <thead>

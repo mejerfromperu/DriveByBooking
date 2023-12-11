@@ -34,27 +34,6 @@ namespace DriveByBooking.Pages.Admin
         [BindProperty]
         public string? SearchEmail { get; set; }
 
-        //Biler
-
-        [BindProperty]
-        public string? SearchLicensePlate { get; set; }
-        [BindProperty]
-        public string? SearchCarName { get; set; }
-        [BindProperty]
-        public string? SearchBrand { get; set; }
-        [BindProperty]
-        public double? SearchPrice { get; set; }
-        [BindProperty]
-        public string? SearchType { get; set; }
-        [BindProperty]
-        public string? SearchCarType { get; set; }
-        [BindProperty]
-        public string? SearchShiftType { get; set; }
-        [BindProperty]
-        public string? SearchEngineType { get; set; }
-        [BindProperty]
-        public string? SearchLocation { get; set; }
-
 
         public void OnGet()
         {   
