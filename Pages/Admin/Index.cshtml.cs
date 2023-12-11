@@ -61,7 +61,10 @@ namespace DriveByBooking.Pages.Admin
             Customers = _customerRepo.GetEverything();
         }
 
+        public void OnPost()
+        {
 
+        }
        
 
         public IActionResult OnPostCustomer()

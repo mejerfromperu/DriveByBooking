@@ -26,6 +26,8 @@ namespace DriveByBooking.Pages.Garage1
             _carrepo = carRepository;
         }
 
+
+         
         public IActionResult OnGet(string licensplate)
         {
             Cars = _carrepo.GetCar(licensplate); // Adjust this based on your repository method to get a list of cars
