@@ -124,7 +124,7 @@ namespace DriveByBooking.Service
             List<CarClass> resultList = new List<CarClass>();
             for (int i = 0; i < _list.Count; i++)
             {
-                if (price == _list[i].Price)
+                if (price >= _list[i].Price)
                 {
                     resultList.Add(_list[i]);
                 }
@@ -316,7 +316,10 @@ namespace DriveByBooking.Service
             fs.Close();
         }
 
-
+        public List<CarClass> SearchPrice(double? price)
+        {
+            throw new NotImplementedException();
+        }
     }
 
 

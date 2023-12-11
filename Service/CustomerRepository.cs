@@ -108,6 +108,11 @@ namespace DriveByBooking.Service
             return existingCustomer;
         }
 
+        private void WriteToJson()
+        {
+            throw new NotImplementedException();
+        }
+
         public bool CheckCustomer(string username, string password)
         {
             CustomerClass? foundCustomer = _repo.Find(u => u.Username == username && u.Password == password);
@@ -149,6 +154,11 @@ namespace DriveByBooking.Service
         }
 
         public List<CustomerClass> SortName()
+        {
+            throw new NotImplementedException();
+        }
+
+        void ICustomerRepository.WriteToJson()
         {
             throw new NotImplementedException();
         }
