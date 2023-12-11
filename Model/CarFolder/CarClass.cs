@@ -102,5 +102,9 @@
                 $"{nameof(_type)}: {_type}, {nameof(_carType)}: {_carType}, {nameof(_shiftType)}: {_shiftType}, {nameof(_engineType)}: {_engineType}, {nameof(_location)}: {_location}";
         }
 
+        internal static List<CarClass> where(Func<object, bool> value)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

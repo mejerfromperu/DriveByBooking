@@ -191,7 +191,7 @@ namespace DriveByBooking.Service
 
             if (price != null)
             {
-                findPrice = findPrice.FindAll(x => x.Price > price);
+                findPrice = findPrice.FindAll(x => x.Price <= price);
             }
             return findPrice;
         }
@@ -218,7 +218,7 @@ namespace DriveByBooking.Service
 
             if (price != null)
             {
-                retCars = retCars.FindAll(c => c.Price == price);
+                retCars = retCars.FindAll(c => c.Price <= price);
             }
 
             if (type != null)

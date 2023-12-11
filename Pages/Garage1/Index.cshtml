@@ -2,6 +2,7 @@
 @using DriveByBooking.Model.CarFolder;
 @model DriveByBooking.Pages.Garage1.IndexModel
 @{
+    ViewData["PriceRange"] = "range auto update";
 }
 
 <p></p>
@@ -9,8 +10,15 @@
     <input type="submit" asp-page-handler="Search" value="Søg" class="btn btn-outline-success" />
     Navn <input type="text" asp-for="@Model.SearchCarName" />
     Brand <input type="text" asp-for="@Model.SearchBrand" />
-        <input type="range" asp-for="@Model.FindPrice" class="form-range" step="500" value="" min="0" max="10000"/>
-        Pris <input type="number" asp-for="@Model.FindPrice" />
+
+    <input type="range" asp-for="@Model.SearchPrice" id="priceRange" class="form-range" name="priceRange" min="0" max="20000" step="500" value="@Model.SearchPrice" />
+    <div class="container">
+        <ul class="list-unstyled d-flex justify-content-between">
+            <li>Min. Pris: 0</li>
+            <li><input asp-for="@Model.SearchPrice" hidden/><output form="get" id="priceOutput">@Model.SearchPrice.GetValueOrDefault()</output></li>
+            <li>Maks Pris: 20.000</li>
+        </ul>
+    </div>
 
         <select asp-for="@Model.SearchCarType" class="form-select">
             <option value="" asp-for="@Model.SearchCarType"> Bil Typer</option>
@@ -49,63 +57,7 @@
 </form>
 
  <div class="row justify-content-evenly gap-5">
-  @*  <div class="card" style="width: 20em">
-        <form method="post" class="border">
-            <div class="d-grid dropdown pt-3">
-                
-                <button type="button" class="btn btn-primary dropdown-toggle btn-block" data-bs-toggle="dropdown">
-                    Lokationer
-                </button>
-                <ul class="dropdown-menu">
-                        <li><a class="dropdown-item"><input type="submit" asp-for="@Model.CollectLocation" value="Aarhus" /></a></li>
-                        <li><a class="dropdown-item"><input type="submit" asp-for="@Model.CollectLocation" value="Aalborg" /></a></li>
-                        <li><a class="dropdown-item"><input type="submit" asp-for="@Model.CollectLocation" value="Fredericia" /></a></li>
-                        <li><a class="dropdown-item"><input type="submit" asp-for="@Model.CollectLocation" value="Søborg" /></a></li>
-                    
-                </ul>
-                
-            </div>
-            <div class="d-grid dropdown pt-3">
-                <button type="button" class="btn btn-primary dropdown-toggle btn-block" data-bs-toggle="dropdown">
-                    Type bil
-                </button>
-                <ul class="dropdown-menu">
-                    <div class="d-grid dropdown pt-1">
-                    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">Privat Bil</button>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item">SUV<input type="checkbox" value="CarType" /></a></li>
-                        <li><a class="dropdown-item">Hatchback<input type="checkbox" value="Cartype" /></a></li>
-                        <li><a class="dropdown-item">Stationcar <input type="checkbox" value="Cartype" /></a></li>
-                        <li><a class="dropdown-item">MPV<input type="checkbox" value="Cartype" /></a></li>
-                        <li><a class="dropdown-item">Cabriolet<input type="checkbox" value="CarType" /></a></li>
-                    </ul>
-                    </div>
-                    <div class="d-grid dropdown pt-1">
-                    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">Luksus Bil</button>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item">Supercar<input type="checkbox" value="CarType" /></a></li>
-                        <li><a class="dropdown-item">Cabriolet<input type="checkbox" value="Cartype" /></a></li>
-                        <li><a class="dropdown-item">SUV<input type="checkbox" value="Cartype" /></a></li>
-                    </ul>
-                    </div>
-                    <div class="d-grid dropdown pt-1">
-                    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">Erhvers Bil</button>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item">Kassevogn<input type="checkbox" value="CarType" /></a></li>
-                        <li><a class="dropdown-item">Lasbil<input type="checkbox" value="Cartype" /></a></li>
-                    </ul>
-                    </div>
-                </ul>
-            </div>
-            <div class=" d-grid dropdown-item pt-3"><input type="button" asp-page-handler="Bil typer" value="CarType" class="btn btn-primary btn-block" /></div>
-            <div class=" d-grid dropdown-item pt-3">Navn  <input type="text" class="m-xl-auto" asp-page-handler="@Model.SearchCarName" /></div>
-            <div class=" d-grid dropdown-item pt-3">Mærke <input type="text" asp-page-handler="@Model.SearchBrand" /></div>
-            <div class=" d-grid dropdown-item pt-3">Pris <input type="number" asp-page-handler="@Model.SearchPrice/"></div>
-            <div class="dropdown-item"><input type="button" asp-page-handler="Gearkasse" value="ShiftType" class="btn btn-primary" /></div>
-            <div class=" dropdown-item"><input type="button" asp-page-handler="Motor type" value="EngineType" class="btn btn-primary" /></div>
-        </form>
-    </div> *@
-
+  
     @foreach (var cars in Model.Cars)
     {
         <div class="card" style="width: 20em">
@@ -132,3 +84,26 @@
     }
 
 </div>
+
+@section Scripts {
+    <script>
+        const priceRange = document.getElementById('priceRange');
+        const priceOutput = document.getElementById('priceOutput');
+
+        function updatePrice() {
+            const selectedPrice = parseFloat(priceRange.value);
+            priceOutput.textContent = " Højst valgte Pris: " + selectedPrice.toLocaleString() + " Kr.";
+            localStorage.setItem('selectedPrice', selectedPrice);
+        }
+
+        // Event listener for input change
+        priceRange.addEventListener('input', updatePrice);
+
+        // Check if there's a saved price in local storage and set the range input value
+        const savedPrice = localStorage.getItem('selectedPrice');
+        if (savedPrice !== null) {
+            priceRange.value = savedPrice;
+            updatePrice();
+        }
+    </script>
+}

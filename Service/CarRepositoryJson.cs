@@ -193,7 +193,7 @@ namespace DriveByBooking.Service
 
             if (price != null)
             {
-                retCars = retCars.FindAll(c => c.Price == price);
+                retCars = retCars.FindAll(c => c.Price <= price);
             }
 
             if (type != null)
