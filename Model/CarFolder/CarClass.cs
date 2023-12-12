@@ -14,6 +14,7 @@
         private string _shiftType;
         private string _engineType;
         private string _location;
+        private bool _isBooked;
 
         //
         //propertieas...
@@ -63,6 +64,12 @@
             get { return _location; }
             set { _location = value; }
         }
+        public bool IsBooked
+        {
+            get { return _isBooked; }
+            set { _isBooked = value; }
+        }
+
 
         //
         // Constructor...
@@ -78,6 +85,7 @@
             _shiftType = string.Empty;
             _engineType = string.Empty;
             _location = string.Empty;
+            _isBooked = false;
         }
         // Constructor...
         public CarClass(string licensePlate, string name, string brand, double price, string type, string carType, string shiftType, string engineType, string location)
@@ -91,6 +99,7 @@
             _shiftType = shiftType;
             _engineType = engineType;
             _location = location;
+            _isBooked = false;
         }
 
         //
