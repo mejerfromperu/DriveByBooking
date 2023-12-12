@@ -86,27 +86,31 @@
     </div> *@
     @foreach (var cars in Model.Cars)
     {
-        <div class="card" style="width: 20em">
-            <div>
-                <div class="container p-5 my-5">
-                    <div class="card-subtitle">
-                        <h2>@cars.Brand</h2>
-                        <h3>@cars.Name</h3>
-                    </div>
-                    <div class="card-body">
-                        <ul>
-                            <li><p>Motor type: @cars.EngineType </p></li>
-                            <li><p>Gear Kasse: @cars.ShiftType</p></li>
-                            <li><p>Lokation: @cars.Location</p></li>
-                            <li><p>Pris: @cars.Price</p></li>
-                        </ul>
-                        <div class="d-grid">
-                            <a class="btn btn-primary btn-block" asp-page="Bestilling" asp-route-licensplate="@cars.LicensePlate">BESTIL</a>
+        if(!cars.IsBooked)
+        {
+            <div class="card" style="width: 20em">
+                <div>
+                    <div class="container p-5 my-5">
+                        <div class="card-subtitle">
+                            <h2>@cars.Brand</h2>
+                            <h3>@cars.Name</h3>
+                        </div>
+                        <div class="card-body">
+                            <ul>
+                                <li><p>Motor type: @cars.EngineType </p></li>
+                                <li><p>Gear Kasse: @cars.ShiftType</p></li>
+                                <li><p>Lokation: @cars.Location</p></li>
+                                <li><p>Pris: @cars.Price</p></li>
+                            </ul>
+                            <div class="d-grid">
+                                <a class="btn btn-primary btn-block" asp-page="Bestilling" asp-route-licensplate="@cars.LicensePlate">BESTIL</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        }
+        
     }
 
 </div>

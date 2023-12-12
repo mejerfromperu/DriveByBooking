@@ -88,7 +88,7 @@
             _isBooked = false;
         }
         // Constructor...
-        public CarClass(string licensePlate, string name, string brand, double price, string type, string carType, string shiftType, string engineType, string location)
+        public CarClass(string licensePlate, string name, string brand, double price, string type, string carType, string shiftType, string engineType, string location, bool isbooked)
         {
             _licensePlate = licensePlate;
             _name = name;
@@ -99,17 +99,18 @@
             _shiftType = shiftType;
             _engineType = engineType;
             _location = location;
-            _isBooked = false;
+            _isBooked = isbooked;
+        }
+
+        public override string ToString()
+        {
+            return $"{{{nameof(LicensePlate)}={LicensePlate}, {nameof(Name)}={Name}, {nameof(Brand)}={Brand}, {nameof(Price)}={Price.ToString()}, {nameof(Type)}={Type}, {nameof(CarType)}={CarType}, {nameof(ShiftType)}={ShiftType}, {nameof(EngineType)}={EngineType}, {nameof(Location)}={Location}, {nameof(IsBooked)}={IsBooked.ToString()}}}";
         }
 
         //
         //ToString...
         //
-        public override string ToString()
-        {
-            return $"{nameof(_licensePlate)}: {_licensePlate}, {nameof(_name)}: {_name}, {nameof(_brand)}: {_brand}, {nameof(_price)}: {_price}, " +
-                $"{nameof(_type)}: {_type}, {nameof(_carType)}: {_carType}, {nameof(_shiftType)}: {_shiftType}, {nameof(_engineType)}: {_engineType}, {nameof(_location)}: {_location}";
-        }
+
 
     }
 }

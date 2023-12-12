@@ -36,6 +36,8 @@ namespace DriveByBooking.Pages.Admin
         public string NewEngineType { get; set; }
         [BindProperty]
         public string NewLocation { get; set; }
+        [BindProperty]
+        public bool NewIsBooked { get; set; }
 
         public string ErrorMessage { get; private set; }
 
@@ -53,7 +55,7 @@ namespace DriveByBooking.Pages.Admin
             {
                 return Page();
             }
-            CarClass newCar = new CarClass(NewLicensePlate, NewCarName, NewBrand, NewPrice, NewType, NewCarType, NewShiftType, NewEngineType, NewLocation);
+            CarClass newCar = new CarClass(NewLicensePlate, NewCarName, NewBrand, NewPrice, NewType, NewCarType, NewShiftType, NewEngineType, NewLocation, NewIsBooked);
 
             try
             {

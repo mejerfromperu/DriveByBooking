@@ -30,29 +30,29 @@ namespace DriveByBooking.Service
 
             if (mocData)
             {
-                CarClass car1 = new CarClass("YH40393", "AMG", "Mercedes", 4999.99, "Privat", "Cabriolet", "Automat gear", "Benzin", "aalborg");
+                CarClass car1 = new CarClass("YH40393", "AMG", "Mercedes", 4999.99, "Privat", "Cabriolet", "Automat gear", "Benzin", "aalborg", false);
                 CustomerClass customer1 = new CustomerClass("Christianmejer7@gmail.com", "11223344", 1, "MidgetSlayer", "hundogcat", "chris", false, false);
                 DateTime date1 = DateTime.Now;
                 _repo.Add(new Booking(car1, customer1, date1));
 
-                CarClass car2 = new CarClass("AH40393", "Aygo", "Toyota", 4999.99, "Privat", "Cabriolet", "Automat gear", "Benzin", "søborg");
+                CarClass car2 = new CarClass("AH40393", "Aygo", "Toyota", 4999.99, "Privat", "Cabriolet", "Automat gear", "Benzin", "søborg", false);
                 CustomerClass customer2 = new CustomerClass("Christiane23@gmail.com", "83728390", 2, "MidgetHunter", "missecat", "chrissi", true, true);
                 DateTime date2 = DateTime.Now;
                 _repo.Add(new Booking(car2, customer2, date2));
 
                 // Repeat the above process for other instances...
 
-                CarClass car3 = new CarClass("YB40393", "206", "Peugeot", 4999.99, "Privat", "Cabriolet", "Automat gear", "Benzin", "søborg");
+                CarClass car3 = new CarClass("YB40393", "206", "Peugeot", 4999.99, "Privat", "Cabriolet", "Automat gear", "Benzin", "søborg", false);
                 CustomerClass customer3 = new CustomerClass("starshipcaptain@emailgalaxy.org", "98982626", 3, "MidgetFucker", "katapult", "mejer", false, false);
                 DateTime date3 = DateTime.Now;
                 _repo.Add(new Booking(car3, customer3, date3));
 
-                CarClass car4 = new CarClass("CH40393", "206cc", "Peugeot", 4999.99, "Privat", "Cabriolet", "Automat gear", "Benzin", "søborg");
+                CarClass car4 = new CarClass("CH40393", "206cc", "Peugeot", 4999.99, "Privat", "Cabriolet", "Automat gear", "Benzin", "søborg", false);
                 CustomerClass customer4 = new CustomerClass("pixieprogrammer@emailmagic.com", "44667728", 4, "MidgetFinder", "YESSIR", "mejerfromperu", false, false);
                 DateTime date4 = DateTime.Now;
                 _repo.Add(new Booking(car4, customer4, date4));
 
-                CarClass car5 = new CarClass("YG40393", "500", "Fiat", 4999.99, "Privat", "Cabriolet", "Automat gear", "Benzin", "søborg");
+                CarClass car5 = new CarClass("YG40393", "500", "Fiat", 4999.99, "Privat", "Cabriolet", "Automat gear", "Benzin", "søborg", false);
                 CustomerClass customer5 = new CustomerClass("codingwizard42@techfantasy.net", "87653542", 5, "MidgetTaker", "taxi", "christian", false, false);
                 DateTime date5 = DateTime.Now;
                 _repo.Add(new Booking(car5, customer5, date5));

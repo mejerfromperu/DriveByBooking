@@ -41,6 +41,11 @@
         <label>Lokation</label><br />
         <input class="form-control" asp-for="@Model.NewLocation" /><br />
 
+        <label>Booking Status:</label><br />
+        <input type="radio" asp-for="@Model.NewIsBooked" value="true" /> Booked<br />
+        <input type="radio" asp-for="@Model.NewIsBooked" value="false" /> Not Booked<br />
+
+
 
         <input type="submit" value="Opret Ny Bil" class="btn btn-success" />
         <input type="submit" value="Fortryd" class="btn btn-danger" asp-page-handler="Cancel" />
