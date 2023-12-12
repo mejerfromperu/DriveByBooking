@@ -198,9 +198,20 @@ namespace DriveByBooking.Service
             return resultlist;
         }
 
+        public List<CarClass> SearchPrice(double? price)
+        {
+            List<CarClass> findPrice = new List<CarClass>(GetAllCars());
+
+            if (price != null)
+            {
+                findPrice = findPrice.FindAll(x => x.Price <= price);
+            }
+            return findPrice;
+        }
 
         public List<CarClass> Search(string? licensePlate, string? name, string? brand, double? price, string? type, string? carType, string? shiftType, string? engineType, string? location)
         {
+
             List<CarClass> retCars = new List<CarClass>(GetAllCars());
 
             if (licensePlate != null)
@@ -220,7 +231,7 @@ namespace DriveByBooking.Service
 
             if (price != null)
             {
-                retCars = retCars.FindAll(c => c.Price == price);
+                retCars = retCars.FindAll(c => c.Price <= price);
             }
 
             if (type != null)
@@ -318,5 +329,7 @@ namespace DriveByBooking.Service
         {
             throw new NotImplementedException();
         }
+
+       
     }
 }

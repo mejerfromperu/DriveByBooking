@@ -23,5 +23,7 @@ namespace DriveByBooking.Service
         public List<CarClass> SortLicensePlate();
         public List<CarClass> SortName();
         List<CarClass> Search(string? licensePlate, string? name, string? brand, double? price, string? type, string? carType, string? shiftType, string? engineType, string? location);
+        List<CarClass> SearchPrice(double? price);
+        
     }
 }
