@@ -74,7 +74,10 @@ namespace DriveByBooking.Service
                 return null;
             }
         }
-
+        public List<Booking> GetAllbookings()
+        {
+            return _repo;
+        }
         public override string ToString()
         {
             return $"{{{nameof(Repository)}={Repository}}}";

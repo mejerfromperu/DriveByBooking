@@ -106,6 +106,19 @@ namespace DriveByBooking.Service
             return null;
         }
 
+        public List<CarClass> CollectFromLocation(string location)
+        {
+            List<CarClass> resultList = new List<CarClass>();
+            for (int i = 0; i < _list.Count; i++)
+            {
+                if (_list[i].Location == location)
+                {
+                    resultList.Add(_list[i]);
+                }
+            }
+            return resultList;
+        }
+
         // Collecting from Cars Type
         public List<CarClass> CollectFromType(string type)
         {

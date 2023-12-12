@@ -55,10 +55,10 @@ namespace DriveByBooking.Service
             WriteToJson();
         }
 
-        private bool CustomerExists(int customerId)
+        public bool CustomerExists(int customerId)
         {
             // Check if the customer ID already exists in the list
-            return _repo.Exists(c => c.CustomerId == customerId);
+            return customerRepo.Any(c => c.CustomerId == customerId);
         }
 
         public List<CustomerClass> GetEverything()

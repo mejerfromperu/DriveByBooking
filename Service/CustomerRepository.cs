@@ -63,10 +63,10 @@ namespace DriveByBooking.Service
             _repo.Add(customer);
         }
 
-        private bool CustomerExists(int customerId)
+        public bool CustomerExists(int customerId)
         {
             // Check if the customer ID already exists in the list
-            return _repo.Exists(c => c.CustomerId == customerId);
+            return customerRepo.Any(c => c.CustomerId == customerId);
         }
 
         public List<CustomerClass> GetEverything()
@@ -133,10 +133,9 @@ namespace DriveByBooking.Service
             CustomerLoggedIn = null;
         }
 
-        public override string ToString()
-        {
-            return $"{{{nameof(CustomerLoggedIn)}={CustomerLoggedIn}, {nameof(customerRepo)}={customerRepo}}}";
-        }
+
+
+        
 
         public List<CustomerClass> Search(int? id, string? name, string? phoneNumber, string? email)
         {
@@ -158,9 +157,14 @@ namespace DriveByBooking.Service
             throw new NotImplementedException();
         }
 
-        void ICustomerRepository.WriteToJson()
+        public void WriteToJson()
         {
             throw new NotImplementedException();
+        }
+
+        public override string ToString()
+        {
+            return $"{{{nameof(CustomerLoggedIn)}={CustomerLoggedIn}, {nameof(customerRepo)}={customerRepo}}}";
         }
     }
 }

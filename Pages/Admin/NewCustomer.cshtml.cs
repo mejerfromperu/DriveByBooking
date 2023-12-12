@@ -57,7 +57,7 @@ namespace DriveByBooking.Pages.Admin
 
         public IActionResult OnPost()
         {
-            ErrorMessage = "";
+            ErrorMessage = "Kunne ikke oprette kunde, da kundenummer er i brug. Vælg gerne et andet kundenummer";
 
             if (!ModelState.IsValid)
             {
@@ -65,10 +65,17 @@ namespace DriveByBooking.Pages.Admin
             }
             CustomerClass newCustomer = new CustomerClass(NewCustomerEmail, NewCustomerPhoneNumber, NewCustomerId, NewCustomerUsername, NewCustomerPassword, NewCustomerName, IsAdmin, IsOwner);
 
+            if (CustomerExists(NewCustomerId))
+            {
+                ModelState.AddModelError("NewCustomer.CustomerId", $"Customer with ID {NewCustomerId} already exists.");
+                return Page();
+            }
+
             try
             {
                 //KundeRepository repo = new KundeRepository(true);
                 _repo.AddCustomer(newCustomer);
+                TempData["SuccessMessage"] = $"Customer {NewCustomerName} added successfully with ID {NewCustomerId}.";
             }
             catch (ArgumentException ae)
             {
@@ -77,6 +84,13 @@ namespace DriveByBooking.Pages.Admin
             }
 
             return RedirectToPage("Index");
+
+        }
+
+        private bool CustomerExists(int customerId)
+        {
+            // Check if the customer ID already exists in the list
+            return _repo.CustomerExists(customerId);
         }
 
         public IActionResult OnPostCancel()

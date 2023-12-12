@@ -1,5 +1,24 @@
 ﻿@page
+@using DriveByBooking.Model.ProfilFolder;
 @model DriveByBooking.Pages.ProfilSide.IndexModel
 @{
 }
-<h1>NO</h1>
+<h1>Velkommen til din kunde profil</h1>
+
+<h2>Dine Oplysninger</h2>
+
+@* @foreach (CustomerClass customer in Model.Customers)
+{
+    <dl>
+        <dt>Customer ID: @customer.CustomerId</dt>
+        <dt>Name: @customer.Name</dt>
+        <dt>Tlf: @customer.PhoneNumber</dt>
+        <dt>Email: @customer.Email</dt>
+        <!-- Add other customer details as needed -->
+    </dl>
+} *@
+
+
+<form method="post">
+    <input type="submit" value="Rediger Profil" class="btn btn-outline-primary" asp-page-handler="Customer" />
+</form>

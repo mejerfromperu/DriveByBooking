@@ -2,24 +2,20 @@
 @model DriveByBooking.Pages.Garage1.ConfirmModel
 @{
 }
-<h1>Booking side</h1>
+<h1>TAK FOR DIN BESTILLING!!!</h1>
 
-
+@* 
 
 <form method="post">
     <div class="form-group">
 
-        <label>Bilens Nummerplade</label> : @Model.Cars.LicensePlate<br />
+        <label>Bookning</label> : @Model.Books.CarClass<br />
         <br />
-        <label>Bilens Navn</label> : @Model.Cars.Name<br />
+        <label>Bookning</label> : @Model.Book.CustomerClass<br />
         <br />
-        <label>Brand</label>  : @Model.Cars.Brand<br />
+        <label>Bookning</label>  : @Model.Book.DateTime<br />
         <br />
-        <label>Pris</label>  : @Model.Cars.Price<br />
-        <br />
-        <label>Type</label>  : @Model.Cars.Type<br />
-        <br />
-        <label>EngineType</label>  : @Model.Cars.EngineType<br />
+        <label>Bookning</label>  : @Model.Book.BookingId<br />
         <br />
 
 
@@ -28,4 +24,4 @@
 
         <input type="submit" value="Cancel" class="btn btn-warning" asp-page-handler="Cancel" />
     </div>
-</form>
+</form> *@

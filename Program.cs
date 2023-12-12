@@ -8,6 +8,7 @@ builder.Services.AddRazorPages();
 
 builder.Services.AddSingleton<ICarRepository>(new CarRepositoryJson());
 builder.Services.AddSingleton<ICustomerRepository>(new CustomerRepositoryJson());
+builder.Services.AddSingleton<IBookingRepository>(new BookingRepository(true));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

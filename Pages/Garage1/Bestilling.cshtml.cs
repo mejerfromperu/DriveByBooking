@@ -32,7 +32,7 @@ namespace DriveByBooking.Pages.Garage1
 
             return Page();
         }
-        public void OnPostOrder()
+        public void OnPost()
         {
 
             if (!ModelState.IsValid)
@@ -40,7 +40,7 @@ namespace DriveByBooking.Pages.Garage1
                 
             }
             
-            Booking newBooking = new Booking(Cars, loginModel.Username, 1, DateTime.Now);
+            Booking newBooking = new Booking(Cars, Customer, DateTime.Now);
 
             try
             {
