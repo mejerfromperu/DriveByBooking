@@ -26,6 +26,8 @@ namespace DriveByBooking.Pages.Garage1
         [BindProperty]
         public double? SearchPrice { get; set; }
         [BindProperty]
+        public double? FindPrice { get; set; }
+        [BindProperty]
         public string? SearchType { get; set; }
         [BindProperty]
         public string? SearchCarType { get; set; }
@@ -48,6 +50,12 @@ namespace DriveByBooking.Pages.Garage1
         public RedirectToPageResult OnPost()
         {
             return RedirectToPage("Index");
+        }
+
+        public IActionResult OnGetsearch()
+        {
+            Cars = _list.SearchPrice(FindPrice);
+            return Page();
         }
 
         public IActionResult OnPostSearch()

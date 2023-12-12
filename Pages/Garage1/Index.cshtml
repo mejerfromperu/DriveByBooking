@@ -2,6 +2,7 @@
 @using DriveByBooking.Model.CarFolder;
 @model DriveByBooking.Pages.Garage1.IndexModel
 @{
+    ViewData["PriceRange"] = "range auto update";
 }
 
 <p></p>
@@ -9,108 +10,100 @@
     <input type="submit" asp-page-handler="Search" value="Søg" class="btn btn-outline-success" />
     Navn <input type="text" asp-for="@Model.SearchCarName" />
     Brand <input type="text" asp-for="@Model.SearchBrand" />
-    Pris <input type="number" asp-for="@Model.SearchPrice" />
-    Type <input type="text" asp-for="@Model.SearchType" />
-    Bil type <input type="text" asp-for="@Model.SearchCarType" />
-    Gear type <input type="text" asp-for="@Model.SearchShiftType" />
-    Motortype <input type="text" asp-for="@Model.SearchEngineType" />
-    
-    <select class="form-select">
-        <option><a >Lokationer</a></option>
-        <option><a >Aarhus<input   value="Aarhus" asp-for="@Model.SearchLocation" /></a></option>
-        <option><a >Aalborg<input  value="Aalborg" asp-for="@Model.SearchLocation" /></a></option>
-        <option><a >Fredericia<input   value="Fredericia" asp-for="@Model.SearchLocation" /></a></option>
-        <option><a >Søborg<input  value="Søborg" asp-for="@Model.SearchLocation" /></a></option>
-    </select>
 
-    @* Lokation <input type="text" asp-for="@Model.SearchLocation" /> *@
+    <input type="range" asp-for="@Model.SearchPrice" id="priceRange" class="form-range" name="priceRange" min="0" max="20000" step="500" value="@Model.SearchPrice" />
+    <div class="container">
+        <ul class="list-unstyled d-flex justify-content-between">
+            <li>Min. Pris: 0</li>
+            <li><input asp-for="@Model.SearchPrice" hidden/><output form="get" id="priceOutput">@Model.SearchPrice.GetValueOrDefault()</output></li>
+            <li>Maks Pris: 20.000</li>
+        </ul>
+    </div>
+
+        <select asp-for="@Model.SearchCarType" class="form-select">
+            <option value="" asp-for="@Model.SearchCarType"> Bil Typer</option>
+            <option value="" asp-for="@Model.SearchCarType"> Alle Bil Typer</option>
+            <option value="SUV" asp-for="@Model.SearchCarType"> SUV</option>
+            <option value="Hatchback" asp-for="@Model.SearchCarType"> Hatchback</option>
+            <option value="Staioncar" asp-for="@Model.SearchCarType"> Staioncar</option>
+            <option value="MPV" asp-for="@Model.SearchCarType"> MPV</option>
+            <option value="Cabriolet" asp-for="@Model.SearchCarType"> Cabriolet</option>
+        </select>
+
+        <select asp-for="@Model.SearchShiftType" class="form-select">
+            <option value="" asp-for="@Model.SearchShiftType"> Gear kasse Typer</option>
+            <option value="" asp-for="@Model.SearchShiftType"> Alle Gear kasser</option>
+            <option value="Automat" asp-for="@Model.SearchShiftType"> Automat Gear</option>
+            <option value="Manuelle" asp-for="@Model.SearchShiftType"> Manuelle Gear</option>
+        </select>
+
+        <select asp-for="@Model.SearchEngineType"class="form-select">
+            <option value="" asp-for="@Model.SearchEngineType"> Motor Typer</option>
+            <option value="" asp-for="@Model.SearchEngineType"> Alle Motorer</option>
+            <option value="Benzin" asp-for="@Model.SearchEngineType"> Benzin</option>
+            <option value="Diesel" asp-for="@Model.SearchEngineType"> Diesel</option>
+            <option value="Hybrid" asp-for="@Model.SearchEngineType"> Hybrid</option>
+            <option value="Elektrisk" asp-for="@Model.SearchEngineType"> Elektrisk</option>
+        </select>
+
+        <select asp-for="@Model.SearchLocation" class="form-select">
+            <option value="" asp-for="@Model.SearchLocation"> Lokationer</option>
+            <option value="" asp-for="@Model.SearchLocation"> Alle Lokationer</option>
+            <option value="Aarhus" asp-for="@Model.SearchLocation"> Aarhus</option>
+            <option value="Aalborg" asp-for="@Model.SearchLocation"> Aalborg</option>
+            <option value="Fredericia" asp-for="@Model.SearchLocation"> Fredericia</option>
+            <option value="Søborg" asp-for="@Model.SearchLocation"> Søborg</option>
+        </select>
 </form>
-<p></p>
 
  <div class="row justify-content-evenly gap-5">
-  @*  <div class="card" style="width: 20em">
-        <form method="post" class="border">
-            <div class="d-grid dropdown pt-3">
-                
-                <button type="button" class="btn btn-primary dropdown-toggle btn-block" data-bs-toggle="dropdown">
-                    Lokationer
-                </button>
-                <ul class="dropdown-menu">
-                        <li><a class="dropdown-item"><input type="submit" asp-for="@Model.CollectLocation" value="Aarhus" /></a></li>
-                        <li><a class="dropdown-item"><input type="submit" asp-for="@Model.CollectLocation" value="Aalborg" /></a></li>
-                        <li><a class="dropdown-item"><input type="submit" asp-for="@Model.CollectLocation" value="Fredericia" /></a></li>
-                        <li><a class="dropdown-item"><input type="submit" asp-for="@Model.CollectLocation" value="Søborg" /></a></li>
-                    
-                </ul>
-                
-            </div>
-            <div class="d-grid dropdown pt-3">
-                <button type="button" class="btn btn-primary dropdown-toggle btn-block" data-bs-toggle="dropdown">
-                    Type bil
-                </button>
-                <ul class="dropdown-menu">
-                    <div class="d-grid dropdown pt-1">
-                    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">Privat Bil</button>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item">SUV<input type="checkbox" value="CarType" /></a></li>
-                        <li><a class="dropdown-item">Hatchback<input type="checkbox" value="Cartype" /></a></li>
-                        <li><a class="dropdown-item">Stationcar <input type="checkbox" value="Cartype" /></a></li>
-                        <li><a class="dropdown-item">MPV<input type="checkbox" value="Cartype" /></a></li>
-                        <li><a class="dropdown-item">Cabriolet<input type="checkbox" value="CarType" /></a></li>
-                    </ul>
-                    </div>
-                    <div class="d-grid dropdown pt-1">
-                    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">Luksus Bil</button>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item">Supercar<input type="checkbox" value="CarType" /></a></li>
-                        <li><a class="dropdown-item">Cabriolet<input type="checkbox" value="Cartype" /></a></li>
-                        <li><a class="dropdown-item">SUV<input type="checkbox" value="Cartype" /></a></li>
-                    </ul>
-                    </div>
-                    <div class="d-grid dropdown pt-1">
-                    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">Erhvers Bil</button>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item">Kassevogn<input type="checkbox" value="CarType" /></a></li>
-                        <li><a class="dropdown-item">Lasbil<input type="checkbox" value="Cartype" /></a></li>
-                    </ul>
-                    </div>
-                </ul>
-            </div>
-            <div class=" d-grid dropdown-item pt-3"><input type="button" asp-page-handler="Bil typer" value="CarType" class="btn btn-primary btn-block" /></div>
-            <div class=" d-grid dropdown-item pt-3">Navn  <input type="text" class="m-xl-auto" asp-page-handler="@Model.SearchCarName" /></div>
-            <div class=" d-grid dropdown-item pt-3">Mærke <input type="text" asp-page-handler="@Model.SearchBrand" /></div>
-            <div class=" d-grid dropdown-item pt-3">Pris <input type="number" asp-page-handler="@Model.SearchPrice/"></div>
-            <div class="dropdown-item"><input type="button" asp-page-handler="Gearkasse" value="ShiftType" class="btn btn-primary" /></div>
-            <div class=" dropdown-item"><input type="button" asp-page-handler="Motor type" value="EngineType" class="btn btn-primary" /></div>
-        </form>
-    </div> *@
+  
     @foreach (var cars in Model.Cars)
     {
-        if(!cars.IsBooked)
-        {
-            <div class="card" style="width: 20em">
-                <div>
-                    <div class="container p-5 my-5">
-                        <div class="card-subtitle">
-                            <h2>@cars.Brand</h2>
-                            <h3>@cars.Name</h3>
-                        </div>
-                        <div class="card-body">
-                            <ul>
-                                <li><p>Motor type: @cars.EngineType </p></li>
-                                <li><p>Gear Kasse: @cars.ShiftType</p></li>
-                                <li><p>Lokation: @cars.Location</p></li>
-                                <li><p>Pris: @cars.Price</p></li>
-                            </ul>
-                            <div class="d-grid">
-                                <a class="btn btn-primary btn-block" asp-page="Bestilling" asp-route-licensplate="@cars.LicensePlate">BESTIL</a>
-                            </div>
+        <div class="card" style="width: 20em">
+            <div>
+                <div class="container p-5 my-5">
+                    <div class="card-subtitle">
+                        <h2>@cars.Brand</h2>
+                        <h3>@cars.Name</h3>
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            <li><p>Motor type: @cars.EngineType </p></li>
+                            <li><p>Gear Kasse: @cars.ShiftType</p></li>
+                            <li><p>Lokation: @cars.Location</p></li>
+                            <li><p>Pris: @cars.Price)</p></li>
+                        </ul>
+                        <div class="d-grid">
+                            <a class="btn btn-primary btn-block" asp-page="Bestilling" asp-route-licensplate="@cars.LicensePlate">BESTIL</a>
                         </div>
                     </div>
                 </div>
             </div>
-        }
-        
+        </div>
     }
 
 </div>
+
+@section Scripts {
+    <script>
+        const priceRange = document.getElementById('priceRange');
+        const priceOutput = document.getElementById('priceOutput');
+
+        function updatePrice() {
+            const selectedPrice = parseFloat(priceRange.value);
+            priceOutput.textContent = " Højst valgte Pris: " + selectedPrice.toLocaleString() + " Kr.";
+            localStorage.setItem('selectedPrice', selectedPrice);
+        }
+
+        // Event listener for input change
+        priceRange.addEventListener('input', updatePrice);
+
+        // Check if there's a saved price in local storage and set the range input value
+        const savedPrice = localStorage.getItem('selectedPrice');
+        if (savedPrice !== null) {
+            priceRange.value = savedPrice;
+            updatePrice();
+        }
+    </script>
+}

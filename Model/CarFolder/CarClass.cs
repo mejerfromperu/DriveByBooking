@@ -112,5 +112,9 @@
         //
 
 
+        internal static List<CarClass> where(Func<object, bool> value)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
