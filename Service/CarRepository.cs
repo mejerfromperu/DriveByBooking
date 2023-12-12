@@ -330,9 +330,6 @@ namespace DriveByBooking.Service
             throw new NotImplementedException();
         }
 
-        public List<CarClass> CollectFromLocation(string? location)
-        {
-            throw new NotImplementedException();
-        }
+       
     }
 }

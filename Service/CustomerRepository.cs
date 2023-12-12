@@ -108,7 +108,7 @@ namespace DriveByBooking.Service
             return existingCustomer;
         }
 
-        private void WriteToJson()
+        public void WriteToJson()
         {
             throw new NotImplementedException();
         }
@@ -153,11 +153,6 @@ namespace DriveByBooking.Service
         }
 
         public List<CustomerClass> SortName()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void WriteToJson()
         {
             throw new NotImplementedException();
         }
