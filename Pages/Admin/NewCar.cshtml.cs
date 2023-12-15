@@ -10,14 +10,16 @@ namespace DriveByBooking.Pages.Admin
 {
     public class NewCarModel : PageModel
     {
+        // instans af bil repository
         private ICarRepository _repo;
 
+        //Dependency Injection
         public NewCarModel(ICarRepository repository)
         {
             _repo = repository;
         }
 
-
+        //Property til nye værdier
         [BindProperty]
         public string NewLicensePlate { get; set; }
         [BindProperty]
@@ -39,6 +41,7 @@ namespace DriveByBooking.Pages.Admin
         [BindProperty]
         public bool NewIsBooked { get; set; }
 
+        //Property til fejl besked
         public string ErrorMessage { get; private set; }
 
         public void OnGet()
@@ -46,7 +49,7 @@ namespace DriveByBooking.Pages.Admin
         }
 
 
-
+        //Når man laver ændringerne tager den alle de nye værdier og ændre dem med de gamle til den specifikke bil
         public IActionResult OnPost()
         {
             ErrorMessage = "";
@@ -62,6 +65,7 @@ namespace DriveByBooking.Pages.Admin
                 //KundeRepository repo = new KundeRepository(true);
                 _repo.Add(newCar);
             }
+            //fejlbesked, hvis noget går galt
             catch (ArgumentException ae)
             {
                 ErrorMessage = ae.Message;
@@ -71,6 +75,7 @@ namespace DriveByBooking.Pages.Admin
             return RedirectToPage("CarIndex");
         }
 
+        //Gør man kommer tilbage til CarIndex, hvis man fortryder
         public IActionResult OnPostCancel()
         {
             return RedirectToPage("CarIndex");
