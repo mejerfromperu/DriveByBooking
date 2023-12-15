@@ -14,25 +14,17 @@ namespace DriveByBooking.Pages.Admin
         {
             _repo = repository;
         }
-
-
-
         public CarClass CarClass { get; private set; }
-
-
 
         public IActionResult OnGet(string licensePlate)
         {
             CarClass = _repo.GetCar(licensePlate);
-
-
             return Page();
         }
 
         public IActionResult OnPostDelete(string licensePlate)
         {
             _repo.Remove(licensePlate);
-
             return RedirectToPage("CarIndex");
         }
 

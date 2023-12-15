@@ -2,9 +2,7 @@
 @model DriveByBooking.Pages.Admin.UpdateCustomerModel
 @{
 }
-
 <h1>Ændre en kunde</h1>
-
 
 <form method="post">
     <div class="form-group>">
@@ -13,11 +11,9 @@
         <label class="text text-danger">@Model.ErrorMessage</label><br />
         <br />
 
-
         <label>Kunde navn</label><br />
         <input class="form-control" asp-for="@Model.NewCustomerName" /><br />
         <span asp-validation-for="@Model.NewCustomerName" class="text-danger"></span><br />
-
 
         <label>Kunde telefon</label><br />
         <input class="form-control" asp-for="@Model.NewCustomerPhoneNumber" /><br />
@@ -25,15 +21,11 @@
         <label>Kunde email</label><br />
         <input class="form-control" asp-for="@Model.NewCustomerEmail" /><br />
 
-
         <label>Kunde username</label><br />
         <input class="form-control" asp-for="@Model.NewCustomerUsername" /><br />
 
         <label>Kunde password</label><br />
         <input class="form-control" asp-for="@Model.NewCustomerPassword" /><br />
-
-
-
 
         @if (Model.Error)
         {

@@ -17,7 +17,6 @@ namespace DriveByBooking.Pages.Admin
             _repo = repository;
         }
 
-
         [BindProperty]
         public string NewLicensePlate { get; set; }
         [BindProperty]
@@ -37,13 +36,8 @@ namespace DriveByBooking.Pages.Admin
         [BindProperty]
         public string NewLocation { get; set; }
 
-
-
-
         public string ErrorMessage { get; private set; }
         public bool Error { get; private set; }
-
-
 
         public void OnGet(string licensePlate)
         {
@@ -71,18 +65,6 @@ namespace DriveByBooking.Pages.Admin
             }
         }
 
-
-        //public IActionResult OnPostChange()
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return Page();
-        //    }
-        //    CustomerClass customer = _repo.Update(new CustomerClass(NewCustomerEmail, NewCustomerPhoneNumber, NewCustomerId, NewCustomerUsername, NewCustomerPassword, NewCustomerName, IsAdmin, IsOwner));
-
-        //    return RedirectToPage("Index");
-        //}
-
         public IActionResult OnPostChange()
         {
             if (!ModelState.IsValid)
@@ -106,8 +88,6 @@ namespace DriveByBooking.Pages.Admin
 
             return RedirectToPage("CarIndex");
         }
-
-
 
         public IActionResult OnPostCancel()
         {

@@ -17,16 +17,13 @@ namespace DriveByBooking.Pages.Admin
             _repo = repository;
         }
 
-
         [BindProperty]
         public int NewCustomerId { get; set; }
-
 
         [BindProperty]
         [Required(ErrorMessage = "Der skal være et navn")]
         [StringLength(100, MinimumLength = 2, ErrorMessage = "Der skal være mindst to tegn i et navn")]
         public string NewCustomerName { get; set; }
-
 
         [BindProperty]
         public string NewCustomerPhoneNumber { get; set; }
@@ -46,14 +43,11 @@ namespace DriveByBooking.Pages.Admin
         [BindProperty]
         public bool IsOwner { get; set; }
 
-
         public string ErrorMessage { get; private set; }
 
         public void OnGet()
         {
         }
-
-        
 
         public IActionResult OnPost()
         {

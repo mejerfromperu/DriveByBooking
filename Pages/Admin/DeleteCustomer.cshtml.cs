@@ -15,24 +15,17 @@ namespace DriveByBooking.Pages.Admin
             _repo = repository;
         }
 
-
-
         public CustomerClass CustomerClass { get; private set; }
-
-
 
         public IActionResult OnGet(int id)
         {
             CustomerClass = _repo.GetCustomer(id);
-
-
             return Page();
         }
 
         public IActionResult OnPostDelete(int id)
         {
             _repo.Delete(id);
-
             return RedirectToPage("Index");
         }
 

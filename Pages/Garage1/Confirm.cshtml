@@ -4,16 +4,12 @@
 }
 <h1>TAK FOR DIN BESTILLING!!!</h1>
 
-
-
-
 <form method="post">
     <div class="form-group>">
         <h3>For at booke den valgte bil skal du indtaste dine oplysninger</h3>
         <label>Kunde Username</label><br />
         <input class="form-control" asp-for="@Model.OrderCustomerUsername" /><br />
         <br />
-
 
         <input type="submit" value="BOOK" class="btn btn-success" asp-route-username="@Model.OrderCustomerUsername" />
         <input type="submit" value="Fortryd" class="btn btn-danger" asp-page-handler="Cancel" />

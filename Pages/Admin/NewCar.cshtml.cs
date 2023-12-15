@@ -17,7 +17,6 @@ namespace DriveByBooking.Pages.Admin
             _repo = repository;
         }
 
-
         [BindProperty]
         public string NewLicensePlate { get; set; }
         [BindProperty]
@@ -43,9 +42,8 @@ namespace DriveByBooking.Pages.Admin
 
         public void OnGet()
         {
+
         }
-
-
 
         public IActionResult OnPost()
         {
@@ -67,7 +65,6 @@ namespace DriveByBooking.Pages.Admin
                 ErrorMessage = ae.Message;
                 return Page();
             }
-
             return RedirectToPage("CarIndex");
         }
 

@@ -8,8 +8,6 @@ namespace DriveByBooking.Pages.Admin
 {
     public class BookingIndexModel : PageModel
     {
-
-
         //Bare lige en comment for at fiks merge
         // instans af kunde customer repository
         private ICustomerRepository _customerRepo;

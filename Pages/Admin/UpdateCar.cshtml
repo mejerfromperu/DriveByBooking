@@ -2,9 +2,7 @@
 @model DriveByBooking.Pages.Admin.UpdateCarModel
 @{
 }
-
 <h1>Ændre en bil</h1>
-
 
 <form method="post">
     <div class="form-group>">
@@ -13,18 +11,15 @@
         <label class="text text-danger">@Model.ErrorMessage</label><br />
         <br />
 
-
         <label>Bil navn</label><br />
         <input class="form-control" asp-for="@Model.NewCarName" /><br />
         <span asp-validation-for="@Model.NewCarName" class="text-danger"></span><br />
-
 
         <label>Brand</label><br />
         <input class="form-control" asp-for="@Model.NewBrand" /><br />
 
         <label>Pris</label><br />
         <input class="form-control" asp-for="@Model.NewPrice" /><br />
-
 
         <label>Type</label><br />
         <input class="form-control" asp-for="@Model.NewType" /><br />
@@ -40,9 +35,6 @@
 
         <label>Lokation</label><br />
         <input class="form-control" asp-for="@Model.NewLocation" /><br />
-
-
-
 
         @if (Model.Error)
         {

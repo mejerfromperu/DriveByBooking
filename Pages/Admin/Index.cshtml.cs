@@ -39,17 +39,11 @@ namespace DriveByBooking.Pages.Admin
             Customers = _customerRepo.GetEverything();
         }
 
-        public void OnPost()
-        {
-
-        }
-
         //Gør at man kan komme til NewCustomer siden
         public IActionResult OnPostCustomer()
         {
             return RedirectToPage("NewCustomer");
         }
-
 
         //Gør at man søger når man trykker på knappen
         public IActionResult OnPostSearchCustomer()

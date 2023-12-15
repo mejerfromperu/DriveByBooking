@@ -7,16 +7,20 @@ namespace DriveByBooking.Pages.Garage1
 {
     public class IndexModel : PageModel
     {
+        // Repository for data (dependency injection)
         private ICarRepository _list;
 
+
+        // Contructor
         public IndexModel(ICarRepository list)
         {
             _list = list;
         }
 
+        // List property
         public List<CarClass> Cars { get; set; }
 
-
+        // BindProperties
         [BindProperty]
         public string? SearchLicensePlate { get; set; }
         [BindProperty]
@@ -37,16 +41,18 @@ namespace DriveByBooking.Pages.Garage1
         public string? SearchEngineType { get; set; }
         [BindProperty]
         public string? SearchLocation { get; set; }
-
-
-
         [BindProperty]
         public string? CollectLocation { get; set; }
+
+
+        // HTTP GET method to handle intial page loading:
         public void OnGet()
         {
             Cars = _list.GetAllCars();
         }
 
+
+        // HTTP POST method to handle form submissions:
         public RedirectToPageResult OnPost()
         {
             return RedirectToPage("Index");
@@ -68,9 +74,5 @@ namespace DriveByBooking.Pages.Garage1
         {
             return RedirectToPage("Index");
         }
-
-
-
-
     }
 }

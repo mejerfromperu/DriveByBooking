@@ -16,7 +16,6 @@ namespace DriveByBooking.Pages.Admin
 
         public List<CarClass> Cars { get; set; }
 
-
         [BindProperty]
         public string? SearchLicensePlate { get; set; }
         [BindProperty]
@@ -35,8 +34,6 @@ namespace DriveByBooking.Pages.Admin
         public string? SearchEngineType { get; set; }
         [BindProperty]
         public string? SearchLocation { get; set; }
-
-
 
         public void OnGet()
         {

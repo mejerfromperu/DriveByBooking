@@ -6,11 +6,7 @@
 @{
     ViewData["Title"] = "Customer";
 }
-
-
 <h1>Velkommen til Admin siden</h1>
-
-
 <h2>Her ses alle kunder</h2>
 
 @* Laver en knap til at oprette kunder *@
@@ -20,7 +16,6 @@
 
 @* Laver 2 knapper som får en til biler og bokking så admin kan se dem alle *@
 <a asp-page="CarIndex" class="btn btn-outline-primary">Biler</a>
-
 <a asp-page="BookingIndex" class="btn btn-outline-primary">Books</a>
 
 @* Form hvor man kan søge efter kunder *@
@@ -35,7 +30,6 @@
 <p></p>
 
 @* Tabel med alle kunder og man kan sortere efter id og navn *@
-
 <table class="table table-hover">
     <thead>
         <tr>

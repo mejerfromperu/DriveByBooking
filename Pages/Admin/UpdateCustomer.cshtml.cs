@@ -16,17 +16,13 @@ namespace DriveByBooking.Pages.Admin
             _repo = repository;
         }
 
-
         [BindProperty]
         public int NewCustomerId { get; set; }
-
 
         [BindProperty]
         [Required(ErrorMessage = "Der skal være et navn")]
         [StringLength(100, MinimumLength = 2, ErrorMessage = "Der skal være mindst to tegn i et navn")]
         public string NewCustomerName { get; set; }
-
-
 
         [BindProperty]
         public string NewCustomerPhoneNumber { get; set; }
@@ -46,13 +42,8 @@ namespace DriveByBooking.Pages.Admin
         [BindProperty]
         public bool IsOwner { get; set; }
 
-
-
-
         public string ErrorMessage { get; private set; }
         public bool Error { get; private set; }
-
-
 
         public void OnGet(int id)
         {
@@ -77,18 +68,6 @@ namespace DriveByBooking.Pages.Admin
             }
         }
 
-        
-        //public IActionResult OnPostChange()
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return Page();
-        //    }
-        //    CustomerClass customer = _repo.Update(new CustomerClass(NewCustomerEmail, NewCustomerPhoneNumber, NewCustomerId, NewCustomerUsername, NewCustomerPassword, NewCustomerName, IsAdmin, IsOwner));
-
-        //    return RedirectToPage("Index");
-        //}
-
         public IActionResult OnPostChange()
         {
             if (!ModelState.IsValid)
@@ -111,8 +90,6 @@ namespace DriveByBooking.Pages.Admin
 
             return RedirectToPage("Index");
         }
-
-
 
         public IActionResult OnPostCancel()
         {

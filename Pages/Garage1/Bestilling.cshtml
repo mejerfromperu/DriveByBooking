@@ -2,11 +2,7 @@
 @model DriveByBooking.Pages.Garage1.BestillingModel
 @{
 }
-
-
 <h1>Booking side</h1>
-
-
 
 <form method="post">
     <div class="form-group">
@@ -24,24 +20,10 @@
         <label>EngineType</label>  : @Model.Cars.EngineType<br />
         <br />
 
-
-
         <input type="submit" value="Order" class="btn btn-danger" asp-page="Confirm" />
-
         <input type="submit" value="Cancel" class="btn btn-warning" asp-page-handler="Cancel" />
     </div>
 </form>
-
-
-
-
-
-
-
-
-
-
-
 
 <input type="radio" class="btn-check" name="options-outlined" id="success-outlined" autocomplete="off" checked>
 <label class="btn btn-outline-success" for="success-outlined">Checked success radio</label>

@@ -4,9 +4,10 @@
 @{
 }
 <h1>Velkommen til din kunde profil</h1>
-
 <h2>Dine Oplysninger</h2>
 
+@* Vi kunne ikke få siden til at vise den logged ind bruger men det her er noget af det vi prøvet af
+ *@
 @* @foreach (CustomerClass customer in Model.Customers)
 {
     <dl>
@@ -17,7 +18,6 @@
         <!-- Add other customer details as needed -->
     </dl>
 } *@
-
 
 <form method="post">
     <input type="submit" value="Rediger Profil" class="btn btn-outline-primary" asp-page-handler="Customer" />
