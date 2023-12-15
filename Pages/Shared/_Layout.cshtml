@@ -10,38 +10,38 @@
     <link rel="stylesheet" href="~/DriveByBooking.styles.css" asp-append-version="true" />
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+    <header class="bg-red">
+        <nav class="navbar midget navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow mb-3" >
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">DriveByBooking</a>
+                <a class="navbar-brand text-white" asp-area="" asp-page="/Index">DriveByBooking</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between text-white">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">HomePage</a>
+                            <a class="nav-link" asp-area="" asp-page="/Index">HomePage</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Garage1/index">Garage</a>
+                            <a class="nav-link" asp-area="" asp-page="/Garage1/index">Garage</a>
                         </li>
                         @if (Customers.CustomerLoggedIn is not null && Customers.CustomerLoggedIn.IsAdmin)
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/Admin/index">Admin</a>
+                                <a class="nav-link" asp-area="" asp-page="/Admin/index">Admin</a>
                             </li>
                         }
                         @if (Customers.CustomerLoggedIn is not null)
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/ProfilSide/index">ProfilSide</a>
+                                <a class="nav-link" asp-area="" asp-page="/ProfilSide/index">ProfilSide</a>
                             </li>
                         }
                         @if (Customers.CustomerLoggedIn is not null)
                         {
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Logout">Logout</a>
+                            <a class="nav-link" asp-area="" asp-page="/Logout">Logout</a>
                         </li>
                         }
                     </ul>
@@ -55,9 +55,9 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer id="footer" class="border-top footer text-muted">
         <div class="container">
-            &copy; 2023 - DriveByBooking - <a asp-area="" asp-page="/Privacy">Privacy</a>
+            &copy; 2023 - DriveByBooking - <a asp-area="" asp-page="/Privacy">Privacy Policy</a>
         </div>
     </footer>
 

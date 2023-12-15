@@ -17,9 +17,12 @@ html {
   min-height: 100%;
 }
 
-body {
-  margin-bottom: 60px;
+#loginpage {
+    margin-bottom: 60px;
+    background: url("https://msdesign.blob.core.windows.net/wallpapers/Microsoft_Nostalgic_Windows_Wallpaper_4k.jpg");
+    background-size: cover; /* or use 'contain' depending on your preference */
 }
+
 
 .divider:after,
 .divider:before {
@@ -29,22 +32,33 @@ body {
     background: #eee;
 }
 
-#photo
-{
-    border-radius: 10px;
-}
 
 
 body {
-    background-color: #f1faee;
+    background-color: gray;
+}
+
+.midget {
+    background-color: #e63946;
+}
+
+body, .footer {
+    color: #344e41;
 }
 
 
-body, .navbar, .footer {
-    color: #606c38;
+.nav-link {
+    color: white;
 }
 
+.nav-link:hover {
+    color: pink;
+}
 
-a, a:hover {
-    color: #283618;
+.li {
+    color: white;
+}
+
+#footer {
+    background-color: white;
 }

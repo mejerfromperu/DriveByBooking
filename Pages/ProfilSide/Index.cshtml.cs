@@ -40,8 +40,6 @@ namespace DriveByBooking.Pages.ProfilSide
             Customers = currentCustomer != null ? new List<CustomerClass> { currentCustomer } : new List<CustomerClass>();
         }
 
-
-
         public IActionResult OnPostCustomer()
         {
             return RedirectToPage("ManageProfil");
