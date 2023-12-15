@@ -20,8 +20,7 @@
 
 @* Form hvor man kan søge efter kunder *@
 <p></p>
-
-<div class="bg-dark rounded-2 text-white">
+<div class="form-selectt rounded-2">
     <form method="post" class="border border-success rounded">
         <input type="submit" asp-page-handler="Search" value="Søg" class="btn btn-success" />
         Kunde Nummer <input type="number" asp-for="@Model.SearchId" />
@@ -34,8 +33,8 @@
 <p></p>
 
 @* Tabel med alle kunder og man kan sortere efter id og navn *@
-
-<table class="table table-midget table-hover bg-dark rounded-2 text-white">
+<div class="form-selectt">
+<table class="table table-hover rounded-2">
     <thead>
         <tr>
             <form method="post">
@@ -66,3 +65,4 @@
         }
     </tbody>
 </table>
+</div>

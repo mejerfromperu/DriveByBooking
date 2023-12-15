@@ -21,6 +21,7 @@
 @* Søge funktioner *@
 
 <p></p>
+<div class="form-selectt rounded-2">
 <form method="post" class="border border-success rounded">
     <input type="submit" asp-page-handler="Search" value="Søg" class="btn btn-success" />
     Navn <input type="text" asp-for="@Model.SearchCarName" />
@@ -32,12 +33,13 @@
     Motortype <input type="text" asp-for="@Model.SearchEngineType" />
     Lokation <input type="text" asp-for="@Model.SearchLocation" />
 </form>
+</div>
 <p></p>
 
 
 @* Tabel over Biler, hvor man kan sortere efter navn og nummerplade *@
 
-
+<div class="form-selectt">
 <table class="table table-hover">
     <thead>
         <tr>
@@ -75,3 +77,4 @@
         }
     </tbody>
 </table>
+</div>
