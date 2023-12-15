@@ -39,7 +39,7 @@ body {
 }
 
 .midget {
-    background-color: #e63946;
+    background-color: #f48c06;
 }
 
 body, .footer {
@@ -47,17 +47,17 @@ body, .footer {
 }
 
 
-.nav-link {
+/*.nav-link {
     color: white;
 }
 
 .nav-link:hover {
     color: pink;
-}
+}*/
 
-.li {
+/*.li {
     color: white;
-}
+}*/
 
 #footer {
     background-color: white;
