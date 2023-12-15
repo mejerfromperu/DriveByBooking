@@ -9,14 +9,16 @@ namespace DriveByBooking.Pages.Admin
 {
     public class NewCustomerModel : PageModel
     {
-
+        // instans af kunde repository
         private ICustomerRepository _repo;
 
+        //Dependency Injection
         public NewCustomerModel(ICustomerRepository repository)
         {
             _repo = repository;
         }
 
+        //Property til nye værdier
         [BindProperty]
         public int NewCustomerId { get; set; }
 
@@ -43,12 +45,15 @@ namespace DriveByBooking.Pages.Admin
         [BindProperty]
         public bool IsOwner { get; set; }
 
+        //Property til fejlbesked
         public string ErrorMessage { get; private set; }
 
         public void OnGet()
         {
         }
 
+
+        //Når man laver ændringerne tager den alle de nye værdier og ændre dem med de gamle til den specifikke kunde
         public IActionResult OnPost()
         {
             ErrorMessage = "Kunne ikke oprette kunde, da kundenummer er i brug. Vælg gerne et andet kundenummer";
@@ -71,6 +76,7 @@ namespace DriveByBooking.Pages.Admin
                 _repo.AddCustomer(newCustomer);
                 TempData["SuccessMessage"] = $"Customer {NewCustomerName} added successfully with ID {NewCustomerId}.";
             }
+            //fejlbesked, hvis noget går galt
             catch (ArgumentException ae)
             {
                 ErrorMessage = ae.Message;
@@ -81,12 +87,14 @@ namespace DriveByBooking.Pages.Admin
 
         }
 
+        //Tjekker om kunde eksistere med det ID, da kunder ikke må have samme id
         private bool CustomerExists(int customerId)
         {
             // Check if the customer ID already exists in the list
             return _repo.CustomerExists(customerId);
         }
 
+        // Får en tilbage hvis man fortyder
         public IActionResult OnPostCancel()
         {
             return RedirectToPage("Index");
