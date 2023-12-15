@@ -74,9 +74,15 @@ tr:hover {
     color: green;
 }
 
+.form-selectt {
+    background: #f48c06;
+}
 
 .form-selectt {
     background: #f48c06;
+}
+.form-selectt:hover{
+    color: black        ;
 }
 
 .form-select {
@@ -85,6 +91,8 @@ tr:hover {
     margin-bottom: 5px;
     border: 4px;
 }
+
+
 
 .bestil {
     background-color: #19784d;
