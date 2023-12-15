@@ -32,7 +32,9 @@ html {
     background: #eee;
 }
 
-
+.table {
+    color: white;
+}
 
 body {
     background-color: gray;
@@ -43,16 +45,31 @@ body {
 }
 
 body, .footer {
-    color: #344e41;
+    color: white;
 }
 
+.card {
+    border-radius: 2px;
+}
 
-/*.nav-link {
+.form-select {
+    background: linear-gradient(180deg, white, #f48c06);
+    color: #212529;
+    margin-bottom: 5px;
+    border: 4px;
+}
+
+.bestil {
+    background-color: #19784d;
+    color: white;
+}
+
+.nav-link {
     color: white;
 }
 
 .gradient-text {
-    background: linear-gradient(90deg, white, red);
+    background: linear-gradient(180deg, white, #f48c06);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
