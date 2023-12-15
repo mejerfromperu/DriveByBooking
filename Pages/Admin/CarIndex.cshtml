@@ -6,9 +6,13 @@
 <h1>Velkommen til Admin siden</h1>
 <h2>Her ses alle biler</h2>
 
+@* Knap til at oprette nye biler *@
+
 <form method="post">
     Vil du oprette en ny Bil tryk på <input type="submit" value="Opret" class="btn btn-outline-primary" asp-page-handler="Car" />
 </form>
+
+@* 2 knapper der gør man kan komme til de andre admin sider *@
 
 <a asp-page="Index" class="btn btn-outline-primary">Kunder</a>
 <a asp-page="BookingIndex" class="btn btn-outline-primary">Books</a>
@@ -31,7 +35,7 @@
 <p></p>
 
 
-@* Tabel over Biler *@
+@* Tabel over Biler, hvor man kan sortere efter navn og nummerplade *@
 
 
 <table class="table table-hover">

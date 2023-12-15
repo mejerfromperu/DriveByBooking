@@ -23,7 +23,7 @@ namespace DriveByBooking.Pages.Admin
         // property til View'et
         public List<Booking> Books { get; set; }
 
-        //Kunder
+        //Henter alle bookinger ned
         public void OnGet()
         {
             Books = _bookRepo.GetAllbookings();

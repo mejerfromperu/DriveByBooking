@@ -9,7 +9,7 @@ namespace DriveByBooking.Pages.Admin
 {
     public class IndexModel : PageModel
     {
-        // instans af kunde customer repository
+        // instans af kunde repository
         private ICustomerRepository _customerRepo;
 
         //Dependency Injection
