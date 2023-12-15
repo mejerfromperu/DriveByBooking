@@ -9,20 +9,20 @@
 @* Knap til at oprette nye biler *@
 
 <form method="post">
-    Vil du oprette en ny Bil tryk på <input type="submit" value="Opret" class="btn btn-outline-primary" asp-page-handler="Car" />
+    Vil du oprette en ny Bil tryk på <input type="submit" value="Opret" class="btn btn-primary" asp-page-handler="Car" />
 </form>
 
 @* 2 knapper der gør man kan komme til de andre admin sider *@
 
-<a asp-page="Index" class="btn btn-outline-primary">Kunder</a>
-<a asp-page="BookingIndex" class="btn btn-outline-primary">Books</a>
+<a asp-page="Index" class="btn btn-primary">Kunder</a>
+<a asp-page="BookingIndex" class="btn btn-primary">Books</a>
 
 
 @* Søge funktioner *@
 
 <p></p>
 <form method="post" class="border border-success rounded">
-    <input type="submit" asp-page-handler="Search" value="Søg" class="btn btn-outline-success" />
+    <input type="submit" asp-page-handler="Search" value="Søg" class="btn btn-success" />
     Navn <input type="text" asp-for="@Model.SearchCarName" />
     Brand <input type="text" asp-for="@Model.SearchBrand" />
     Pris <input type="number" asp-for="@Model.SearchPrice" />
@@ -42,8 +42,8 @@
     <thead>
         <tr>
             <form method="post">
-            <th><input type="submit" asp-page-handler="SortLicensePlate" value="Nummerplade" class="btn btn-outline-success" /></th>
-            <th><input type="submit" asp-page-handler="SortName" value="Navn" class="btn btn-outline-success" /></th>
+            <th><input type="submit" asp-page-handler="SortLicensePlate" value="Nummerplade" class="btn btn-success" /></th>
+            <th><input type="submit" asp-page-handler="SortName" value="Navn" class="btn btn-success" /></th>
             <th>Brand</th>
             <th>Pris</th>
             <th>Type</th>
