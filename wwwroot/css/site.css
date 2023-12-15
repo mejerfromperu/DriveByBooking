@@ -60,6 +60,15 @@ body, .footer {
     border-radius: 2px;
 }
 
+tr:hover {
+    color: green;
+}
+
+
+.form-selectt {
+    background: #f48c06;
+}
+
 .form-select {
     background: linear-gradient(180deg, white, #f48c06);
     color: #212529;

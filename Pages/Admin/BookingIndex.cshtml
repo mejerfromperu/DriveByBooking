@@ -19,25 +19,26 @@
 <a asp-page="CarIndex" class="btn btn-outline-primary">Biler</a>
 
 @* Skema over bookings *@
-
-<table class="table table-hover">
-    <thead>
-        <tr>
-            <form method="post">
-            <th>Kunde Infomation</th>
-            <th>Bil Infomation</th>
-            <th>TID</th>
-            </form>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (Booking c in Model.Books)
-        {
+<div class="form-selectt">
+    <table class="table table-hover">
+        <thead>
             <tr>
-                <td>@c.CustomerClass</td>
-                <td>@c.CarClass</td>
-                <td>@c.DateTime</td>
+                <form method="post">
+                <th>Kunde Infomation</th>
+                <th>Bil Infomation</th>
+                <th>TID</th>
+                </form>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (Booking c in Model.Books)
+            {
+                <tr>
+                    <td>@c.CustomerClass</td>
+                    <td>@c.CarClass</td>
+                    <td>@c.DateTime</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
