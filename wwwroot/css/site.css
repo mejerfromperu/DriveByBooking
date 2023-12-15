@@ -32,6 +32,14 @@ html {
     background: #eee;
 }
 
+a {
+    color: white;
+}
+
+header {
+    color: white;
+}
+
 .table {
     color: white;
 }
@@ -60,6 +68,15 @@ body, .footer {
 
 .card {
     border-radius: 2px;
+}
+
+tr:hover {
+    color: green;
+}
+
+
+.form-selectt {
+    background: #f48c06;
 }
 
 .form-select {
