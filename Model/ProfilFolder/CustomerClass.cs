@@ -67,6 +67,8 @@
             IsOwner = isOwner;
         }
 
+
+        // ToString
         public override string ToString()
         {
             return $"{{{nameof(Email)}={Email}, {nameof(PhoneNumber)}={PhoneNumber}, {nameof(CustomerId)}={CustomerId.ToString()}, {nameof(IsAdmin)}={IsAdmin.ToString()}, {nameof(IsOwner)}={IsOwner.ToString()}, {nameof(Username)}={Username}, {nameof(Password)}={Password}, {nameof(Name)}={Name}, {nameof(IsAdmin)}={IsAdmin.ToString()}, {nameof(IsOwner)}={IsOwner.ToString()}}}";

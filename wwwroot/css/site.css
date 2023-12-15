@@ -34,3 +34,17 @@ body {
     border-radius: 10px;
 }
 
+
+body {
+    background-color: #f1faee;
+}
+
+
+body, .navbar, .footer {
+    color: #606c38;
+}
+
+
+a, a:hover {
+    color: #283618;
+}
