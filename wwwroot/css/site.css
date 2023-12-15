@@ -32,6 +32,14 @@ html {
     background: #eee;
 }
 
+a {
+    color: white;
+}
+
+header {
+    color: white;
+}
+
 .table {
     color: white;
 }
