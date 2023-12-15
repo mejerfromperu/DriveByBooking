@@ -6,29 +6,28 @@ namespace DriveByBooking.Pages
 {
     public class loginModel : PageModel
     {
+
+        // Denpendency injection
         private ICustomerRepository _customerRepository;
 
+        // Constructor
         public loginModel(ICustomerRepository customerRepository)
         {
             _customerRepository = customerRepository;
         }
-
+        // BindProperties
         [BindProperty]
         public string Username { get; set; }
 
         [BindProperty]
         public string Password { get; set; }
 
-        public string CurrentUser { get; set; }
-
-        string loggedName;
-        string loggedPassword;
-
+        // HTTP GET method for loading page handle:
         public void OnGet()
         {
         }
 
-
+        // HTTP POST method for form submission handle:
         public IActionResult OnPost()
         {
             if (Username == null || Password == null)
@@ -38,29 +37,11 @@ namespace DriveByBooking.Pages
 
             if (!_customerRepository.CheckCustomer(Username, Password))
             {
-                loggedName = Username;
-                loggedPassword = Password;
+
                 return Page();
             }
 
-            // Assuming you have some authentication mechanism, set the current user.
-            SetCurrentUser(Username);
-
             return RedirectToPage("index");
         }
-
-        // Method to get the currently logged-in customer.
-        public string GetLoggedinCustomer()
-            {
-                // You might want to retrieve the information from your authentication system or session.
-                return $"{loggedName} - {loggedPassword}";
-            }
-
-            // Set the current user in your authentication or session mechanism.
-            private void SetCurrentUser(string username)
-            {
-                // Implement your logic to set the current user, whether it's using cookies, session, etc.
-                CurrentUser = username;
-            }
     }
 }

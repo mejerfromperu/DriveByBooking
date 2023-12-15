@@ -2,9 +2,9 @@
 @model DriveByBooking.Pages.Admin.DeleteCustomerModel
 @{
 }
-
-
 <h1> Slet en kunde </h1>
+
+@* Display af valgte kunde som skal slettes, og 2 knappper, en til at fortyde og en anden til at slette *@
 
 <form method="post">
     <div class="form-group>">
@@ -20,11 +20,7 @@
         <br />
         <label>Kunde password</label>  : @Model.CustomerClass.Password<br />
         <br />
-
-
-
         <input type="submit" value="Slet Kunde" class="btn btn-danger" asp-page-handler="Delete" asp-route-id="@Model.CustomerClass.CustomerId" />
-
         <input type="submit" value="Fortryd" class="btn btn-warning" asp-page-handler="Cancel" />
     </div>
 </form>

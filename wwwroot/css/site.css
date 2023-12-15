@@ -17,9 +17,12 @@ html {
   min-height: 100%;
 }
 
-body {
-  margin-bottom: 60px;
+#loginpage {
+    margin-bottom: 60px;
+    background: url("https://msdesign.blob.core.windows.net/wallpapers/Microsoft_Nostalgic_Windows_Wallpaper_4k.jpg");
+    background-size: cover; /* or use 'contain' depending on your preference */
 }
+
 
 .divider:after,
 .divider:before {
@@ -29,9 +32,23 @@ body {
     background: #eee;
 }
 
-#photo
-{
-    border-radius: 10px;
+
+
+body {
+    background-color: gray;
+}
+
+.midget {
+    background-color: #f48c06;
+}
+
+body, .footer {
+    color: #344e41;
+}
+
+
+/*.nav-link {
+    color: white;
 }
 
 .gradient-text {

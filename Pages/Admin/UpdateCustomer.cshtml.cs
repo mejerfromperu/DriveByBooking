@@ -9,24 +9,23 @@ namespace DriveByBooking.Pages.Admin
 {
     public class UpdateCustomerModel : PageModel
     {
+        // instans af kunde repository
         private ICustomerRepository _repo;
 
+        //Dependency Injection
         public UpdateCustomerModel(ICustomerRepository repository)
         {
             _repo = repository;
         }
 
-
+        //Property til nye værdier
         [BindProperty]
         public int NewCustomerId { get; set; }
-
 
         [BindProperty]
         [Required(ErrorMessage = "Der skal være et navn")]
         [StringLength(100, MinimumLength = 2, ErrorMessage = "Der skal være mindst to tegn i et navn")]
         public string NewCustomerName { get; set; }
-
-
 
         [BindProperty]
         public string NewCustomerPhoneNumber { get; set; }
@@ -46,14 +45,11 @@ namespace DriveByBooking.Pages.Admin
         [BindProperty]
         public bool IsOwner { get; set; }
 
-
-
-
+        //Property til fejl besked
         public string ErrorMessage { get; private set; }
         public bool Error { get; private set; }
 
-
-
+        //Gør vi kan få de spefikke oplysninger om kunden
         public void OnGet(int id)
         {
             ErrorMessage = "";
@@ -77,18 +73,7 @@ namespace DriveByBooking.Pages.Admin
             }
         }
 
-        
-        //public IActionResult OnPostChange()
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return Page();
-        //    }
-        //    CustomerClass customer = _repo.Update(new CustomerClass(NewCustomerEmail, NewCustomerPhoneNumber, NewCustomerId, NewCustomerUsername, NewCustomerPassword, NewCustomerName, IsAdmin, IsOwner));
-
-        //    return RedirectToPage("Index");
-        //}
-
+        //Gør vi kan lave værdierne om til de nye ændrede værdier
         public IActionResult OnPostChange()
         {
             if (!ModelState.IsValid)
@@ -112,8 +97,7 @@ namespace DriveByBooking.Pages.Admin
             return RedirectToPage("Index");
         }
 
-
-
+        // Gør man kommer tilbage til Index, hvis man fortryder
         public IActionResult OnPostCancel()
         {
             return RedirectToPage("Index");
