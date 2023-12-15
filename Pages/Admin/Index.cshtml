@@ -8,19 +8,22 @@
 }
 
 
-   <h1>Velkommen til Admin siden</h1>
+<h1>Velkommen til Admin siden</h1>
 
-   
-   <h2>Her ses alle kunder</h2>
 
+<h2>Her ses alle kunder</h2>
+
+@* Laver en knap til at oprette kunder *@
 <form method="post">
-    Vil du oprette en ny Kunde tryk på <input type="submit" value="Opret" class="btn btn-outline-primary" asp-page-handler="Customer"  />
+    Vil du oprette en ny Kunde tryk på <input type="submit" value="Opret" class="btn btn-outline-primary" asp-page-handler="Customer" />
 </form>
 
+@* Laver 2 knapper som får en til biler og bokking så admin kan se dem alle *@
 <a asp-page="CarIndex" class="btn btn-outline-primary">Biler</a>
 
 <a asp-page="BookingIndex" class="btn btn-outline-primary">Books</a>
 
+@* Form hvor man kan søge efter kunder *@
 <p></p>
 <form method="post" class="border border-success rounded">
     <input type="submit" asp-page-handler="Search" value="Søg" class="btn btn-outline-success" />
@@ -30,6 +33,8 @@
     Kunde Email <input type="text" asp-for="@Model.SearchEmail" />
 </form>
 <p></p>
+
+@* Tabel med alle kunder og man kan sortere efter id og navn *@
 
 <table class="table table-hover">
     <thead>
