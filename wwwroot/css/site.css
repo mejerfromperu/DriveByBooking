@@ -36,6 +36,16 @@ html {
     color: white;
 }
 
+.table-midget {
+    --bs-table-striped-bg: #c5d7f2;
+    --bs-table-striped-color: #000;
+    --bs-table-active-bg: #bacbe6;
+    --bs-table-active-color: #000;
+    --bs-table-hover-color: #f48c06;
+    color: #000;
+    border-color: #bacbe6;
+}
+
 body {
     background-color: gray;
 }
