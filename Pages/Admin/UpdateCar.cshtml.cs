@@ -43,7 +43,6 @@ namespace DriveByBooking.Pages.Admin
         public string ErrorMessage { get; private set; }
         public bool Error { get; private set; }
 
-
         //Gør vi kan få de spefikke oplysninger om bilen
         public void OnGet(string licensePlate)
         {
@@ -71,18 +70,6 @@ namespace DriveByBooking.Pages.Admin
             }
         }
 
-
-        //public IActionResult OnPostChange()
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return Page();
-        //    }
-        //    CustomerClass customer = _repo.Update(new CustomerClass(NewCustomerEmail, NewCustomerPhoneNumber, NewCustomerId, NewCustomerUsername, NewCustomerPassword, NewCustomerName, IsAdmin, IsOwner));
-
-        //    return RedirectToPage("Index");
-        //}
-
         //Gør vi kan lave værdierne om til de nye ændrede værdier
         public IActionResult OnPostChange()
         {
@@ -107,7 +94,6 @@ namespace DriveByBooking.Pages.Admin
 
             return RedirectToPage("CarIndex");
         }
-
 
         // Gør man kommer tilbage til CarIndex, hvis man fortryder
         public IActionResult OnPostCancel()
