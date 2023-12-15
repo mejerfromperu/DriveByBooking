@@ -24,8 +24,6 @@ namespace DriveByBooking.Pages.Admin
         public IActionResult OnGet(string licensePlate)
         {
             CarClass = _repo.GetCar(licensePlate);
-
-
             return Page();
         }
 
@@ -33,7 +31,6 @@ namespace DriveByBooking.Pages.Admin
         public IActionResult OnPostDelete(string licensePlate)
         {
             _repo.Remove(licensePlate);
-
             return RedirectToPage("CarIndex");
         }
 

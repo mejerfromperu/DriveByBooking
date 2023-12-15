@@ -24,8 +24,6 @@ namespace DriveByBooking.Pages.Admin
         public IActionResult OnGet(int id)
         {
             CustomerClass = _repo.GetCustomer(id);
-
-
             return Page();
         }
 
@@ -33,7 +31,6 @@ namespace DriveByBooking.Pages.Admin
         public IActionResult OnPostDelete(int id)
         {
             _repo.Delete(id);
-
             return RedirectToPage("Index");
         }
 

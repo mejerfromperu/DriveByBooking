@@ -46,6 +46,7 @@ namespace DriveByBooking.Pages.Admin
 
         public void OnGet()
         {
+
         }
 
 
@@ -71,7 +72,6 @@ namespace DriveByBooking.Pages.Admin
                 ErrorMessage = ae.Message;
                 return Page();
             }
-
             return RedirectToPage("CarIndex");
         }
 

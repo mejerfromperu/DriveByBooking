@@ -8,23 +8,23 @@ namespace DriveByBooking.Pages
 {
     public class OpretBrugerModel : PageModel
     {
+        // Dependency injection
         private ICustomerRepository _repo;
 
+        // Constructor
         public OpretBrugerModel(ICustomerRepository repository)
         {
             _repo = repository;
         }
 
-
+        // BindProperties
         [BindProperty]
         public int NewCustomerId { get; set; }
-
 
         [BindProperty]
         [Required(ErrorMessage = "Der skal være et navn")]
         [StringLength(100, MinimumLength = 2, ErrorMessage = "Der skal være mindst to tegn i et navn")]
         public string NewCustomerName { get; set; }
-
 
         [BindProperty]
         public string NewCustomerPhoneNumber { get; set; }
@@ -44,15 +44,14 @@ namespace DriveByBooking.Pages
         [BindProperty]
         public bool IsOwner { get; set; }
 
-
         public string ErrorMessage { get; private set; }
 
+        // HTTP GET method. 
         public void OnGet()
         {
         }
 
-
-
+        // HTTP POST method to handle the formsubmission:
         public IActionResult OnPost()
         {
             ErrorMessage = "Kunne ikke oprette kunde, da kundenummer er i brug. Vælg gerne et andet kundenummer";
@@ -71,7 +70,6 @@ namespace DriveByBooking.Pages
 
             try
             {
-                //KundeRepository repo = new KundeRepository(true);
                 _repo.AddCustomer(newCustomer);
                 TempData["SuccessMessage"] = $"Customer {NewCustomerName} added successfully with ID {NewCustomerId}.";
             }
@@ -86,7 +84,7 @@ namespace DriveByBooking.Pages
 
         private bool CustomerExists(int customerId)
         {
-            // Check if the customer ID already exists in the list
+            // Checking if customer exist 
             return _repo.CustomerExists(customerId);
         }
 

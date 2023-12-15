@@ -22,7 +22,6 @@
         <label>Brand</label><br />
         <input class="form-control" asp-for="@Model.NewBrand" /><br />
 
-
         <label>Pris</label><br />
         <input class="form-control" asp-for="@Model.NewPrice" /><br />
 
@@ -44,8 +43,6 @@
         <label>Booking Status:</label><br />
         <input type="radio" asp-for="@Model.NewIsBooked" value="true" /> Booked<br />
         <input type="radio" asp-for="@Model.NewIsBooked" value="false" /> Not Booked<br />
-
-
 
         <input type="submit" value="Opret Ny Bil" class="btn btn-success" />
         <input type="submit" value="Fortryd" class="btn btn-danger" asp-page-handler="Cancel" />
