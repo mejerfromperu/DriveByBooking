@@ -3,21 +3,18 @@
 @model DriveByBooking.Pages.Admin.CarIndexModel
 @{
 }
-
 <h1>Velkommen til Admin siden</h1>
-
-
 <h2>Her ses alle biler</h2>
-
-
 
 <form method="post">
     Vil du oprette en ny Bil tryk på <input type="submit" value="Opret" class="btn btn-outline-primary" asp-page-handler="Car" />
 </form>
 
 <a asp-page="Index" class="btn btn-outline-primary">Kunder</a>
-
 <a asp-page="BookingIndex" class="btn btn-outline-primary">Books</a>
+
+
+@* Søge funktioner *@
 
 <p></p>
 <form method="post" class="border border-success rounded">
@@ -32,6 +29,10 @@
     Lokation <input type="text" asp-for="@Model.SearchLocation" />
 </form>
 <p></p>
+
+
+@* Tabel over Biler *@
+
 
 <table class="table table-hover">
     <thead>
