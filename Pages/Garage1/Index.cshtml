@@ -5,18 +5,22 @@
     ViewData["PriceRange"] = "range auto update";
 }
 
-<p></p>
-<form method="post" class="border border-success rounded">
-    <input type="submit" asp-page-handler="Search" value="Søg" class="btn btn-outline-success" />
-    Navn <input type="text" asp-for="@Model.SearchCarName" />
-    Brand <input type="text" asp-for="@Model.SearchBrand" />
-
-    <input type="range" asp-for="@Model.SearchPrice" id="priceRange" class="form-range" name="priceRange" min="0" max="20000" step="500" value="@Model.SearchPrice" />
+<div class="text-white p-5 my-7 gap-5" >
+    <div class="bg-dark rounded-2">
+    <form method="post" class="border border-success rounded p-1">
+        <input type="submit" asp-page-handler="Search" value="Søg" class="btn btn-outline-success" />
+            <div class="row-cols-1 form-outline mb-4">
+                <label class="form-label">Navn </label>
+                <input type="text" asp-for="@Model.SearchCarName" />
+                <label class="form-label">Brand </label>
+                <input type="text" asp-for="@Model.SearchBrand" />
+            </div>
+        <input type="range" asp-for="@Model.SearchPrice" id="priceRange" class="form-range" name="priceRange" min="0" max="20000" step="500" value="@Model.SearchPrice" />
     <div class="container">
         <ul class="list-unstyled d-flex justify-content-between">
-            <li>Min. Pris: 0</li>
+            <li>Min  : 0 kr.</li>
             <li><input asp-for="@Model.SearchPrice" hidden/><output form="get" id="priceOutput">@Model.SearchPrice.GetValueOrDefault()</output></li>
-            <li>Maks Pris: 20.000</li>
+            <li>Maks : 20.000 kr.</li>
         </ul>
     </div>
 
@@ -54,7 +58,9 @@
             <option value="Fredericia" asp-for="@Model.SearchLocation"> Fredericia</option>
             <option value="Søborg" asp-for="@Model.SearchLocation"> Søborg</option>
         </select>
-</form>
+    </form>
+    </div>
+</div>
 
  <div class="row justify-content-evenly gap-5">
   
@@ -62,27 +68,31 @@
     {
         if (!cars.IsBooked)
         {
-            <div class="card" style="width: 20em">
+            <div class="card bg-dark" style="width: 20em">
                 <div>
                     <div class="container p-5 my-5">
-                        <div class="card-subtitle">
-                            <h2>@cars.Brand</h2>
-                            <h3>@cars.Name</h3>
+                        <div class="card-subtitle ">
+                            <h2 class="gradient-text">@cars.Brand</h2>
+                            <h3 class="gradient-text">@cars.Name</h3>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body text-white">
                             <ul>
                                 <li><p>Motor type: @cars.EngineType </p></li>
                                 <li><p>Gear Kasse: @cars.ShiftType</p></li>
                                 <li><p>Lokation: @cars.Location</p></li>
                                 <li><p>Pris: @cars.Price)</p></li>
                             </ul>
-                            <div class="d-grid">
+                            <div class="d-grid text-white">
                                 <a class="btn btn-primary btn-block" asp-page="Bestilling" asp-route-licensplate="@cars.LicensePlate">BESTIL</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+        }
+        else
+        {
+            <p>ingen resultater</p>
         }
     }
 
@@ -95,7 +105,7 @@
 
         function updatePrice() {
             const selectedPrice = parseFloat(priceRange.value);
-            priceOutput.textContent = " Højst valgte Pris: " + selectedPrice.toLocaleString() + " Kr.";
+            priceOutput.textContent = "valgte Pris: " + selectedPrice.toLocaleString() + " Kr.";
             localStorage.setItem('selectedPrice', selectedPrice);
         }
 
