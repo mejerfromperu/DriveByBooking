@@ -14,7 +14,7 @@
         <nav class="navbar midget navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow mb-3" >
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-page="/Index">DriveByBooking</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                <button class="navbar-toggler yes" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -55,7 +55,7 @@
         </main>
     </div>
 
-    <footer id="footer" class="border-top footer text-muted">
+    <footer id="footer" class="border-top footer sticky-footer text-muted">
         <div class="container">
             &copy; 2023 - DriveByBooking - <a asp-area="" asp-page="/Privacy">Privacy Policy</a>
         </div>
@@ -67,4 +67,5 @@
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>
+
 </html>

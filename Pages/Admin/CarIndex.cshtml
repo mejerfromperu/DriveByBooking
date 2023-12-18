@@ -3,20 +3,19 @@
 @model DriveByBooking.Pages.Admin.CarIndexModel
 @{
 }
-<h1>Velkommen til Admin siden</h1>
-<h2>Her ses alle biler</h2>
+<h1>Her ses alle biler</h1>
 
 @* Knap til at oprette nye biler *@
-
+<br />
 <form method="post">
     Vil du oprette en ny Bil tryk på <input type="submit" value="Opret" class="btn btn-primary" asp-page-handler="Car" />
 </form>
 
 @* 2 knapper der gør man kan komme til de andre admin sider *@
-
-<a asp-page="Index" class="btn btn-primary">Kunder</a>
-<a asp-page="BookingIndex" class="btn btn-primary">Books</a>
-
+<span>
+    <a asp-page="Index" class="btn btn-primary">Kunder</a>
+    <a asp-page="BookingIndex" class="btn btn-primary">Books</a>
+</span>
 
 @* Søge funktioner *@
 
