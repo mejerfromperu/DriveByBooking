@@ -100,3 +100,7 @@ tr:hover {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+
+.body2 {
+    background: linear-gradient(180deg, #f48c06, white);
+}
