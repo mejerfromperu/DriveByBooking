@@ -109,10 +109,8 @@
             localStorage.setItem('selectedPrice', selectedPrice);
         }
 
-        // Event listener for input change
         priceRange.addEventListener('input', updatePrice);
 
-        // Check if there's a saved price in local storage and set the range input value
         const savedPrice = localStorage.getItem('selectedPrice');
         if (savedPrice !== null) {
             priceRange.value = savedPrice;
