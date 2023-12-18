@@ -56,6 +56,7 @@ header {
 
 body {
     background-color: gray;
+    padding-bottom: 60px;
 }
 
 .midget {
@@ -107,4 +108,12 @@ tr:hover {
     background: linear-gradient(180deg, white, #f48c06);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+
+footer {
+    background-color: #f48c06;
+}
+
+main {
+    padding-bottom: 60px;
 }
