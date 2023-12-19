@@ -139,7 +139,30 @@ namespace DriveByBooking.Service
 
         public List<CustomerClass> Search(int? id, string? name, string? phoneNumber, string? email)
         {
-            throw new NotImplementedException();
+            List<CustomerClass> retCustomers = new List<CustomerClass>(GetEverything());
+
+            if (id != null)
+            {
+                retCustomers = retCustomers.FindAll(c => c.CustomerId == id);
+            }
+
+            if (name != null)
+            {
+                retCustomers = retCustomers.FindAll(c => c.Name.Contains(name));
+            }
+
+
+            if (phoneNumber != null)
+            {
+                retCustomers = retCustomers.FindAll(c => c.PhoneNumber.Contains(phoneNumber));
+            }
+
+            if (email != null)
+            {
+                retCustomers = retCustomers.FindAll(c => c.Email.Contains(email));
+            }
+
+            return retCustomers;
         }
 
         public List<CustomerClass> Search(int id, string name, string phoneNumber, string email)
