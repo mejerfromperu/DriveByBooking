@@ -46,7 +46,7 @@ namespace DriveByBooking.Pages.Admin
         }
 
         //Gør at man søger når man trykker på knappen
-        public IActionResult OnPostSearchCustomer()
+        public IActionResult OnPostSearch()
         {
             Customers = _customerRepo.Search(SearchId, SearchName, SearchPhoneNumber, SearchEmail);
             return Page();

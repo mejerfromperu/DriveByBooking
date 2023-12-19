@@ -130,20 +130,25 @@ namespace DriveByBooking.Service
         {
             List<CustomerClass> retCustomers = new List<CustomerClass>(GetEverything());
 
-            if (id is not null)
+            if (id != null)
             {
-                retCustomers = retCustomers.FindAll(k => k.CustomerId == id);
+                retCustomers = retCustomers.FindAll(c => c.CustomerId == id);
             }
 
-            if (name is not null)
+            if (name != null)
             {
-                retCustomers = retCustomers.FindAll(k => k.Name.Contains(name));
+                retCustomers = retCustomers.FindAll(c => c.Name.Contains(name));
             }
 
 
-            if (phoneNumber is not null)
+            if (phoneNumber != null)
             {
-                retCustomers = retCustomers.FindAll(k => k.PhoneNumber.Contains(phoneNumber));
+                retCustomers = retCustomers.FindAll(c => c.PhoneNumber.Contains(phoneNumber));
+            }
+
+            if (email != null)
+            {
+                retCustomers = retCustomers.FindAll(c => c.Email.Contains(email));
             }
 
             return retCustomers;
