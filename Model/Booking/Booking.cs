@@ -24,7 +24,7 @@ namespace DriveByBooking.Model.Booking
             get { return _bookingId; }
             set { _bookingId = value; }
         }
-
+            
         public DateTime DateTime
         {
             get { return _dateTime; }

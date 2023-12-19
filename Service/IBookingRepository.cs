@@ -12,4 +12,4 @@ namespace DriveByBooking.Service
         void RemoveBooking(Booking booking);
         string ToString();
     }
-}
+}   
